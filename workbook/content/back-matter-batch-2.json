@@ -1,0 +1,161 @@
+{
+  "batch": "back-matter-2",
+  "pages": [
+    {
+      "page_id": "reflection-page",
+      "output_filename": "reflection-page.pdf",
+      "page_type": "kid_reflection",
+      "header": "Reflect on Your Journey",
+      "intro": "You've completed 12 activities and become an algorithm thinker. Before you close this book, take a moment to look back — that's what real programmers do after every project! Reflection is where growth happens.",
+      "section_1": {
+        "header": "What I Learned",
+        "instruction": "Fill in whatever comes to mind. There are no wrong answers — just YOUR answers!",
+        "prompts": [
+          {
+            "number": 1,
+            "text": "The most SURPRISING thing I learned was...",
+            "emphasis_word": "SURPRISING",
+            "answer_lines": 2
+          },
+          {
+            "number": 2,
+            "text": "The activity I found HARDEST was Activity ___ because...",
+            "emphasis_word": "HARDEST",
+            "has_activity_number_blank": true,
+            "answer_lines": 2
+          },
+          {
+            "number": 3,
+            "text": "The activity I LOVED the most was Activity ___ because...",
+            "emphasis_word": "LOVED",
+            "has_activity_number_blank": true,
+            "answer_lines": 2
+          },
+          {
+            "number": 4,
+            "text": "One thing I want to KEEP THINKING about is...",
+            "emphasis_word": "KEEP THINKING",
+            "answer_lines": 2
+          }
+        ]
+      },
+      "section_2": {
+        "header": "Draw Your Own Algorithm",
+        "instruction": "Design your own algorithm as a picture! It can be a flowchart, a decision tree, a list of steps — however you want to show it. Pick something you want to make an algorithm for (a game, a chore, a routine — anything!).",
+        "topic_field": {
+          "label": "My algorithm is for:",
+          "answer_lines": 1
+        },
+        "drawing_box": {
+          "instruction_in_box": "Sketch your algorithm here — use boxes, arrows, diamonds, or whatever helps you show it!",
+          "height_cm": 9
+        }
+      },
+      "section_3": {
+        "header": "What's Next?",
+        "instruction": "Now that you're an algorithm thinker, where will you take this skill? Circle any (or all!) of these next steps you're interested in — or invent your own!",
+        "options": [
+          "Try a coding language like Scratch or Python",
+          "Solve more logic puzzles (Sudoku, chess, escape rooms)",
+          "Build your own workbook for a younger sibling",
+          "Design a game or app idea",
+          "Teach a friend one concept from this book",
+          "Look for algorithms everywhere in real life",
+          "Invent something new"
+        ],
+        "custom_field": {
+          "label": "My own idea:",
+          "answer_lines": 1
+        }
+      },
+      "section_4": {
+        "header": "A Note from the Author",
+        "style": "signed_letter_bordered_box",
+        "content": {
+          "greeting": "Dear Algorithm Thinker,",
+          "body": "Thank you for taking this journey! When I designed this workbook, my hope was that you'd come away not just knowing what an algorithm is, but feeling like a person who THINKS with algorithms. If any part of this book made you say \"huh, cool!\" — that's the goal.\n\nNow go find more problems worth solving.",
+          "signoff": "— The Workbook Author",
+          "signoff_placeholder_note": "The signoff \"The Workbook Author\" is a placeholder — replace with actual name before final Gumroad launch."
+        }
+      }
+    },
+    {
+      "page_id": "teacher-parent-guide",
+      "output_filename": "teacher-parent-guide.pdf",
+      "page_type": "adult_reference",
+      "header": "Teacher & Parent Guide",
+      "intro": "This workbook teaches computational thinking through 12 unplugged activities aligned to CSTA K-12 CS Standards. Each activity builds on the previous ones, and every activity has both a Basic (ages 8-10) and Challenge (ages 10-12) version for natural differentiation. Use this guide to plan lessons, track standards coverage, or extend the material.",
+      "section_1": {
+        "header": "Learning Objectives by Activity",
+        "table": {
+          "columns": ["#", "Activity", "Learning Objective", "CSTA Standard"],
+          "rows": [
+            [1, "What is an Algorithm?", "Understand that algorithms are step-by-step instructions", "1B-AP-08"],
+            [2, "Sequencing Puzzle", "Recognize that order matters in algorithms", "1B-AP-10"],
+            [3, "Spot the Loop", "Identify repetition in real-world sequences", "1B-AP-09"],
+            [4, "Write Your Own Loop", "Use loops and nested loops in pseudocode", "1B-AP-11"],
+            [5, "Yes/No Conditionals", "Apply IF/THEN/OTHERWISE logic to decisions", "1B-AP-11"],
+            [6, "Nested Conditionals", "Chain conditionals into decision trees", "1B-AP-11"],
+            [7, "Debug the Robot", "Identify and fix bugs in instruction sets", "1B-AP-15"],
+            [8, "Bubble Sort", "Execute a named sorting algorithm unplugged", "1B-AP-08, 09"],
+            [9, "Selection Sort", "Compare two algorithms for the same task", "1B-AP-08, 12"],
+            [10, "Pattern Recognition", "Identify repeating, growing, and rule-based patterns", "1B-AP-10"],
+            [11, "Treasure Hunt Grid", "Integrate sequencing, loops, and conditionals", "1B-AP-11, 15"],
+            [12, "Design Your Own Algorithm", "Create original algorithms from scratch", "1B-AP-11, 14"]
+          ]
+        }
+      },
+      "section_2": {
+        "header": "CSTA K-12 Standards Reference",
+        "standards": [
+          {"code": "1B-AP-08", "category": "Modularity", "description": "Compare multiple algorithms for the same task."},
+          {"code": "1B-AP-09", "category": "Algorithms", "description": "Create programs that use algorithms to solve problems."},
+          {"code": "1B-AP-10", "category": "Control", "description": "Create programs that include sequences, events, loops, and conditionals."},
+          {"code": "1B-AP-11", "category": "Modularity", "description": "Decompose problems into smaller, manageable subproblems."},
+          {"code": "1B-AP-12", "category": "Program Development", "description": "Modify, remix, or incorporate portions of an existing program into one's own work."},
+          {"code": "1B-AP-14", "category": "Modularity", "description": "Give attribution when using ideas and creations of others."},
+          {"code": "1B-AP-15", "category": "Program Development", "description": "Test and debug a program or algorithm to ensure it runs as intended."}
+        ]
+      },
+      "section_3": {
+        "header": "How to Use This Workbook",
+        "tips": [
+          "Introduce each activity by reading the \"How It Works\" section aloud. This front-loads the key concept before kids attempt the exercises.",
+          "Let kids attempt the Basic version independently, then transition to Challenge only if they're ready. Not every kid needs to do the Challenge — that's the point of differentiation.",
+          "Use the Bonus activities for extension work, homework, or \"early finisher\" tasks. Many are hands-on or social.",
+          "Return to earlier activities anytime — the material is designed to compound, so review is genuinely valuable, not remedial.",
+          "Discussion prompts in each Teacher/Parent Note give you conversation-starters ready to go."
+        ]
+      },
+      "section_4": {
+        "header": "Extension Ideas",
+        "extensions": [
+          {
+            "number": 1,
+            "title": "Coding Playground",
+            "description": "Introduce kids to Scratch (scratch.mit.edu) or Code.org's free courses. The concepts they learned here — loops, conditionals, sequences, decomposition — map directly to visual coding blocks. Most kids will feel instantly at home."
+          },
+          {
+            "number": 2,
+            "title": "Algorithm Journaling",
+            "description": "Have kids identify one algorithm they encounter each day for a week — a school-day routine, a game strategy, a household process. Discuss what tools it uses (sequence, loop, conditional). This turns pattern recognition into a lifelong habit."
+          },
+          {
+            "number": 3,
+            "title": "Teach-Back Project",
+            "description": "Have your child teach ONE activity from this workbook to a younger sibling, friend, or classmate. Teaching is the deepest form of learning — and it's the same activity that closes this workbook (Activity 12 Bonus)."
+          },
+          {
+            "number": 4,
+            "title": "Design Their Own",
+            "description": "Encourage kids to design a workbook page of their own — inventing a new activity that teaches an algorithm concept. Kids who can design lessons truly understand the material."
+          }
+        ]
+      },
+      "closing": {
+        "text": "Questions or feedback? We'd love to hear from you at [contact].",
+        "placeholder_note": "The [contact] placeholder must be replaced before Gumroad launch — options: Gumroad URL, email, or handle."
+      }
+    }
+  ]
+}

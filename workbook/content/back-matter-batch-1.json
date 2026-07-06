@@ -1,0 +1,170 @@
+{
+  "batch": "back-matter-1",
+  "pages": [
+    {
+      "page_id": "vocabulary-review",
+      "output_filename": "vocabulary-review.pdf",
+      "page_type": "vocabulary_review",
+      "header": "Vocabulary Review",
+      "intro": "You made it through 12 activities — that's a LOT of new vocabulary! This page reviews all 12 words you learned. Try to remember them BEFORE flipping back to the activities!",
+      "section_1": {
+        "header": "Match the Word to the Definition",
+        "instruction": "Draw a line from each word on the LEFT to its definition on the RIGHT.",
+        "words": [
+          {"number": 1, "word": "Algorithm", "match_id": "algorithm"},
+          {"number": 2, "word": "Sequence", "match_id": "sequence"},
+          {"number": 3, "word": "Loop", "match_id": "loop"},
+          {"number": 4, "word": "Conditional", "match_id": "conditional"},
+          {"number": 5, "word": "Nested", "match_id": "nested"},
+          {"number": 6, "word": "Bug", "match_id": "bug"},
+          {"number": 7, "word": "Sort", "match_id": "sort"},
+          {"number": 8, "word": "Selection", "match_id": "selection"},
+          {"number": 9, "word": "Pattern", "match_id": "pattern"},
+          {"number": 10, "word": "Navigate", "match_id": "navigate"},
+          {"number": 11, "word": "Design", "match_id": "design"},
+          {"number": 12, "word": "Repeat", "match_id": "repeat"}
+        ],
+        "definitions_shuffled": [
+          {"text": "A rule that predicts what comes next in a sequence", "correct_match": "pattern"},
+          {"text": "A step-by-step set of instructions for solving a problem", "correct_match": "algorithm"},
+          {"text": "A mistake in code that makes it do the wrong thing", "correct_match": "bug"},
+          {"text": "To find a path from one place to another", "correct_match": "navigate"},
+          {"text": "The order in which steps happen", "correct_match": "sequence"},
+          {"text": "To plan and create something from scratch", "correct_match": "design"},
+          {"text": "To pick or choose something", "correct_match": "selection"},
+          {"text": "A Yes/No question that decides what happens next", "correct_match": "conditional"},
+          {"text": "To do the same thing again and again", "correct_match": "repeat"},
+          {"text": "A block of code that runs over and over", "correct_match": "loop"},
+          {"text": "When something is INSIDE another thing of the same type", "correct_match": "nested"},
+          {"text": "To put things in order (like smallest to largest)", "correct_match": "sort"}
+        ]
+      },
+      "section_2": {
+        "header": "Word Search",
+        "instruction": "Find 8 vocabulary words hidden in the grid! Words can go across, down, or diagonally.",
+        "grid_size": 12,
+        "words_to_find": ["LOOP", "BUG", "SORT", "ALGORITHM", "PATTERN", "REPEAT", "NAVIGATE", "DESIGN"],
+        "generation_instruction": "Generate the grid programmatically — see Kimi instruction. Do not use a hardcoded grid.",
+        "answer_key_style": "small_italic_muted_at_bottom"
+      }
+    },
+    {
+      "page_id": "mini-quiz",
+      "output_filename": "mini-quiz.pdf",
+      "page_type": "mini_quiz",
+      "header": "Mini Quiz — Test Your Skills!",
+      "intro": "You've completed the whole workbook! Try this 10-question quiz to see how much stuck. Don't peek at earlier pages — trust yourself!",
+      "scoring_callout": {
+        "title": "Scoring",
+        "rows": [
+          {"score": "10/10", "label": "Algorithm Champion!"},
+          {"score": "8–9", "label": "Great Job!"},
+          {"score": "5–7", "label": "Nice Try — Review a few activities"},
+          {"score": "Below 5", "label": "No worries — learning is a loop!"}
+        ]
+      },
+      "questions": [
+        {
+          "number": 1,
+          "type": "multiple_choice",
+          "question": "Which of these is an algorithm?",
+          "options": [
+            {"letter": "A", "text": "A random pile of ingredients"},
+            {"letter": "B", "text": "A step-by-step recipe for cookies"},
+            {"letter": "C", "text": "A photo of a sandwich"},
+            {"letter": "D", "text": "A song"}
+          ],
+          "correct": "B"
+        },
+        {
+          "number": 2,
+          "type": "fill_in_blank",
+          "question": "When steps are done in the WRONG _______, the algorithm fails.",
+          "correct": "order"
+        },
+        {
+          "number": 3,
+          "type": "multiple_choice",
+          "question": "Which of these is a LOOP?",
+          "options": [
+            {"letter": "A", "text": "Wake up, brush teeth, eat breakfast — done!"},
+            {"letter": "B", "text": "Sing \"Happy Birthday\" 5 times"},
+            {"letter": "C", "text": "Put your left shoe on"},
+            {"letter": "D", "text": "Turn off the light"}
+          ],
+          "correct": "B"
+        },
+        {
+          "number": 4,
+          "type": "short_answer",
+          "question": "Write a loop for \"do 10 jumping jacks\" in the format: REPEAT \"___\" N TIMES",
+          "answer_lines": 1,
+          "correct": "REPEAT \"jumping jack\" 10 TIMES"
+        },
+        {
+          "number": 5,
+          "type": "multiple_choice",
+          "question": "A conditional starts with which word?",
+          "options": [
+            {"letter": "A", "text": "REPEAT"},
+            {"letter": "B", "text": "SWAP"},
+            {"letter": "C", "text": "IF"},
+            {"letter": "D", "text": "SORT"}
+          ],
+          "correct": "C"
+        },
+        {
+          "number": 6,
+          "type": "true_false",
+          "question": "A nested conditional means putting one Yes/No question INSIDE another.",
+          "correct": "TRUE"
+        },
+        {
+          "number": 7,
+          "type": "multiple_choice",
+          "question": "If a robot's program is missing a step, that's called a:",
+          "options": [
+            {"letter": "A", "text": "Sequence bug"},
+            {"letter": "B", "text": "Missing-step bug"},
+            {"letter": "C", "text": "Wrong-value bug"},
+            {"letter": "D", "text": "Loop bug"}
+          ],
+          "correct": "B"
+        },
+        {
+          "number": 8,
+          "type": "multiple_choice",
+          "question": "Bubble sort works by comparing:",
+          "options": [
+            {"letter": "A", "text": "The biggest number with the smallest number"},
+            {"letter": "B", "text": "Two adjacent items and swapping if wrong"},
+            {"letter": "C", "text": "Every item with every other item at the same time"},
+            {"letter": "D", "text": "None of the above"}
+          ],
+          "correct": "B"
+        },
+        {
+          "number": 9,
+          "type": "multiple_choice",
+          "question": "The sequence 2, 4, 6, 8, 10 is what type of pattern?",
+          "options": [
+            {"letter": "A", "text": "Repeating"},
+            {"letter": "B", "text": "Growing"},
+            {"letter": "C", "text": "Rule-based"},
+            {"letter": "D", "text": "Random"}
+          ],
+          "correct": "B"
+        },
+        {
+          "number": 10,
+          "type": "short_answer",
+          "question": "Name ONE tool you learned in this workbook (loop, conditional, sort, etc.):",
+          "answer_lines": 1,
+          "correct": "any workbook tool (algorithm, sequence, loop, conditional, sorting, debugging, pattern recognition, grid navigation)"
+        }
+      ],
+      "answer_key": "Answers: 1-B, 2-order, 3-B, 4-REPEAT \"jumping jack\" 10 TIMES, 5-C, 6-TRUE, 7-B, 8-B, 9-B, 10-any workbook tool",
+      "closing_callout": "How did you do? Every question you got right proves you're thinking like a computer scientist!"
+    }
+  ]
+}

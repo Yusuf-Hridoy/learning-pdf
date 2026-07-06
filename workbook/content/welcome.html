@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome — Unplugged Computer Science</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Workbook styles -->
+  <link rel="stylesheet" href="../styles/colors.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/print.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; padding: 0; }
+
+    .page-front {
+      page: front-matter;
+      padding: 0.5rem 0;
+    }
+
+    .shared-signoff {
+      page: front-matter;
+    }
+
+    /* Page-specific tweaks */
+    .front-matter-header { margin-bottom: 1.25rem; }
+    .front-matter-header h1 { font-size: 2.25rem; }
+    .dual-column-welcome { margin-bottom: 1.25rem; }
+    .dual-column-welcome h2 { font-size: 1.5rem; }
+    .dual-column-welcome p { font-size: 0.8rem; line-height: 1.55; margin-bottom: 0.6rem; }
+    .shared-signoff { font-size: 1rem; }
+  </style>
+</head>
+<body>
+
+  <div class="page-front">
+
+    <header class="front-matter-header">
+      <h1>Welcome!</h1>
+      <div class="accent-bar"></div>
+    </header>
+
+    <div class="dual-column-welcome">
+      <div class="column column-left">
+        <h2 class="column-title coral">For Parents</h2>
+        <div class="column-underline coral"></div>
+        <p>Welcome — and thank you for picking up this workbook! Your child is about to learn how computers think — without needing one. Every activity in here is designed to build computational thinking, one of the most valuable skills of the next decade, using nothing but a pencil and some paper.</p>
+        <p>Why unplugged? Because the best CS learning happens away from screens. When kids don't have "the computer will do it" as a shortcut, they have to think — really think — about how instructions work, why order matters, and how to spot and fix mistakes. Those skills transfer everywhere: math, science, writing, even everyday problem-solving.</p>
+        <p>There's no pressure to finish quickly, and no need to be a coder yourself. Sit with your child, read the "How It Works" sections together, and let them figure out the rest. When they get stuck, that's not a problem — that's debugging, and it's one of the most real CS experiences they can have.</p>
+        <p>You just gave your child a head start in one of the fastest-growing skills on Earth. That's a great parenting move.</p>
+      </div>
+
+      <div class="column column-right">
+        <h2 class="column-title teal">For Teachers</h2>
+        <div class="column-underline teal"></div>
+        <p>Welcome! This workbook was built with your classroom in mind. Every activity is unplugged, standards-aware, and designed to work for a range of kids — from early elementary through late-elementary and early-middle school.</p>
+        <p>Standards alignment: Activities map to CSTA K-12 Computer Science Standards, including Algorithms &amp; Programming (1B-AP-08 through 1B-AP-15) and Computational Thinking practices — algorithms, iteration, selection, and decomposition. The two-tier format (Basic + Challenge) supports differentiation without extra prep work.</p>
+        <p>Flexible use: Activities work for individual seat work, partner work, or whole-class discussion. The "How It Works" sections lend themselves to direct instruction, while the Bonus activities are great for extension time. Discussion prompts in each Teacher / Parent Note give you conversation starters ready to go.</p>
+        <p>License: Purchase covers single-classroom use — print and use with your students as much as you'd like. Please don't share the file outside your classroom.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="shared-signoff">
+    <svg class="signoff-decoration" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+    </svg>
+    Happy exploring — welcome to computational thinking!
+    <svg class="signoff-decoration" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+    </svg>
+  </div>
+
+</body>
+</html>

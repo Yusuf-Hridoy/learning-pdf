@@ -778,7 +778,1325 @@
   font-weight: 400;
 }
 
+/* --- 23. Circle Choice Multiple Grid --- */
+.circle-choice-multiple-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-bottom: 0.5rem;
+}
+
+.circle-choice-multiple-grid .circle-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-right: 0;
+}
+
+.circle-choice-multiple-grid .circle-option .circle {
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 1.5px solid var(--navy);
+  border-radius: 50%;
+  background: var(--white);
+  flex-shrink: 0;
+}
+
+/* --- 24. Capstone Finale --- */
+.capstone-finale {
+  width: 100%;
+  border: 3px solid var(--coral);
+  border-radius: 8px;
+  background: var(--cream);
+  padding: 20px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  page-break-inside: avoid;
+  margin: 0.75rem 0;
+}
+
+.capstone-finale::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    135deg,
+    transparent,
+    transparent 12px,
+    rgba(255, 107, 107, 0.04) 12px,
+    rgba(255, 107, 107, 0.04) 24px
+  );
+  pointer-events: none;
+}
+
+.finale-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--coral);
+  letter-spacing: 0.05em;
+  margin: 0 0 0.25rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.finale-subtitle {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  color: var(--navy);
+  margin: 0 0 0.5rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.finale-message {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: 0.02em;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.finale-star {
+  width: 16px;
+  height: 16px;
+  fill: var(--coral);
+  flex-shrink: 0;
+}
+
+/* --- 25. Fun Fact Callout --- */
+.fun-fact-callout {
+  background: #E0F4F1;
+  border: 1px solid var(--teal);
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  color: var(--navy);
+  line-height: 1.4;
+  page-break-inside: avoid;
+}
+
+.fun-fact-callout strong {
+  color: var(--coral);
+}
+
+/* --- 26. Task Card --- */
+.task-card {
+  background: var(--cream);
+  border-left: 3px solid var(--coral);
+  border-radius: 0 6px 6px 0;
+  padding: 0.35rem 0.5rem;
+  margin-bottom: 0.25rem;
+  page-break-inside: avoid;
+}
+
+.task-card-title {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--navy);
+  margin-bottom: 0.05rem;
+}
+
+.task-card-desc {
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--navy-light);
+  margin-bottom: 0.05rem;
+  line-height: 1.2;
+}
+
+.task-card-hint {
+  font-size: 0.7rem;
+  color: var(--navy);
+  line-height: 1.2;
+}
+
+.task-card-hint strong {
+  color: var(--coral);
+}
+
+/* --- 27. Code Example Lines (numbered writing lines) --- */
+.code-example-lines {
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.code-example-lines li {
+  margin: 0;
+  padding: 0;
+}
+
+.code-example-lines .code-line {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1;
+  height: 1em;
+}
+
+.code-example-lines .line-num {
+  color: var(--navy-muted);
+  font-size: 0.85em;
+  flex-shrink: 0;
+  min-width: 1.2em;
+  text-align: right;
+}
+
+.code-example-lines .line-input {
+  flex: 1;
+  border-bottom: 1px solid var(--gray-mid);
+  display: block;
+  height: 0.6em;
+}
+
+/* ============================================
+   FRONT MATTER COMPONENTS
+   ============================================ */
+
+/* --- 28. Front Matter Header --- */
+.front-matter-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  page-break-inside: avoid;
+}
+
+.front-matter-header h1 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--coral);
+  margin: 0 0 0.5rem 0;
+}
+
+.front-matter-header .accent-bar {
+  width: 40%;
+  height: 2px;
+  background: var(--coral);
+  margin: 0 auto;
+  border-radius: 1px;
+}
+
+.front-matter-intro {
+  font-size: 0.9rem;
+  color: var(--navy);
+  text-align: center;
+  max-width: 70%;
+  margin: 0 auto 1.5rem;
+  line-height: 1.5;
+}
+
+.section-label {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--coral);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* --- 29. Dual Column Welcome --- */
+.dual-column-welcome {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 0 2rem;
+  margin-bottom: 1.5rem;
+  align-items: start;
+}
+
+.dual-column-welcome .column {
+  padding: 0 0.5rem;
+  position: relative;
+}
+
+.dual-column-welcome .column-left {
+  border-right: 1px solid var(--gray-mid);
+  padding-right: 2rem;
+}
+
+.dual-column-welcome .column-right {
+  padding-left: 1rem;
+}
+
+.dual-column-welcome h2 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0 0 0.35rem 0;
+}
+
+.dual-column-welcome h2.coral { color: var(--coral); }
+.dual-column-welcome h2.teal { color: var(--teal); }
+
+.dual-column-welcome .column-underline {
+  width: 3rem;
+  height: 2px;
+  margin-bottom: 1rem;
+}
+
+.dual-column-welcome .column-underline.coral { background: var(--coral); }
+.dual-column-welcome .column-underline.teal { background: var(--teal); }
+
+.dual-column-welcome p {
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: var(--navy);
+  margin: 0 0 0.65rem 0;
+}
+
+.dual-column-welcome p:last-child {
+  margin-bottom: 0;
+}
+
+.shared-signoff {
+  text-align: center;
+  font-size: 14pt;
+  font-style: italic;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 24px;
+}
+
+.signoff-decoration {
+  width: 12px;
+  height: 12px;
+  fill: var(--coral);
+  flex-shrink: 0;
+}
+
+/* --- 30. Pacing Card --- */
+.pacing-cards {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.pacing-card {
+  flex: 1;
+  background: #FFFCF8;
+  border-radius: 6px;
+  padding: 0.875rem;
+  page-break-inside: avoid;
+}
+
+.pacing-card.coral { border-top: 3px solid var(--coral); }
+.pacing-card.teal { border-top: 3px solid var(--teal); }
+.pacing-card.yellow { border-top: 3px solid var(--sunny); }
+
+.pacing-card h3 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.pacing-card h3.coral { color: var(--coral); }
+.pacing-card h3.teal { color: var(--teal); }
+.pacing-card h3.yellow { color: #D4A017; }
+
+.pacing-detail {
+  font-size: 0.75rem;
+  color: var(--navy);
+  line-height: 1.4;
+  margin-bottom: 0.35rem;
+}
+
+.pacing-detail:last-child {
+  margin-bottom: 0;
+}
+
+.pacing-detail .label {
+  font-weight: 700;
+}
+
+.pacing-detail.best-for {
+  font-style: italic;
+  color: var(--navy-light);
+}
+
+/* --- 31. Split Info Sections (Materials + Tips) --- */
+.front-matter-split {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.front-matter-split .split-section {
+  flex: 1;
+}
+
+.front-matter-split h3 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 0.6rem 0;
+}
+
+.front-matter-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.front-matter-list li {
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.front-matter-list li:last-child {
+  margin-bottom: 0;
+}
+
+.bullet-coral::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.4rem;
+  width: 6px;
+  height: 6px;
+  background: var(--coral);
+  border-radius: 50%;
+}
+
+.bullet-number {
+  position: absolute;
+  left: 0;
+  top: 0.05rem;
+  width: 1rem;
+  height: 1rem;
+  background: var(--teal);
+  color: var(--white);
+  border-radius: 50%;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- 32. Character Block --- */
+.character-block {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--gray-mid);
+  page-break-inside: avoid;
+}
+
+.character-block:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.character-illustration {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+  border: 2px dashed var(--navy);
+  border-radius: 8px;
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--navy-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.character-info {
+  flex: 1;
+}
+
+.character-info h3 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.15rem 0;
+}
+
+.character-info h3.coral { color: var(--coral); }
+.character-info h3.teal { color: var(--teal); }
+.character-info h3.yellow { color: #D4A017; }
+
+.character-personality {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--navy-light);
+  margin: 0 0 0.4rem 0;
+}
+
+.character-description {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--navy);
+  margin: 0;
+}
+
+.closing-callout {
+  background: #FFE8E5;
+  border: 1px solid var(--coral);
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--navy);
+  page-break-inside: avoid;
+}
+
+.closing-callout em {
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* --- 33. Curriculum Grid --- */
+.curriculum-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.curriculum-item {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  page-break-inside: avoid;
+}
+
+.activity-number-circle {
+  width: 1.4rem;
+  height: 1.4rem;
+  flex-shrink: 0;
+  background: var(--coral);
+  color: var(--white);
+  border-radius: 50%;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity-info h4 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 0.05rem 0;
+}
+
+.activity-info p {
+  font-size: 0.68rem;
+  color: var(--navy-muted);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.skills-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.skill-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--navy);
+  line-height: 1.35;
+  page-break-inside: avoid;
+}
+
+.skill-bullet {
+  width: 6px;
+  height: 6px;
+  background: var(--teal);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.35rem;
+}
+
+.skill-name {
+  font-weight: 700;
+}
+
+.skill-separator {
+  color: var(--navy-muted);
+  margin: 0 0.1rem;
+}
+
+.skill-desc {
+  color: var(--navy-muted);
+}
+
+.closing-line {
+  text-align: center;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--coral);
+  font-family: 'Nunito', sans-serif;
+  margin-top: 0.5rem;
+}
+
 /* --- Spacer utilities --- */
 .spacer-sm { height: 0.5rem; }
 .spacer-md { height: 1rem; }
 .spacer-lg { height: 2rem; }
+
+/* ============================================
+   BACK MATTER COMPONENTS
+   ============================================ */
+
+.page-back-matter {
+  page: back-matter;
+}
+
+.back-matter-intro {
+  font-size: 11pt;
+  color: var(--navy);
+  text-align: center;
+  max-width: 72%;
+  margin: 0 auto 0.5rem;
+  line-height: 1.4;
+}
+
+.back-section {
+  margin-bottom: 0.4rem;
+}
+
+.back-section-header {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--coral);
+  text-align: center;
+  margin: 0 0 0.05rem 0;
+}
+
+.back-section-instruction {
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--navy-muted);
+  text-align: center;
+  margin: 0 0 0.25rem 0;
+}
+
+/* --- Matching table --- */
+.matching-table {
+  display: grid;
+  grid-template-columns: max-content 1.5cm 1fr;
+  gap: 0.1rem 0.3rem;
+  align-items: center;
+  margin-bottom: 0.35rem;
+  page-break-inside: avoid;
+}
+
+.matching-row-word {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.3rem;
+}
+
+.matching-number {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--coral);
+  margin-right: 0.15rem;
+}
+
+.matching-word {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--navy);
+}
+
+.match-dot {
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid var(--navy);
+  border-radius: 50%;
+  background: var(--white);
+  flex-shrink: 0;
+}
+
+.matching-row-def {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.matching-definition {
+  font-size: 0.8rem;
+  color: var(--navy);
+  line-height: 1.25;
+}
+
+/* --- Word search --- */
+.wordsearch-wrap {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto 0.3rem;
+}
+
+.wordsearch-grid {
+  display: grid;
+  grid-template-columns: 1.2rem repeat(12, 1fr);
+  grid-template-rows: 1.2rem repeat(12, 1fr);
+  gap: 1px;
+  background: var(--gray-mid);
+  border: 1px solid var(--gray-mid);
+  border-radius: 4px;
+  overflow: hidden;
+  page-break-inside: avoid;
+  aspect-ratio: 1 / 1;
+}
+
+.wordsearch-grid .cell {
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 400;
+  font-size: 14pt;
+  color: var(--navy);
+  min-width: 0;
+  min-height: 0;
+}
+
+.wordsearch-grid .cell.header {
+  background: var(--cream-dark);
+  font-size: 8pt;
+  font-weight: 700;
+  color: var(--navy-muted);
+}
+
+.wordsearch-grid .cell.empty {
+  background: var(--cream-dark);
+}
+
+.wordsearch-words {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.1rem 0.5rem;
+  margin-bottom: 0.25rem;
+  page-break-inside: avoid;
+}
+
+.wordsearch-word {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 13pt;
+  color: var(--coral);
+}
+
+.wordsearch-word .checkbox {
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid var(--navy);
+  border-radius: 2px;
+  background: var(--white);
+  flex-shrink: 0;
+}
+
+.wordsearch-answer-key {
+  font-size: 8pt;
+  font-style: italic;
+  color: var(--navy-muted);
+  text-align: center;
+  line-height: 1.25;
+  page-break-inside: avoid;
+}
+
+/* --- Scoring callout --- */
+.scoring-callout {
+  background: #FFF8E1;
+  border: 1px solid var(--sunny);
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin: 0 auto 0.6rem;
+  text-align: center;
+  page-break-inside: avoid;
+}
+
+.scoring-title {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 13pt;
+  color: var(--coral);
+  margin-right: 0.5rem;
+}
+
+.scoring-tiers {
+  font-size: 0.8rem;
+  color: var(--navy);
+}
+
+.scoring-tier-separator {
+  color: var(--navy-muted);
+  margin: 0 0.35rem;
+}
+
+/* --- Quiz --- */
+.quiz-section-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--teal);
+  text-align: center;
+  margin: 0 0 0.45rem 0;
+}
+
+.quiz-columns {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.4rem;
+  align-items: flex-start;
+}
+
+.quiz-column {
+  flex: 1;
+  min-width: 0;
+}
+
+.quiz-question {
+  margin-bottom: 0.3rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px dashed var(--gray-mid);
+  page-break-inside: avoid;
+}
+
+.quiz-question:last-child {
+  border-bottom: none;
+}
+
+.quiz-question-number {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  color: var(--coral);
+  margin-right: 0.1rem;
+}
+
+.quiz-question-text {
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--navy);
+  line-height: 1.25;
+  margin-bottom: 0.1rem;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.quiz-option {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--navy);
+  line-height: 1.2;
+}
+
+.quiz-option .checkbox {
+  width: 11px;
+  height: 11px;
+  border: 1.5px solid var(--navy);
+  border-radius: 2px;
+  background: var(--white);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.quiz-option-letter {
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.quiz-write-line {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.1rem;
+}
+
+.quiz-write-line .arrow {
+  color: var(--coral);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.quiz-write-line .line {
+  flex: 1;
+  border-bottom: 1px solid var(--gray-mid);
+  height: 1.1em;
+}
+
+.quiz-truefalse {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--navy);
+  margin-top: 0.1rem;
+}
+
+.quiz-truefalse-label {
+  font-style: italic;
+  color: var(--navy-muted);
+}
+
+.quiz-circle {
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 1.5px solid var(--navy);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.7rem;
+}
+
+.quiz-answer-key {
+  margin-bottom: 0.35rem;
+  page-break-inside: avoid;
+}
+
+.quiz-answer-key .answer-key-line {
+  width: 100%;
+  height: 1px;
+  background: var(--gray-mid);
+  margin-bottom: 0.2rem;
+}
+
+.quiz-answer-key p {
+  font-size: 9pt;
+  font-style: italic;
+  color: var(--navy-muted);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.quiz-closing-callout {
+  background: #FFE8E5;
+  border: 1px solid var(--coral);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  text-align: center;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--navy);
+  line-height: 1.35;
+  page-break-inside: avoid;
+}
+
+/* ============================================
+   BACK MATTER BATCH 2 — Reflection + Teacher/Parent Guide
+   ============================================ */
+
+/* --- Reflection page --- */
+.reflection-section {
+  margin-bottom: 0.08rem;
+}
+
+.reflection-section .back-section-instruction {
+  margin-bottom: 0.04rem;
+}
+
+.reflection-prompt {
+  margin-bottom: 0.1rem;
+  page-break-inside: avoid;
+}
+
+.reflection-prompt-text {
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 0.04rem;
+}
+
+.reflection-prompt-text .coral-emphasis {
+  color: var(--coral);
+}
+
+.reflection-prompt-text .inline-blank {
+  display: inline-block;
+  width: 2.2rem;
+  border-bottom: 1px solid var(--navy);
+  margin: 0 0.1rem;
+  height: 1em;
+  vertical-align: bottom;
+}
+
+.reflection-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+}
+
+.reflection-write-line {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.reflection-write-line .arrow {
+  color: var(--coral);
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.reflection-write-line .line {
+  flex: 1;
+  border-bottom: 1px solid var(--gray-mid);
+  height: 0.7em;
+}
+
+.reflection-topic-field {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--navy);
+}
+
+.reflection-topic-field .label {
+  font-weight: 700;
+}
+
+.reflection-topic-field .line {
+  flex: 1;
+  border-bottom: 1px solid var(--gray-mid);
+  height: 1.1em;
+}
+
+.drawing-box-tall {
+  width: 100%;
+  border: 2px dashed var(--gray-mid);
+  border-radius: 10px;
+  background: var(--white);
+  position: relative;
+  page-break-inside: avoid;
+  height: 4.8cm;
+}
+
+.drawing-box-hint {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.75rem;
+  right: 0.75rem;
+  font-size: 0.7rem;
+  color: var(--navy-muted);
+  font-style: italic;
+  line-height: 1.3;
+}
+
+.reflection-options {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.12rem;
+}
+
+.reflection-options-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.reflection-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.3rem;
+  font-size: 0.68rem;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 0.04rem;
+  page-break-inside: avoid;
+}
+
+.reflection-option .circle {
+  width: 13px;
+  height: 13px;
+  border: 1.5px solid var(--navy);
+  border-radius: 50%;
+  background: var(--white);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.reflection-custom-field {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--navy);
+}
+
+.reflection-custom-field .label {
+  font-weight: 700;
+}
+
+.reflection-custom-field .line {
+  flex: 1;
+  border-bottom: 1px solid var(--gray-mid);
+  height: 1.1em;
+}
+
+.author-note-box {
+  background: var(--cream);
+  border: 1px solid var(--coral);
+  border-radius: 8px;
+  padding: 6px 10px;
+  page-break-inside: avoid;
+}
+
+.author-note-greeting {
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--navy);
+  margin-bottom: 0.12rem;
+}
+
+.author-note-body {
+  font-size: 0.7rem;
+  color: var(--navy);
+  line-height: 1.4;
+  margin-bottom: 0.12rem;
+}
+
+.author-note-body p {
+  margin: 0 0 0.4rem 0;
+}
+
+.author-note-body p:last-child {
+  margin-bottom: 0;
+}
+
+.author-note-body .emphasis {
+  font-weight: 700;
+}
+
+.author-note-signoff {
+  text-align: right;
+  font-style: italic;
+  font-size: 0.7rem;
+  color: var(--navy);
+}
+
+.author-note-placeholder {
+  font-size: 0.68rem;
+  font-style: italic;
+  color: var(--navy-muted);
+  text-align: center;
+  margin-top: 0.08rem;
+  page-break-inside: avoid;
+}
+
+/* --- Teacher / Parent Guide --- */
+.teacher-guide-section {
+  margin-bottom: 0.15rem;
+}
+
+.teacher-guide-section-header {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--coral);
+  margin: 0 0 0.06rem 0;
+}
+
+.teacher-guide-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.5rem;
+  color: var(--navy);
+  margin-bottom: 0.08rem;
+  page-break-inside: avoid;
+}
+
+.teacher-guide-table th,
+.teacher-guide-table td {
+  padding: 1px 2px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--gray-mid);
+}
+
+.teacher-guide-table th {
+  background: var(--cream);
+  font-weight: 700;
+}
+
+.teacher-guide-table tr:nth-child(even) td {
+  background: rgba(255, 248, 240, 0.6);
+}
+
+.teacher-guide-table .col-num {
+  width: 5%;
+  text-align: center;
+}
+
+.teacher-guide-table .col-activity {
+  width: 24%;
+  font-weight: 700;
+}
+
+.teacher-guide-table .col-objective {
+  width: 55%;
+}
+
+.teacher-guide-table .col-standard {
+  width: 16%;
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  font-size: 0.45rem;
+  white-space: nowrap;
+}
+
+.standards-list {
+  margin: 0 0 0.35rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.standards-list li {
+  font-size: 0.55rem;
+  color: var(--navy);
+  line-height: 1.25;
+  margin-bottom: 0.02rem;
+  page-break-inside: avoid;
+}
+
+.standards-list .code {
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  font-weight: 700;
+  color: var(--coral);
+}
+
+.standards-list .category {
+  font-style: italic;
+  color: var(--navy-muted);
+}
+
+.tips-list {
+  margin: 0 0 0.35rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tips-list li {
+  position: relative;
+  padding-left: 0.85rem;
+  font-size: 10pt;
+  color: var(--navy);
+  line-height: 1.4;
+  margin-bottom: 6px;
+  page-break-inside: avoid;
+}
+
+.tips-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45rem;
+  width: 5px;
+  height: 5px;
+  background: var(--coral);
+  border-radius: 50%;
+}
+
+.extensions-grid,
+.extension-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 10px;
+  margin-bottom: 0.08rem;
+}
+
+.extension-card {
+  background: #FFF8F0;
+  border-left: 3px solid #FF6B6B;
+  border-radius: 4px;
+  padding: 6px 8px;
+  page-break-inside: avoid;
+}
+
+.extension-title {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 11pt;
+  color: var(--navy);
+  margin-bottom: 0.1rem;
+}
+
+.extension-desc {
+  font-size: 10pt;
+  color: var(--navy);
+  line-height: 1.35;
+  margin: 0;
+}
+
+.teacher-guide-closing,
+.closing {
+  text-align: center;
+  font-size: 10pt;
+  font-style: italic;
+  color: var(--navy);
+  margin-top: 0.02rem;
+  page-break-inside: avoid;
+}
+
+.closing p {
+  margin: 0;
+}

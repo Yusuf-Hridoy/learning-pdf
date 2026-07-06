@@ -167,3 +167,55 @@ Every activity follows the same 2-page template:
 - **Fonts:** Fredoka (headings) + Nunito (body) loaded from Google Fonts CDN
 - **Colors:** `print-color-adjust: exact` ensures backgrounds and tints render correctly
 - **Page numbers:** Auto-injected via CSS `@bottom-center` counter (except cover/certificate)
+
+## Back Matter Batch 1 — Vocabulary Review + Mini Quiz
+
+Generated two single-page back-matter PDFs:
+- `output/vocabulary-review.pdf`
+- `output/mini-quiz.pdf`
+
+### New reusable components (`styles/components.css`)
+- `.page-back-matter` + `@page back-matter` in `styles/print.css` (suppresses page numbers for final merge)
+- `.back-matter-intro`, `.back-section`, `.back-section-header`, `.back-section-instruction`
+- `.matching-table` + `.match-dot` (connectable dots for line-drawing)
+- `.wordsearch-wrap`, `.wordsearch-grid`, `.wordsearch-words`, `.wordsearch-answer-key`
+- `.scoring-callout` (reward-tier chart)
+- `.quiz-columns`, `.quiz-question`, `.quiz-option`, `.quiz-write-line`, `.quiz-truefalse`, `.quiz-answer-key`, `.quiz-closing-callout`
+
+### Implementation notes
+- Vocabulary word search grid is generated programmatically in-page by `content/vocabulary-review.html`:
+  - 12×12 grid, horizontal / vertical / diagonal placement
+  - Overlap allowed only on matching letters
+  - Random-fill collision detection prevents accidental duplicate words
+  - Answer key reflects the actual generated layout
+- Matching definitions are rendered in the exact shuffled order from `content/back-matter-batch-1.json`
+- Mini quiz uses a two-column layout (Q1–Q5 left, Q6–Q10 right) with compact separators
+- Both pages verified as exactly 1 page via `pdf-lib` page count and full-page screenshot
+
+## Back Matter Batch 2 — Reflection Page + Teacher/Parent Guide
+
+Generated two more single-page back-matter PDFs:
+- `output/reflection-page.pdf`
+- `output/teacher-parent-guide.pdf`
+
+### New reusable components (`styles/components.css`)
+- Reflection page: `.reflection-section`, `.reflection-prompt`, `.reflection-write-line`, `.drawing-box-tall`, `.reflection-options`, `.author-note-box`
+- Teacher/Parent Guide: `.teacher-guide-section`, `.teacher-guide-table`, `.standards-list`, `.tips-list`, `.extensions-grid`, `.extension-card`, `.teacher-guide-closing`
+
+### Implementation notes
+- Reflection page uses warm, personal tone with coral emphasis words, inline blanks for activity numbers, arrow-prefixed writing lines, circle checkboxes, and a signed letter box.
+- Teacher/Parent Guide renders a real HTML `<table>` for activity objectives, a definition list for CSTA standards, bulleted tips, and a 2-column extension grid.
+- Both pages share the `.front-matter-header` pattern and use `@page back-matter` to suppress page numbers.
+- Density was tuned until each page measured under the 10in content limit at print width (720px viewport); the reflection drawing box was reduced from 9cm to ~4.8cm to keep all required content on one page while preserving readability.
+- No emojis used anywhere.
+
+### Verification
+- Page counts verified with `pdf-lib`: both PDFs are exactly **1 page**.
+- Full-page screenshots reviewed for layout completeness before cleanup.
+
+### Back Matter Batch 2 — Fix (Teacher/Parent Guide)
+
+Fixed `output/teacher-parent-guide.pdf`:
+- Ensured the 5 "How to Use This Workbook" tips render immediately under their section header (coral bullets, ~10pt navy text, compact spacing).
+- Rendered the 4 extension ideas as a 2×2 grid with cream cards, coral left border, and roughly equal block heights.
+- Tuned densities so the page remains exactly 1 page after the layout fixes.

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What You'll Learn — Unplugged Computer Science</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Workbook styles -->
+  <link rel="stylesheet" href="../styles/colors.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/print.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; padding: 0; }
+
+    .page-front {
+      page: front-matter;
+      min-height: calc(11in - 1in);
+      padding: 0.5rem 0;
+    }
+
+    /* Page-specific tweaks */
+    .front-matter-header { margin-bottom: 0.75rem; }
+    .front-matter-header h1 { font-size: 2rem; }
+    .front-matter-intro { font-size: 0.82rem; margin-bottom: 0.75rem; }
+    .section-label { margin-bottom: 0.6rem; }
+    .curriculum-grid { gap: 0.4rem 1.25rem; margin-bottom: 1rem; }
+    .activity-number-circle { width: 1.3rem; height: 1.3rem; font-size: 0.75rem; }
+    .activity-info h4 { font-size: 0.78rem; }
+    .activity-info p { font-size: 0.65rem; }
+    .skills-list { gap: 0.3rem 1.25rem; margin-bottom: 0.75rem; }
+    .skill-item { font-size: 0.72rem; }
+    .closing-line { font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+
+  <div class="page-front">
+
+    <header class="front-matter-header">
+      <h1>What You'll Learn</h1>
+      <div class="accent-bar"></div>
+    </header>
+
+    <p class="front-matter-intro">This workbook builds computational thinking skills step by step. Each activity teaches ONE new concept, then combines it with what came before — so by Activity 11, you're using everything together, and by Activity 12, YOU are the designer.</p>
+
+    <div class="section-label">The 12 Activities</div>
+
+    <div class="curriculum-grid">
+      <div class="curriculum-item">
+        <div class="activity-number-circle">1</div>
+        <div class="activity-info">
+          <h4>What is an Algorithm?</h4>
+          <p>Learn what makes a set of instructions an algorithm.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="activity-number-circle">2</div>
+        <div class="activity-info">
+          <h4>Sequencing Puzzle</h4>
+          <p>Discover why the ORDER of steps matters.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="activity-number-circle">3</div>
+        <div class="activity-info">
+          <h4>Spot the Loop</h4>
+          <p>Recognize repetition in songs, chores, and patterns.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="activity-number-circle">4</div>
+        <div class="activity-info">
+          <h4>Write Your Own Loop</h4>
+          <p>Use "REPEAT N TIMES" to shorten programs.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="activity-number-circle">5</div>
+        <div class="activity-info">
+          <h4>Yes/No Conditionals</h4>
+          <p>Make programs decide with IF / THEN / OTHERWISE.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="activity-number-circle">6</div>
+        <div class="activity-info">
+          <h4>Nested Conditionals</h4>
+          <p>Chain multiple Yes/No questions into decision trees.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="activity-number-circle">7</div>
+        <div class="activity-info">
+          <h4>Debug the Robot</h4>
+          <p>Find bugs — sequence, missing-step, and wrong-value.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="activity-number-circle">8</div>
+        <div class="activity-info">
+          <h4>Bubble Sort</h4>
+          <p>Learn your first NAMED algorithm.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="activity-number-circle">9</div>
+        <div class="activity-info">
+          <h4>Selection Sort</h4>
+          <p>Discover that the same problem has multiple solutions.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="activity-number-circle">10</div>
+        <div class="activity-info">
+          <h4>Pattern Recognition</h4>
+          <p>Find the RULE that predicts the future.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="activity-number-circle">11</div>
+        <div class="activity-info">
+          <h4>Treasure Hunt Grid</h4>
+          <p>Combine everything to navigate a puzzle.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="activity-number-circle">12</div>
+        <div class="activity-info">
+          <h4>Design Your Own Algorithm</h4>
+          <p>YOU'RE the designer. Build from scratch.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Skills You'll Build</div>
+
+    <div class="skills-list">
+      <div class="skill-item">
+        <span class="skill-bullet"></span>
+        <span><span class="skill-name">Computational thinking</span><span class="skill-separator">—</span><span class="skill-desc">breaking problems into parts and building solutions</span></span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-bullet"></span>
+        <span><span class="skill-name">Logical reasoning</span><span class="skill-separator">—</span><span class="skill-desc">following rules to reach conclusions</span></span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-bullet"></span>
+        <span><span class="skill-name">Problem decomposition</span><span class="skill-separator">—</span><span class="skill-desc">turning big challenges into smaller steps</span></span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-bullet"></span>
+        <span><span class="skill-name">Pattern recognition</span><span class="skill-separator">—</span><span class="skill-desc">spotting rules and predicting outcomes</span></span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-bullet"></span>
+        <span><span class="skill-name">Debugging skills</span><span class="skill-separator">—</span><span class="skill-desc">finding and fixing mistakes</span></span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-bullet"></span>
+        <span><span class="skill-name">Creative problem-solving</span><span class="skill-separator">—</span><span class="skill-desc">designing your own solutions</span></span>
+      </div>
+    </div>
+
+    <div class="closing-line">Ready? Turn the page and let's begin!</div>
+
+  </div>
+
+</body>
+</html>

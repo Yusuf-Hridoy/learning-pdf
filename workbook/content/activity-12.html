@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity 12 — Design Your Own Algorithm</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Workbook styles -->
+  <link rel="stylesheet" href="../styles/colors.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/print.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; padding: 0; }
+
+    /* ==================== PAGE 1 — ULTRA COMPACT ==================== */
+    .page-1 .activity-header { margin-bottom: 0.03rem; padding: 0.04rem 0.25rem; }
+    .page-1 .activity-header .activity-number { width: 1.5rem; height: 1.5rem; font-size: 0.8rem; }
+    .page-1 .activity-header .activity-title { font-size: 0.92rem; }
+    .page-1 .activity-header .difficulty-badge { font-size: 0.52rem; padding: 0.15rem 0.4rem; }
+    .page-1 .kid-box { margin-bottom: 0.04rem; padding: 0.2rem 0.35rem 0.04rem; }
+    .page-1 .kid-box::before { font-size: 0.48rem; padding: 0.04rem 0.2rem; top: -0.45rem; left: 0.4rem; }
+    .page-1 .kid-box p { font-size: 0.55rem; line-height: 1.1; margin-bottom: 0; }
+    .page-1 .vocab-callout { margin-bottom: 0.04rem; padding: 0.1rem 0.35rem; }
+    .page-1 .vocab-word { font-size: 0.7rem; padding: 0.08rem 0.3rem; }
+    .page-1 .vocab-def { font-size: 0.51rem; line-height: 1.1; margin-bottom: 0; }
+
+    .intro-with-mascot { display: flex; gap: 0.3rem; align-items: flex-start; }
+    .intro-with-mascot .mascot-box { flex-shrink: 0; width: 42px; height: 42px; font-size: 0.38rem; }
+
+    /* How It Works section */
+    .how-it-works { margin-bottom: 0.04rem; }
+    .how-it-works-header {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 600;
+      padding: 0.08rem 0.3rem;
+      border-radius: 6px;
+      margin-bottom: 0.04rem;
+      text-align: center;
+      background: var(--teal-light);
+      color: var(--teal-dark);
+    }
+    .how-it-works-intro {
+      font-size: 0.5rem;
+      line-height: 1.1;
+      margin-bottom: 0.03rem;
+    }
+    .how-it-works ol {
+      margin: 0.02rem 0;
+      padding-left: 0.8rem;
+      font-size: 0.48rem;
+      line-height: 1.05;
+    }
+    .how-it-works li { margin-bottom: 0.01rem; }
+    .how-it-works .fun-fact-callout {
+      margin-top: 0.04rem;
+      padding: 0.15rem 0.3rem;
+      font-size: 0.47rem;
+      line-height: 1.1;
+    }
+
+    /* Two-column */
+    .page-1 .two-col { gap: 0.25rem; margin-bottom: 0; page-break-inside: auto; align-items: flex-start; }
+    .page-1 .col-header { padding: 0.08rem 0.2rem; margin-bottom: 0.04rem; font-size: 0.58rem; }
+    .col-basic { flex: 0.95; min-width: 0; }
+    .col-challenge { flex: 1.05; min-width: 0; }
+
+    .col-instruction {
+      font-size: 0.5rem;
+      line-height: 1.1;
+      margin-bottom: 0.06rem;
+    }
+
+    /* Task cards */
+    .page-1 .task-card { padding: 0.12rem 0.25rem; margin-bottom: 0.05rem; }
+    .page-1 .task-card-title { font-size: 0.52rem; margin-bottom: 0.01rem; }
+    .page-1 .task-card-desc { font-size: 0.47rem; margin-bottom: 0.01rem; }
+    .page-1 .task-card-hint { font-size: 0.45rem; }
+
+    /* Step worksheet */
+    .step-worksheet { margin-top: 0.06rem; }
+    .step-item { margin-bottom: 0.05rem; page-break-inside: avoid; }
+    .step-label {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.54rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.01rem;
+    }
+    .step-helper {
+      font-size: 0.45rem;
+      color: var(--navy-light);
+      line-height: 1.1;
+      margin-bottom: 0.01rem;
+    }
+
+    /* Writing lines compact */
+    .page-1 .writing-lines { margin-bottom: 0.01rem; }
+    .page-1 .writing-lines .line {
+      height: 0.42rem;
+      margin-bottom: 0;
+    }
+
+    /* Numbered writing lines */
+    .numbered-lines { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; }
+    .numbered-lines li {
+      display: flex;
+      align-items: center;
+      gap: 0.15rem;
+      margin: 0;
+      padding: 0;
+      height: 0.42rem;
+    }
+    .numbered-lines .num {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.46rem;
+      font-weight: 600;
+      color: var(--navy);
+      min-width: 0.7rem;
+      text-align: right;
+    }
+    .numbered-lines .line {
+      flex: 1;
+      height: 0.28rem;
+      border-bottom: 1px solid var(--gray-mid);
+      display: block;
+      margin-bottom: 0;
+    }
+
+    /* Circle choice compact */
+    .page-1 .circle-option {
+      font-size: 0.48rem;
+      margin-right: 0.35rem;
+    }
+    .page-1 .circle-option .circle {
+      width: 0.6rem;
+      height: 0.6rem;
+    }
+
+    /* Code example lines */
+    .page-1 .code-example { padding: 0.06rem 0.15rem; margin: 0.01rem 0; white-space: normal; }
+    .page-1 .code-example-lines { white-space: normal; display: flex; flex-direction: column; }
+    .page-1 .code-example-lines li { margin: 0; padding: 0; }
+    .page-1 .code-example-lines .code-line { line-height: 1; height: 0.42rem; align-items: center; }
+    .page-1 .code-example-lines .line-num { font-size: 0.44rem; min-width: 0.8em; }
+    .page-1 .code-example-lines .line-input { height: 0.28rem; }
+
+    /* Challenge section labels */
+    .challenge-label {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.52rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.01rem;
+      margin-top: 0.04rem;
+    }
+    .challenge-helper {
+      font-size: 0.45rem;
+      color: var(--navy-light);
+      line-height: 1.1;
+      margin-bottom: 0.01rem;
+    }
+    .subsection-label {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.54rem;
+      font-weight: 600;
+      color: var(--coral);
+      margin-bottom: 0.01rem;
+      margin-top: 0.04rem;
+    }
+
+    /* Circle choice multiple grid compact */
+    .page-1 .circle-choice-multiple-grid { gap: 2px 5px; margin-bottom: 0.04rem; }
+    .page-1 .circle-choice-multiple-grid .circle-option { font-size: 0.45rem; }
+    .page-1 .circle-choice-multiple-grid .circle-option .circle { width: 0.48rem; height: 0.48rem; }
+
+    /* ==================== PAGE 2 ==================== */
+    .page-2 h3 { margin-bottom: 0.04rem; font-size: 0.7rem; }
+    .page-2 section { margin-bottom: 0.06rem; }
+    .page-2 .writing-lines { margin-bottom: 0.02rem; }
+    .page-2 .writing-lines .line { height: 0.48rem; margin-bottom: 0.01rem; }
+    .page-2 .kid-checklist { margin: 0 0 0.04rem; }
+    .page-2 .kid-checklist li { margin-bottom: 0.06rem; font-size: 0.56rem; }
+    .page-2 .kid-checklist .checkbox { width: 0.75rem; height: 0.75rem; }
+    .page-2 .teacher-note { padding: 0.12rem 0.25rem; }
+    .page-2 .teacher-note p { font-size: 0.5rem; line-height: 1.15; }
+    .page-2 .reflection-box { margin-top: 0.05rem; margin-bottom: 0.05rem; }
+    .page-2 .reflection-box p { font-size: 0.55rem; line-height: 1.15; margin-bottom: 0.03rem; }
+
+    /* Bonus compact */
+    .bonus-setup { font-size: 0.55rem; line-height: 1.15; margin-bottom: 0.03rem; }
+    .bonus-label {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.01rem;
+      margin-top: 0.03rem;
+    }
+    .page-2 .circle-choice-multiple-grid { gap: 2px 6px; margin-bottom: 0.04rem; }
+    .page-2 .circle-choice-multiple-grid .circle-option { font-size: 0.52rem; }
+    .page-2 .circle-choice-multiple-grid .circle-option .circle { width: 0.52rem; height: 0.52rem; }
+
+    /* Capstone finale overrides */
+    .page-2 .capstone-finale {
+      padding: 8px 12px;
+      margin: 0.06rem 0;
+    }
+    .page-2 .finale-title { font-size: 0.92rem; gap: 0.3rem; }
+    .page-2 .finale-subtitle { font-size: 0.6rem; margin-bottom: 0.12rem; }
+    .page-2 .finale-message { font-size: 0.7rem; }
+    .page-2 .finale-star { width: 10px; height: 10px; }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1 ==================== -->
+  <div class="page-1" style="page-break-after: always;">
+
+    <!-- 1. Activity Header Strip -->
+    <header class="activity-header">
+      <div class="activity-number">12</div>
+      <h1 class="activity-title">Design Your Own Algorithm</h1>
+      <span class="difficulty-badge difficulty-easy">AGES 8-12</span>
+    </header>
+
+    <!-- 2. Kid Instructions Box + Mascot -->
+    <div class="intro-with-mascot">
+      <div class="mascot-box">MASCOT<br>GOES<br>HERE</div>
+      <section class="kid-box">
+        <p>You've made it to the <strong>FINAL activity</strong>! You've learned sequences, loops, conditionals, sorting, debugging, and patterns. Now it's your turn — <strong>YOU'RE the algorithm designer</strong>. Pick a real problem and solve it your way!</p>
+      </section>
+    </div>
+
+    <!-- 3. Vocabulary Callout -->
+    <section class="vocab-callout">
+      <span class="vocab-word">Design</span>
+      <p class="vocab-def"><strong>Design</strong> — To plan and create something from scratch. Real programmers design algorithms — the same way architects design buildings.<br><em>Example:</em> Every app on your phone started as a design — someone thought about what it should do BEFORE they built it!</p>
+    </section>
+
+    <!-- 4. How It Works — 5-Step Design Process -->
+    <section class="how-it-works">
+      <div class="how-it-works-header">The 5-Step Algorithm Design Process</div>
+      <p class="how-it-works-intro">Real programmers follow 5 steps every time they design an algorithm. Follow these steps yourself throughout this activity!</p>
+      <ol>
+        <li><strong>PICK YOUR PROBLEM</strong> — What task do you want to solve?</li>
+        <li><strong>LIST THE STEPS</strong> — Break it down into small actions</li>
+        <li><strong>LOOK FOR PATTERNS</strong> — Can you use a LOOP? A CONDITIONAL?</li>
+        <li><strong>WRITE THE ALGORITHM</strong> — Combine steps + patterns</li>
+        <li><strong>TEST AND FIX</strong> — Try it out. Find bugs. Improve.</li>
+      </ol>
+      <div class="fun-fact-callout">
+        <strong>Fun fact:</strong> These same 5 steps are used by game designers, AI researchers, and the engineers at Google. When YOU use them, you're thinking like they do.
+      </div>
+    </section>
+
+    <!-- 5. Two-Column Split -->
+    <div class="two-col">
+      <!-- Basic Version -->
+      <div class="col col-basic">
+        <div class="col-header">Basic Version</div>
+        <p class="col-instruction"><strong>Your First Algorithm Design</strong> — Pick ONE task from below (or invent your own!). Then follow the 5 steps to design your algorithm.</p>
+
+        <!-- Task Cards -->
+        <div class="task-card">
+          <div class="task-card-title">1. Making a Bowl of Cereal</div>
+          <div class="task-card-desc">Walk through every step from empty bowl to eating.</div>
+          <div class="task-card-hint"><strong>Hint:</strong> Watch the ORDER — like Activity 2!</div>
+        </div>
+        <div class="task-card">
+          <div class="task-card-title">2. Getting Dressed for School</div>
+          <div class="task-card-desc">From pajamas to fully dressed and ready.</div>
+          <div class="task-card-hint"><strong>Hint:</strong> What comes FIRST — socks or shoes? SEQUENCE matters!</div>
+        </div>
+        <div class="task-card">
+          <div class="task-card-title">3. Feeding 3 Fish in a Tank</div>
+          <div class="task-card-desc">Give each fish exactly one pinch of food.</div>
+          <div class="task-card-hint"><strong>Hint:</strong> This has repetition — try using a LOOP!</div>
+        </div>
+
+        <!-- 5 Steps Worksheet -->
+        <div class="step-worksheet">
+          <div class="step-item">
+            <div class="step-label">STEP 1 — My chosen task is:</div>
+            <div class="writing-lines"><span class="line"></span></div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-label">STEP 2 — List the steps</div>
+            <div class="step-helper">(break it down into small actions)</div>
+            <ol class="numbered-lines">
+              <li><span class="num">1.</span><span class="line"></span></li>
+              <li><span class="num">2.</span><span class="line"></span></li>
+              <li><span class="num">3.</span><span class="line"></span></li>
+              <li><span class="num">4.</span><span class="line"></span></li>
+              <li><span class="num">5.</span><span class="line"></span></li>
+            </ol>
+          </div>
+
+          <div class="step-item">
+            <div class="step-label">STEP 3 — Look for patterns</div>
+            <div class="step-helper">Do any steps repeat? Are there Yes/No questions? Circle the tools you'll use:</div>
+            <div>
+              <span class="circle-option"><span class="circle"></span> SEQUENCE</span>
+              <span class="circle-option"><span class="circle"></span> LOOP</span>
+              <span class="circle-option"><span class="circle"></span> CONDITIONAL</span>
+              <span class="circle-option"><span class="circle"></span> NESTED LOOP</span>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-label">STEP 4 — Write your final algorithm</div>
+            <div class="step-helper">(combine steps + patterns)</div>
+            <div class="code-example">
+              <ol class="code-example-lines" start="1">
+                <li class="code-line"><span class="line-num">1</span><span class="line-input"></span></li>
+                <li class="code-line"><span class="line-num">2</span><span class="line-input"></span></li>
+                <li class="code-line"><span class="line-num">3</span><span class="line-input"></span></li>
+                <li class="code-line"><span class="line-num">4</span><span class="line-input"></span></li>
+                <li class="code-line"><span class="line-num">5</span><span class="line-input"></span></li>
+                <li class="code-line"><span class="line-num">6</span><span class="line-input"></span></li>
+                <li class="code-line"><span class="line-num">7</span><span class="line-input"></span></li>
+                <li class="code-line"><span class="line-num">8</span><span class="line-input"></span></li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-label">STEP 5 — Test it!</div>
+            <div class="step-helper">Ask someone to follow your algorithm exactly. What happened? Any bugs?</div>
+            <div class="writing-lines">
+              <span class="line"></span>
+              <span class="line"></span>
+              <span class="line"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Challenge Version -->
+      <div class="col col-challenge">
+        <div class="col-header">Challenge Version</div>
+        <p class="col-instruction"><strong>Design an Algorithm from Scratch</strong> — This time, YOU pick the problem. Choose something you do regularly — a chore, a game routine, a homework habit. Design a full algorithm for it, using at least <strong>ONE loop</strong> AND at least <strong>ONE conditional</strong>.</p>
+
+        <div class="challenge-label">My problem is:</div>
+        <div class="writing-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+
+        <div class="challenge-label">Why I chose this problem:</div>
+        <div class="writing-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+
+        <div class="challenge-label">My algorithm</div>
+        <div class="challenge-helper">(write in pseudocode — use IF, REPEAT, and shorthand you learned)</div>
+        <div class="code-example">
+          <ol class="code-example-lines" start="1">
+            <li class="code-line"><span class="line-num">1</span><span class="line-input"></span></li>
+            <li class="code-line"><span class="line-num">2</span><span class="line-input"></span></li>
+            <li class="code-line"><span class="line-num">3</span><span class="line-input"></span></li>
+            <li class="code-line"><span class="line-num">4</span><span class="line-input"></span></li>
+            <li class="code-line"><span class="line-num">5</span><span class="line-input"></span></li>
+            <li class="code-line"><span class="line-num">6</span><span class="line-input"></span></li>
+            <li class="code-line"><span class="line-num">7</span><span class="line-input"></span></li>
+            <li class="code-line"><span class="line-num">8</span><span class="line-input"></span></li>
+            <li class="code-line"><span class="line-num">9</span><span class="line-input"></span></li>
+            <li class="code-line"><span class="line-num">10</span><span class="line-input"></span></li>
+            <li class="code-line"><span class="line-num">11</span><span class="line-input"></span></li>
+            <li class="code-line"><span class="line-num">12</span><span class="line-input"></span></li>
+          </ol>
+        </div>
+
+        <div class="challenge-label">Which tools did I use?</div>
+        <div class="challenge-helper">(circle all that apply)</div>
+        <div class="circle-choice-multiple-grid">
+          <span class="circle-option"><span class="circle"></span> Sequence</span>
+          <span class="circle-option"><span class="circle"></span> Loop</span>
+          <span class="circle-option"><span class="circle"></span> Nested Loop</span>
+          <span class="circle-option"><span class="circle"></span> Conditional</span>
+          <span class="circle-option"><span class="circle"></span> Nested Conditional</span>
+          <span class="circle-option"><span class="circle"></span> Pattern Recognition</span>
+        </div>
+
+        <div class="subsection-label">Test it!</div>
+        <div class="challenge-label" style="margin-top:0.05rem;">I tested my algorithm by:</div>
+        <div class="writing-lines"><span class="line"></span></div>
+
+        <div class="challenge-label">What bug did I find (if any)?</div>
+        <div class="writing-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+
+        <div class="challenge-label">How did I fix it?</div>
+        <div class="writing-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.page-1 -->
+
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="page-activity page-2">
+
+    <div class="content-area">
+
+      <!-- 6. Self-Check -->
+      <section>
+        <h3 style="color:var(--teal-dark);">Self-Check</h3>
+        <ul class="kid-checklist">
+          <li><span class="checkbox"></span> I picked a real problem and designed an algorithm for it</li>
+          <li><span class="checkbox"></span> I used at least ONE tool from earlier activities (loop, conditional, etc.)</li>
+          <li><span class="checkbox"></span> I tested my algorithm and improved it if needed</li>
+          <li><span class="checkbox"></span> I can explain my algorithm to someone else in my own words</li>
+          <li><span class="checkbox"></span> I feel like an algorithm designer now!</li>
+        </ul>
+      </section>
+
+      <!-- 7. Reflection Box -->
+      <section class="reflection-box">
+        <h3>Reflection Box</h3>
+        <p>Look back at every activity you did in this workbook. Which concept was your FAVORITE? Which was the HARDEST? What surprised you the most about how algorithms work?</p>
+        <div class="writing-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </section>
+
+      <!-- 8. Bonus: Teach Someone Else -->
+      <section>
+        <h3 style="color:var(--navy);">Bonus: Teach Someone Else</h3>
+        <p class="bonus-setup">The best way to know you understand something is to TEACH it. Find a family member, friend, or even a pet — and teach them ONE concept from this workbook. Explain it in your own words.</p>
+
+        <div class="bonus-label">The concept I taught: (circle one)</div>
+        <div class="circle-choice-multiple-grid">
+          <span class="circle-option"><span class="circle"></span> Algorithm</span>
+          <span class="circle-option"><span class="circle"></span> Sequence</span>
+          <span class="circle-option"><span class="circle"></span> Loops</span>
+          <span class="circle-option"><span class="circle"></span> Nested Loops</span>
+          <span class="circle-option"><span class="circle"></span> Conditionals</span>
+          <span class="circle-option"><span class="circle"></span> Nested Conditionals</span>
+          <span class="circle-option"><span class="circle"></span> Debugging</span>
+          <span class="circle-option"><span class="circle"></span> Bubble Sort</span>
+          <span class="circle-option"><span class="circle"></span> Selection Sort</span>
+          <span class="circle-option"><span class="circle"></span> Pattern Recognition</span>
+          <span class="circle-option"><span class="circle"></span> Grid Navigation</span>
+        </div>
+
+        <div class="bonus-label">Who I taught:</div>
+        <div class="writing-lines"><span class="line"></span></div>
+
+        <div class="bonus-label">How I explained it (in my OWN words):</div>
+        <div class="writing-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+
+        <div class="bonus-label">Did they understand? What questions did they ask?</div>
+        <div class="writing-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </section>
+
+      <!-- 9. Capstone Finale -->
+      <div class="capstone-finale">
+        <div class="finale-title">
+          <svg class="finale-star" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          CONGRATULATIONS!
+          <svg class="finale-star" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </div>
+        <div class="finale-subtitle">You've completed the workbook.</div>
+        <div class="finale-message">You're officially an ALGORITHM THINKER!</div>
+      </div>
+
+    </div><!-- /.content-area -->
+
+    <!-- 10. Teacher / Parent Note -->
+    <aside class="teacher-note">
+      <div class="teacher-note-label">
+        <span>Teacher / Parent Note</span>
+      </div>
+      <p>This capstone activity is where kids stop being students following exercises and become designers creating from scratch. The 5-step design process they used (pick problem, list steps, look for patterns, write, test) is the same process used by real software engineers — from Google engineers designing search algorithms to game developers designing enemy AI. This workbook has given your child the mental toolkit of computational thinking, a skill that transfers directly to math, science, writing, and everyday problem-solving. Discussion prompt: Ask your child what problem they'd love to solve next — maybe a chore, a game, a homework habit. Encourage them to KEEP DESIGNING ALGORITHMS beyond this workbook. This is just the beginning.</p>
+    </aside>
+
+  </div><!-- /.page-activity .page-2 -->
+
+</body>
+</html>

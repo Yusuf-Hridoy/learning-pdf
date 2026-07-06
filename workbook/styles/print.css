@@ -29,6 +29,16 @@
   @bottom-center { content: none; }
 }
 
+/* Front matter pages get no page number (renumbered during final merge) */
+@page front-matter {
+  @bottom-center { content: none; }
+}
+
+/* Back matter pages also get no page number (renumbered during final merge) */
+@page back-matter {
+  @bottom-center { content: none; }
+}
+
 /* --- Force exact color rendering (backgrounds & tints) --- */
 * {
   -webkit-print-color-adjust: exact !important;
