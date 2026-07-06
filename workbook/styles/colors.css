@@ -1,0 +1,41 @@
+/* ============================================
+   COLORS.CSS — Kid-friendly warm palette
+   ============================================
+   All workbook colors live here as CSS custom
+   properties so the whole system stays consistent.
+   ============================================ */
+
+:root {
+  /* Primary palette */
+  --coral:        #FF6B6B;
+  --teal:         #4ECDC4;
+  --sunny:        #FFE66D;
+  --navy:         #2D3047;
+  --cream:        #FFF8F0;
+  --white:        #FFFFFF;
+
+  /* Tints & shades for print flexibility */
+  --coral-light:  #FFE0E0;
+  --coral-dark:   #E85555;
+  --teal-light:   #E0F7F5;
+  --teal-dark:    #3BA99E;
+  --sunny-light:  #FFF8D1;
+  --sunny-dark:   #E6C84A;
+  --navy-light:   #4A4E6E;
+  --navy-muted:   #6B6F8A;
+  --cream-dark:   #F5E6D3;
+  --gray-light:   #F0F0F0;
+  --gray-mid:     #C0C0C0;
+
+  /* Semantic assignments */
+  --text-main:    var(--navy);
+  --text-muted:   var(--navy-muted);
+  --bg-page:      var(--cream);
+  --bg-white:     var(--white);
+
+  /* Borders & shadows */
+  --border-coral: var(--coral);
+  --border-teal:  var(--teal);
+  --border-sunny: var(--sunny);
+  --border-light: var(--gray-mid);
+}

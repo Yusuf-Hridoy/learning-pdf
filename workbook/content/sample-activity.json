@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "activity": {
+    "number": 1,
+    "title": "What is an Algorithm?",
+    "difficulty": "easy",
+    "difficulty_label": "Ages 8-10",
+    "intro": "<p>An <strong>algorithm</strong> is just a list of steps to do something. Even making a sandwich is an algorithm! Let's see if you can write one.</p>",
+    "vocabulary": {
+      "word": "Algorithm",
+      "definition": "A step-by-step set of instructions to solve a problem or complete a task."
+    },
+    "has_split": true,
+    "basic_version": {
+      "label": "Basic Version",
+      "instructions": "Write 5 steps to make a peanut butter sandwich. Be specific!",
+      "lines": 5
+    },
+    "challenge_version": {
+      "label": "Challenge Version",
+      "instructions": "Write your steps, then have someone follow them EXACTLY. Did it work? What was missing?",
+      "lines": 8,
+      "reflection": true
+    },
+    "teacher_note": "This activity introduces the core CS concept that algorithms are precise instructions. Common gap kids miss: opening the bread bag, using a knife, etc. — the lesson is that computers need extreme specificity.",
+    "components_used": [
+      "activity-header",
+      "kid-box",
+      "vocab-callout",
+      "two-col",
+      "write-lines",
+      "write-box",
+      "teacher-note",
+      "mascot-box"
+    ]
+  }
+}

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity 9 — Sorting: Selection Sort</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Workbook styles -->
+  <link rel="stylesheet" href="../styles/colors.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/print.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; padding: 0; }
+
+    /* ==================== PAGE 1 — ULTRA COMPACT ==================== */
+    .page-1 .activity-header { margin-bottom: 0.08rem; padding: 0.08rem 0.35rem; }
+    .page-1 .kid-box { margin-bottom: 0.08rem; padding: 0.35rem 0.45rem 0.08rem; }
+    .page-1 .vocab-callout { margin-bottom: 0.08rem; padding: 0.15rem 0.45rem; }
+    .page-1 .two-col { gap: 0.4rem; margin-bottom: 0.05rem; }
+    .page-1 .col-header { padding: 0.15rem 0.35rem; margin-bottom: 0.1rem; font-size: 0.82rem; }
+
+    .page-1 .kid-box p { font-size: 0.78rem; line-height: 1.3; margin-bottom: 0; }
+    .page-1 .vocab-def { font-size: 0.73rem; line-height: 1.25; margin-bottom: 0; }
+
+    /* How It Works section */
+    .how-it-works { margin-bottom: 0.05rem; }
+    .how-it-works-header {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.15rem 0.4rem;
+      border-radius: 8px;
+      margin-bottom: 0.08rem;
+      text-align: center;
+      background: var(--teal-light);
+      color: var(--teal-dark);
+    }
+    .how-it-works p {
+      font-size: 0.68rem;
+      line-height: 1.15;
+      margin-bottom: 0.04rem;
+    }
+    .how-it-works ol {
+      margin: 0.03rem 0;
+      padding-left: 0.9rem;
+      font-size: 0.66rem;
+      line-height: 1.1;
+    }
+    .how-it-works li { margin-bottom: 0; }
+
+    /* Worked example */
+    .worked-example { margin-top: 0.04rem; }
+    .worked-label {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.02rem;
+    }
+    .compact-desc {
+      font-size: 0.65rem;
+      line-height: 1.1;
+      margin: 0.02rem 0;
+      color: var(--navy-light);
+    }
+    .closing-note {
+      font-size: 0.67rem;
+      font-style: italic;
+      color: var(--navy);
+      margin-top: 0.04rem;
+      line-height: 1.15;
+    }
+    /* Tiny inline sort rows for worked example */
+    .worked-example .sort-row.inline .sort-box {
+      width: 18px;
+      height: 18px;
+      font-size: 0.65rem;
+      border-width: 1px;
+    }
+
+    /* Sort row groups */
+    .sort-row-group {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      margin-bottom: 0.02rem;
+      flex-wrap: wrap;
+    }
+    .sort-row-group .sort-row-label {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+
+    /* Default sort boxes on page 1 */
+    .page-1 .sort-row .sort-box {
+      width: 26px;
+      height: 26px;
+      font-size: 0.8rem;
+      border-width: 1.5px;
+    }
+
+    /* Challenge column sort boxes — smaller for density */
+    .challenge-grid .sort-row .sort-box {
+      width: 22px;
+      height: 22px;
+      font-size: 0.72rem;
+      border-width: 1.5px;
+    }
+
+    /* Column widths */
+    .col-basic { flex: 0.88; min-width: 0; }
+    .col-challenge { flex: 1.12; min-width: 0; }
+
+    /* Part subtitles */
+    .part-subtitle {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--coral);
+      margin-bottom: 0.02rem;
+      margin-top: 0.04rem;
+    }
+
+    /* Questions and labels */
+    .question-label {
+      font-size: 0.62rem;
+      color: var(--navy-light);
+      margin: 0.02rem 0 0.01rem;
+      line-height: 1.05;
+    }
+    .answer-arrow {
+      font-size: 0.7rem;
+      color: var(--navy-muted);
+      flex-shrink: 0;
+    }
+
+    /* Writing lines compact */
+    .page-1 .writing-lines { margin-bottom: 0.02rem; }
+    .page-1 .writing-lines .line {
+      height: 0.8rem;
+      margin-bottom: 0;
+    }
+
+    /* Grid gap between bubble and selection */
+    .grid-gap { height: 0.15rem; }
+
+    /* Intro row */
+    .intro-with-mascot { display: flex; gap: 0.4rem; align-items: flex-start; margin-top: 0.3rem; }
+    .intro-with-mascot .mascot-box { flex-shrink: 0; width: 60px; height: 60px; font-size: 0.55rem; }
+
+    /* Circle option compact */
+    .circle-option {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.15rem;
+      font-size: 0.67rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-right: 0.5rem;
+    }
+    .circle-option .circle {
+      width: 1.2rem;
+      height: 1.2rem;
+      border: 2px solid var(--navy);
+      border-radius: 50%;
+      display: inline-block;
+      background: var(--white);
+    }
+
+    /* ==================== PAGE 2 ==================== */
+    .page-2 h3 { margin-bottom: 0.1rem; }
+    .page-2 section { margin-bottom: 0.25rem; }
+    .page-2 .writing-lines { margin-bottom: 0.1rem; }
+    .page-2 .writing-lines .line { height: 1.05rem; margin-bottom: 0.03rem; }
+    .page-2 .kid-checklist { margin: 0; }
+    .page-2 .kid-checklist li { margin-bottom: 0.5rem; font-size: 0.85rem; }
+    .page-2 .teacher-note { padding: 0.25rem 0.4rem; }
+    .page-2 .teacher-note p { font-size: 0.78rem; line-height: 1.3; }
+    .page-2 .reflection-box { margin-top: 0.3rem; margin-bottom: 0.2rem; }
+    .page-2 .reflection-box p { font-size: 0.8rem; line-height: 1.35; margin-bottom: 0.1rem; }
+    .page-2 .followup-box { padding: 0.2rem 0.35rem; margin-top: 0.1rem; }
+    .page-2 .followup-box p { font-size: 0.78rem; margin-bottom: 0.08rem; }
+
+    /* Step rows for bonus */
+    .step-row { display: flex; align-items: baseline; gap: 0.3rem; margin-bottom: 0.08rem; }
+    .step-num { font-family: 'Fredoka', sans-serif; font-size: 0.74rem; font-weight: 600; color: var(--navy); min-width: 1rem; text-align: right; }
+    .step-row .line { flex: 1; height: 1.05rem; border-bottom: 1px solid var(--gray-mid); display: block; margin-bottom: 0; }
+
+    /* Followup box */
+    .followup-box {
+      border: 2px dashed var(--teal);
+      border-radius: 10px;
+      padding: 0.25rem 0.4rem;
+      background: var(--white);
+      margin-top: 0.15rem;
+      page-break-inside: avoid;
+    }
+    .followup-box p {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1 ==================== -->
+  <div class="page-1" style="page-break-after: always;">
+
+    <!-- 1. Activity Header Strip -->
+    <header class="activity-header">
+      <div class="activity-number">9</div>
+      <h1 class="activity-title">Sorting: Selection Sort</h1>
+      <span class="difficulty-badge difficulty-easy">AGES 8-12</span>
+    </header>
+
+    <!-- 2. Kid Instructions Box + Mascot -->
+    <div class="intro-with-mascot">
+      <div class="mascot-box">MASCOT<br>GOES<br>HERE</div>
+      <section class="kid-box">
+        <p>Last activity, you bubble-sorted by comparing pairs and swapping. But that's not the only way! What if instead, you just FOUND the smallest number and put it first? Meet selection sort — a totally different way to do the same job.</p>
+      </section>
+    </div>
+
+    <!-- 3. Vocabulary Callout -->
+    <section class="vocab-callout">
+      <span class="vocab-word">Selection</span>
+      <p class="vocab-def"><strong>Selection</strong> — To pick or choose something. In selection sort, you SELECT the smallest item each round and put it in its place.<br><em>Example:</em> When you pick the BEST candy from a bowl, you're selecting — just like the algorithm picks the smallest number!</p>
+    </section>
+
+    <!-- 4. How It Works — Selection Sort -->
+    <section class="how-it-works">
+      <div class="how-it-works-header">How It Works — Selection Sort</div>
+      <p>Selection sort is the opposite of bubble sort's "compare and swap" approach. Instead of comparing pairs, you scan for the smallest and place it.</p>
+      <ol>
+        <li>Look at the whole list and FIND the smallest item</li>
+        <li>SWAP it with the item at the FIRST position</li>
+        <li>That position is now DONE — leave it alone!</li>
+        <li>Repeat with the rest of the list (ignore the sorted part)</li>
+        <li>Stop when only one item is left — it's sorted!</li>
+      </ol>
+
+      <div class="worked-example">
+        <div class="worked-label">Worked Example — Sort: [4] [2] [7] [1]</div>
+        <div class="sort-row-group">
+          <span class="sort-row-label">Start:</span>
+          <div class="sort-row filled">
+            <div class="sort-box">4</div>
+            <div class="sort-box">2</div>
+            <div class="sort-box">7</div>
+            <div class="sort-box">1</div>
+          </div>
+        </div>
+        <p class="compact-desc"><strong>Sel 1:</strong> Smallest is 1. Swap with 4. → <span class="sort-row inline" style="vertical-align:middle;"><span class="sort-box locked">1</span><span class="sort-box">2</span><span class="sort-box">7</span><span class="sort-box">4</span></span></p>
+        <p class="compact-desc"><strong>Sel 2:</strong> Smallest is 2. No swap needed. → <span class="sort-row inline" style="vertical-align:middle;"><span class="sort-box locked">1</span><span class="sort-box locked">2</span><span class="sort-box">7</span><span class="sort-box">4</span></span></p>
+        <p class="compact-desc"><strong>Sel 3:</strong> Smallest is 4. Swap with 7. Done! → <span class="sort-row inline" style="vertical-align:middle;"><span class="sort-box locked">1</span><span class="sort-box locked">2</span><span class="sort-box locked">4</span><span class="sort-box locked">7</span></span></p>
+        <p class="closing-note">Notice — each round, ONE item gets locked into its final place. That's the difference: bubble sort moves items little by little across many passes, but selection sort puts each item where it belongs in ONE move.</p>
+      </div>
+    </section>
+
+    <!-- 5. Two-Column Split -->
+    <div class="two-col">
+      <!-- Basic Version -->
+      <div class="col col-basic">
+        <div class="col-header">Basic Version</div>
+        <p class="small" style="margin-bottom:0.06rem; font-size:0.71rem; line-height:1.2;"><strong>Pick and Place</strong> — Use selection sort to put these numbers in order from smallest to largest. After each selection, write the new list.</p>
+
+        <div class="sort-row-group">
+          <span class="sort-row-label">Start:</span>
+          <div class="sort-row filled">
+            <div class="sort-box">6</div>
+            <div class="sort-box">3</div>
+            <div class="sort-box">9</div>
+            <div class="sort-box">1</div>
+          </div>
+        </div>
+        <div class="sort-row-group">
+          <span class="sort-row-label">After Selection 1:</span>
+          <div class="sort-row empty">
+            <div class="sort-box"></div>
+            <div class="sort-box"></div>
+            <div class="sort-box"></div>
+            <div class="sort-box"></div>
+          </div>
+        </div>
+        <div class="sort-row-group">
+          <span class="sort-row-label">After Selection 2:</span>
+          <div class="sort-row empty">
+            <div class="sort-box"></div>
+            <div class="sort-box"></div>
+            <div class="sort-box"></div>
+            <div class="sort-box"></div>
+          </div>
+        </div>
+        <div class="sort-row-group">
+          <span class="sort-row-label">After Selection 3:</span>
+          <div class="sort-row empty">
+            <div class="sort-box"></div>
+            <div class="sort-box"></div>
+            <div class="sort-box"></div>
+            <div class="sort-box"></div>
+          </div>
+        </div>
+
+        <div class="question-label" style="margin-top:0.08rem;">Which item got locked in FIRST?</div>
+        <span class="blank-fill-line blank-short" style="margin-top:0.03rem; display:inline-block;"></span>
+
+        <div class="question-label" style="margin-top:0.08rem;">How many selections did it take?</div>
+        <span class="blank-fill-line blank-short" style="margin-top:0.03rem; display:inline-block;"></span>
+      </div>
+
+      <!-- Challenge Version -->
+      <div class="col col-challenge">
+        <div class="col-header">Challenge Version</div>
+
+        <!-- Part A -->
+        <div class="part-subtitle">PART A — Sort the SAME List Two Ways</div>
+        <p class="small" style="margin:0.02rem 0; font-size:0.68rem; line-height:1.15;">Use both algorithms on this list. Then compare!</p>
+
+        <div class="sort-row-group">
+          <span class="sort-row-label">List:</span>
+          <div class="sort-row filled">
+            <div class="sort-box">8</div>
+            <div class="sort-box">3</div>
+            <div class="sort-box">5</div>
+            <div class="sort-box">1</div>
+            <div class="sort-box">4</div>
+          </div>
+        </div>
+
+        <div class="challenge-grid">
+          <div class="pill-coral">BUBBLE SORT</div>
+          <div class="sort-row-group">
+            <span class="sort-row-label">Start:</span>
+            <div class="sort-row filled">
+              <div class="sort-box">8</div>
+              <div class="sort-box">3</div>
+              <div class="sort-box">5</div>
+              <div class="sort-box">1</div>
+              <div class="sort-box">4</div>
+            </div>
+          </div>
+          <div class="sort-row-group">
+            <span class="sort-row-label">Pass 1:</span>
+            <div class="sort-row empty">
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+            </div>
+          </div>
+          <div class="sort-row-group">
+            <span class="sort-row-label">Pass 2:</span>
+            <div class="sort-row empty">
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+            </div>
+          </div>
+          <div class="sort-row-group">
+            <span class="sort-row-label">Pass 3:</span>
+            <div class="sort-row empty">
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="challenge-grid" style="margin-top:0.1rem;">
+          <div class="pill-teal">SELECTION SORT</div>
+          <div class="sort-row-group">
+            <span class="sort-row-label">Start:</span>
+            <div class="sort-row filled">
+              <div class="sort-box">8</div>
+              <div class="sort-box">3</div>
+              <div class="sort-box">5</div>
+              <div class="sort-box">1</div>
+              <div class="sort-box">4</div>
+            </div>
+          </div>
+          <div class="sort-row-group">
+            <span class="sort-row-label">After Sel. 1:</span>
+            <div class="sort-row empty">
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+            </div>
+          </div>
+          <div class="sort-row-group">
+            <span class="sort-row-label">After Sel. 2:</span>
+            <div class="sort-row empty">
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+            </div>
+          </div>
+          <div class="sort-row-group">
+            <span class="sort-row-label">After Sel. 3:</span>
+            <div class="sort-row empty">
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+            </div>
+          </div>
+          <div class="sort-row-group">
+            <span class="sort-row-label">After Sel. 4:</span>
+            <div class="sort-row empty">
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+              <div class="sort-box"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-label" style="margin-top:0.06rem;">Did both algorithms get the same final answer?</div>
+        <div style="margin-top:0.03rem;">
+          <span class="circle-option"><span class="circle"></span> YES</span>
+          <span class="circle-option"><span class="circle"></span> NO</span>
+        </div>
+
+        <!-- Part B -->
+        <div class="part-subtitle" style="margin-top:0.04rem;">PART B — Compare the Two Algorithms</div>
+        <div class="question-label">Q1: Which algorithm felt easier to DO by hand? Why?</div>
+        <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.02rem;">
+          <span class="answer-arrow">➜</span>
+          <span class="line" style="flex:1; margin-bottom:0; height:0.9rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+        </div>
+        <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.02rem;">
+          <span class="answer-arrow">➜</span>
+          <span class="line" style="flex:1; margin-bottom:0; height:0.9rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+        </div>
+
+        <div class="question-label" style="margin-top:0.06rem;">Q2: If you had a list of 100 items, which would you choose — bubble sort or selection sort? Why?</div>
+        <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.02rem;">
+          <span class="answer-arrow">➜</span>
+          <span class="line" style="flex:1; margin-bottom:0; height:0.9rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+        </div>
+        <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.02rem;">
+          <span class="answer-arrow">➜</span>
+          <span class="line" style="flex:1; margin-bottom:0; height:0.9rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.page-1 -->
+
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="page-activity page-2">
+
+    <div class="content-area">
+
+      <!-- 6. Self-Check -->
+      <section>
+        <h3 style="font-size:1rem; color:var(--teal-dark); margin-bottom:0.15rem;">Self-Check</h3>
+        <ul class="kid-checklist">
+          <li><span class="checkbox"></span> I followed the selection sort worked example and saw items "lock in"</li>
+          <li><span class="checkbox"></span> I sorted [6, 3, 9, 1] using selection sort</li>
+          <li><span class="checkbox"></span> I sorted the SAME list with both algorithms and compared them</li>
+          <li><span class="checkbox"></span> I can explain how selection sort is different from bubble sort</li>
+        </ul>
+      </section>
+
+      <!-- 7. Reflection Box -->
+      <section class="reflection-box">
+        <h3>Reflection Box</h3>
+        <p>Sorting is one tiny problem, and we already have TWO different algorithms for it. Why might programmers want more than one way to solve the same problem?</p>
+        <div class="writing-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </section>
+
+      <!-- 8. Bonus: Algorithm Race! -->
+      <section>
+        <h3 style="font-size:1rem; color:var(--navy); margin-bottom:0.1rem;">Bonus: Algorithm Race!</h3>
+        <p class="small" style="margin-bottom:0.1rem; font-size:0.8rem;">Time for a race! Grab 8 small items (cards, coins, candies — whatever you have). Mix them up. Then ask a friend or family member to race you: ONE person uses bubble sort, the OTHER uses selection sort. Who finishes first?</p>
+
+        <div class="question-label" style="margin-top:0.1rem;"><strong>Race Results:</strong></div>
+
+        <div style="margin-top:0.06rem;">
+          <span class="question-label" style="display:inline; margin-right:0.3rem;">My algorithm:</span>
+          <span class="circle-option" style="margin-right:0.6rem;"><span class="circle"></span> Bubble Sort</span>
+          <span class="circle-option"><span class="circle"></span> Selection Sort</span>
+        </div>
+
+        <div style="margin-top:0.06rem;">
+          <span class="question-label" style="display:inline; margin-right:0.3rem;">Their algorithm:</span>
+          <span class="circle-option" style="margin-right:0.6rem;"><span class="circle"></span> Bubble Sort</span>
+          <span class="circle-option"><span class="circle"></span> Selection Sort</span>
+        </div>
+
+        <div class="question-label" style="margin-top:0.08rem;">Who won?</div>
+        <span class="blank-fill-line blank-short" style="margin-top:0.03rem; display:inline-block;"></span>
+
+        <div class="question-label" style="margin-top:0.08rem;">How long did it take you? <span style="font-style:italic; color:var(--navy-muted);">(rough estimate — seconds, minutes?)</span></div>
+        <span class="blank-fill-line blank-long" style="margin-top:0.03rem; display:inline-block;"></span>
+
+        <div class="followup-box">
+          <p>Was the WINNER's algorithm really faster? Or did they just sort faster as a person? What's the difference?</p>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.content-area -->
+
+    <!-- 9. Teacher / Parent Note -->
+    <aside class="teacher-note">
+      <div class="teacher-note-label">
+        <span>Teacher / Parent Note</span>
+      </div>
+      <p>This activity introduces one of the deepest insights in computer science: the same problem can be solved by different algorithms, with different trade-offs. Kids see that selection sort and bubble sort produce identical results but feel different to execute; in real code, the algorithm choice affects speed, memory use, and readability. Discussion prompt: Ask your child to think of a real-life task (making a sandwich, cleaning a room, getting dressed) and see if they can come up with TWO different "algorithms" to do it.</p>
+    </aside>
+
+  </div><!-- /.page-activity .page-2 -->
+
+</body>
+</html>

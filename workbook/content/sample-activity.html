@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity 1 — What is an Algorithm?</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Workbook styles -->
+  <link rel="stylesheet" href="../styles/colors.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/print.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; padding: 0; }
+
+    /* Activity-specific tweaks */
+    .page-activity { display: flex; flex-direction: column; min-height: calc(11in - 1in); }
+    .content-area { flex: 1; }
+    .intro-with-mascot { display: flex; gap: 1.25rem; align-items: flex-start; margin-bottom: 0.5rem; }
+    .intro-with-mascot .mascot-box { flex-shrink: 0; margin-top: 0.5rem; }
+    .intro-with-mascot .kid-box { flex: 1; }
+  </style>
+</head>
+<body class="page-activity">
+
+  <!-- ===== 1. Activity Header Strip ===== -->
+  <header class="activity-header">
+    <div class="activity-number">1</div>
+    <h1 class="activity-title">What is an Algorithm?</h1>
+    <span class="difficulty-badge difficulty-easy">Ages 8-10</span>
+  </header>
+
+  <div class="content-area">
+
+    <!-- ===== 2. Kid Instructions Box + Mascot ===== -->
+    <div class="intro-with-mascot">
+      <div class="mascot-box">MASCOT<br>GOES<br>HERE</div>
+      <section class="kid-box">
+        <p>An <strong>algorithm</strong> is just a list of steps to do something. Even making a sandwich is an algorithm! Let's see if you can write one.</p>
+      </section>
+    </div>
+
+    <!-- ===== 4. Vocabulary Callout ===== -->
+    <section class="vocab-callout">
+      <span class="vocab-word">Algorithm</span>
+      <p class="vocab-def"><strong>Algorithm</strong> — A step-by-step set of instructions to solve a problem or complete a task.</p>
+    </section>
+
+    <!-- ===== 10. Two-Column Split ===== -->
+    <div class="two-col">
+      <!-- Basic Version -->
+      <div class="col col-basic">
+        <div class="col-header">Basic Version</div>
+        <p class="small" style="margin-bottom:0.75rem;"><strong>Write 5 steps</strong> to make a peanut butter sandwich. Be specific!</p>
+        <div class="write-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </div>
+
+      <!-- Challenge Version -->
+      <div class="col col-challenge">
+        <div class="col-header">Challenge Version</div>
+        <p class="small" style="margin-bottom:0.75rem;"><strong>Write your steps,</strong> then have someone follow them <em>exactly</em>. Did it work? What was missing?</p>
+        <div class="write-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reflection box for challenge -->
+    <section style="margin-bottom:1.25rem;">
+      <h3 style="font-size:1.1rem; color:var(--sunny-dark); margin-bottom:0.5rem;">Reflection Box</h3>
+      <div class="write-box"></div>
+    </section>
+
+    <!-- ===== 9. Checkbox List (self-check) ===== -->
+    <section style="margin-bottom:1.25rem;">
+      <h3 style="font-size:1.1rem; color:var(--teal-dark); margin-bottom:0.5rem;">Self-Check</h3>
+      <ul class="kid-checklist">
+        <li><span class="checkbox"></span> I used at least 5 steps</li>
+        <li><span class="checkbox"></span> My steps are in the right order</li>
+        <li><span class="checkbox"></span> I was specific (e.g., "open the bag" not just "get bread")</li>
+        <li><span class="checkbox"></span> I tested my algorithm on a friend or family member</li>
+      </ul>
+    </section>
+
+    <!-- ===== 6. Cut-and-Paste Pieces (bonus mini-activity) ===== -->
+    <section style="margin-bottom:1.25rem;">
+      <h3 style="font-size:1.1rem; color:var(--navy); margin-bottom:0.5rem;">Bonus: Cut &amp; Sort!</h3>
+      <p class="small" style="margin-bottom:0.75rem;">Cut out these steps and glue them in the correct order.</p>
+      <div class="cut-zone">
+        <div class="cut-zone-label">Cut along the dashed lines</div>
+        <div>
+          <span class="cut-piece">Spread peanut butter</span>
+          <span class="cut-piece">Open the bread bag</span>
+          <span class="cut-piece">Take two slices of bread</span>
+          <span class="cut-piece">Close the sandwich</span>
+          <span class="cut-piece">Get a butter knife</span>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /.content-area -->
+
+  <!-- ===== 3. Teacher / Parent Note ===== -->
+  <aside class="teacher-note">
+    <div class="teacher-note-label">
+      <span>Teacher / Parent Note</span>
+    </div>
+    <p>This activity introduces the core CS concept that algorithms are precise instructions. Common gap kids miss: opening the bread bag, using a knife, etc. — the lesson is that computers need extreme specificity.</p>
+  </aside>
+
+</body>
+</html>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity 5 — Yes/No Conditionals</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Workbook styles -->
+  <link rel="stylesheet" href="../styles/colors.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/print.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; padding: 0; }
+
+    /* Intro row */
+    .intro-with-mascot { display: flex; gap: 0.5rem; align-items: flex-start; margin-top: 0.6rem; }
+    .intro-with-mascot .mascot-box { flex-shrink: 0; width: 80px; height: 80px; }
+    .intro-with-mascot .kid-box { flex: 1; }
+
+    /* Page 1 density overrides */
+    .page-1 .activity-header { margin-bottom: 0.15rem; padding: 0.15rem 0.3rem; }
+    .page-1 .kid-box { margin-bottom: 0.15rem; padding: 0.5rem 0.3rem 0.15rem; }
+    .page-1 .vocab-callout { margin-bottom: 0.15rem; padding: 0.15rem 0.3rem; }
+    .page-1 .two-col { gap: 0.25rem; margin-bottom: 0.5rem; page-break-inside: auto; }
+    .page-1 .writing-lines { margin-bottom: 0.08rem; }
+    .page-1 .writing-lines .line { height: 1.1rem; margin-bottom: 0.02rem; }
+    .page-1 .col-header { padding: 0.15rem 0.3rem; margin-bottom: 0.15rem; font-size: 0.9rem; }
+    .page-1 .kid-box p { font-size: 0.8rem; line-height: 1.4; margin-bottom: 0; }
+    .page-1 .vocab-def { font-size: 0.75rem; line-height: 1.35; margin-bottom: 0; }
+
+    /* Column widths */
+    .col-basic { flex: 0.85; min-width: 0; }
+    .col-challenge { flex: 1.15; min-width: 0; }
+
+    /* Example callouts */
+    .example-callout {
+      background: #F0F0F0;
+      border-left: 3px solid var(--navy-muted);
+      padding: 0.15rem 0.3rem;
+      margin: 0.08rem 0;
+      font-size: 0.7rem;
+      color: var(--navy-light);
+      border-radius: 0 4px 4px 0;
+      page-break-inside: avoid;
+      line-height: 1.3;
+    }
+    .example-callout strong { color: var(--navy); }
+
+    /* Part subtitles */
+    .part-subtitle {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--coral);
+      margin-bottom: 0.03rem;
+      margin-top: 0.1rem;
+    }
+
+    /* Task items */
+    .task-item { margin-bottom: 0.08rem; page-break-inside: avoid; }
+    .task-label { font-family: 'Fredoka', sans-serif; font-size: 0.72rem; font-weight: 600; color: var(--navy); margin-bottom: 0.02rem; }
+    .task-desc { font-size: 0.72rem; color: var(--navy-light); margin-bottom: 0.03rem; line-height: 1.25; }
+    .answer-arrow { font-size: 0.75rem; color: var(--navy-muted); flex-shrink: 0; }
+
+    /* Flowchart wrapper */
+    .flowchart-wrapper { margin-bottom: 0.25rem; page-break-inside: avoid; }
+    .flowchart-wrapper .flowchart-label { margin-bottom: 0.05rem; }
+    .scenario-text { font-size: 0.72rem; color: var(--navy-light); margin: 0.08rem 0 0.03rem; line-height: 1.25; }
+
+    /* Page 2 tighter density */
+    .page-2 h3 { margin-bottom: 0.08rem; }
+    .page-2 section { margin-bottom: 0.2rem; }
+    .page-2 .writing-lines { margin-bottom: 0.08rem; }
+    .page-2 .writing-lines .line { height: 1rem; margin-bottom: 0.02rem; }
+    .page-2 .kid-checklist { margin: 0; }
+    .page-2 .kid-checklist li { margin-bottom: 0.1rem; font-size: 0.82rem; }
+    .page-2 .teacher-note { padding: 0.2rem 0.35rem; }
+    .page-2 .teacher-note p { font-size: 0.78rem; line-height: 1.3; }
+    .page-2 .example-callout { padding: 0.2rem 0.3rem; font-size: 0.6rem; line-height: 1.2; }
+    .page-2 .reflection-box { margin-top: 0.25rem; margin-bottom: 0.15rem; }
+    .page-2 .reflection-box p { font-size: 0.78rem; line-height: 1.3; margin-bottom: 0.08rem; }
+    .page-2 .followup-box { padding: 0.15rem 0.3rem; margin-top: 0.08rem; }
+    .page-2 .followup-box p { font-size: 0.75rem; margin-bottom: 0.05rem; }
+
+    /* Bonus slots */
+    .bonus-slot { margin-bottom: 0.04rem; padding-bottom: 0.02rem; border-bottom: 1px solid #e8e8e8; }
+    .bonus-slot:last-of-type { border-bottom: none; margin-bottom: 0; }
+    .slot-num { font-family: 'Fredoka', sans-serif; font-size: 0.68rem; font-weight: 600; color: var(--navy); display: inline-block; min-width: 1.1rem; }
+    .slot-field-label { font-size: 0.65rem; color: var(--navy-light); margin-bottom: 0.02rem; }
+    .bonus-slot .line { height: 0.78rem; margin-bottom: 0.02rem; }
+    .bonus-slot .writing-lines:first-of-type { margin-bottom: 0.3rem; }
+
+    /* Follow-up box */
+    .followup-box {
+      border: 2px dashed var(--teal);
+      border-radius: 10px;
+      padding: 0.25rem 0.4rem;
+      background: var(--white);
+      margin-top: 0.15rem;
+      page-break-inside: avoid;
+    }
+    .followup-box p {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.08rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1 ==================== -->
+  <div class="page-1" style="page-break-after: always;">
+
+    <!-- 1. Activity Header Strip -->
+    <header class="activity-header">
+      <div class="activity-number">5</div>
+      <h1 class="activity-title">Yes/No Conditionals</h1>
+      <span class="difficulty-badge difficulty-easy">AGES 8-12</span>
+    </header>
+
+    <!-- 2. Kid Instructions Box + Mascot -->
+    <div class="intro-with-mascot">
+      <div class="mascot-box">MASCOT<br>GOES<br>HERE</div>
+      <section class="kid-box">
+        <p>You've taught a program to repeat steps with loops. But how does a program decide what to do next? With Yes/No questions called <strong>conditionals</strong> — the same way you decide whether to grab an umbrella in the morning!</p>
+      </section>
+    </div>
+
+    <!-- 3. Vocabulary Callout -->
+    <section class="vocab-callout">
+      <span class="vocab-word">Conditional</span>
+      <p class="vocab-def"><strong>Conditional</strong> — A Yes/No question that decides what happens next. If the answer is Yes, do one thing. If No, do another.<br><em>Example:</em> "IF it's raining THEN bring an umbrella OTHERWISE wear sunglasses." That's a conditional you make every morning without even thinking about it!</p>
+    </section>
+
+    <!-- 4. Two-Column Split -->
+    <div class="two-col">
+      <!-- Basic Version -->
+      <div class="col col-basic">
+        <div class="col-header">Basic Version</div>
+        <p class="small" style="margin-bottom:0.1rem; font-size:0.75rem; line-height:1.3;"><strong>Read the Flowchart</strong> — Each flowchart asks a Yes/No question. Read the flowchart, then answer the question below it!</p>
+
+        <!-- Flowchart 1 -->
+        <div class="flowchart-wrapper">
+          <div class="flowchart-label">Flowchart 1</div>
+          <div class="flowchart-simple">
+            <svg viewBox="0 0 280 90" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arr-y1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <path d="M0,0 L8,4 L0,8 Z" fill="#2D3047"/>
+                </marker>
+                <marker id="arr-n1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <path d="M0,0 L8,4 L0,8 Z" fill="#2D3047"/>
+                </marker>
+              </defs>
+              <polygon points="140,3 215,22 140,41 65,22" fill="#FFE66D" stroke="#2D3047" stroke-width="2"/>
+              <foreignObject x="70" y="6" width="140" height="32">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:center;justify-content:center;height:100%;text-align:center;font-family:Nunito,sans-serif;font-size:10px;color:#2D3047;font-weight:600;line-height:1.2;">
+                  Is it raining?
+                </div>
+              </foreignObject>
+              <line x1="140" y1="41" x2="76" y2="64" stroke="#2D3047" stroke-width="2" marker-end="url(#arr-y1)"/>
+              <text x="105" y="55" font-family="Nunito,sans-serif" font-size="10" fill="#2D3047" font-weight="700" text-anchor="middle">Yes</text>
+              <line x1="140" y1="41" x2="204" y2="64" stroke="#2D3047" stroke-width="2" marker-end="url(#arr-n1)"/>
+              <text x="175" y="55" font-family="Nunito,sans-serif" font-size="10" fill="#2D3047" font-weight="700" text-anchor="middle">No</text>
+              <rect x="5" y="64" width="125" height="22" rx="5" fill="#FFF8F0" stroke="#2D3047" stroke-width="2"/>
+              <text x="67.5" y="79" font-family="Nunito,sans-serif" font-size="10" fill="#2D3047" text-anchor="middle">Bring an umbrella</text>
+              <rect x="150" y="64" width="125" height="22" rx="5" fill="#FFF8F0" stroke="#2D3047" stroke-width="2"/>
+              <text x="212.5" y="79" font-family="Nunito,sans-serif" font-size="10" fill="#2D3047" text-anchor="middle">Wear sunglasses</text>
+            </svg>
+          </div>
+          <p class="scenario-text">It's a rainy Monday. What do you do?</p>
+          <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.03rem;">
+            <span class="answer-arrow">→</span>
+            <span class="line" style="flex:1; margin-bottom:0; height:1.1rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+          </div>
+        </div>
+
+        <!-- Flowchart 2 -->
+        <div class="flowchart-wrapper">
+          <div class="flowchart-label">Flowchart 2</div>
+          <div class="flowchart-simple">
+            <svg viewBox="0 0 280 90" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arr-y2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <path d="M0,0 L8,4 L0,8 Z" fill="#2D3047"/>
+                </marker>
+                <marker id="arr-n2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <path d="M0,0 L8,4 L0,8 Z" fill="#2D3047"/>
+                </marker>
+              </defs>
+              <polygon points="140,3 215,22 140,41 65,22" fill="#FFE66D" stroke="#2D3047" stroke-width="2"/>
+              <foreignObject x="70" y="6" width="140" height="32">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:center;justify-content:center;height:100%;text-align:center;font-family:Nunito,sans-serif;font-size:10px;color:#2D3047;font-weight:600;line-height:1.2;">
+                  Did you finish your homework?
+                </div>
+              </foreignObject>
+              <line x1="140" y1="41" x2="76" y2="64" stroke="#2D3047" stroke-width="2" marker-end="url(#arr-y2)"/>
+              <text x="105" y="55" font-family="Nunito,sans-serif" font-size="10" fill="#2D3047" font-weight="700" text-anchor="middle">Yes</text>
+              <line x1="140" y1="41" x2="204" y2="64" stroke="#2D3047" stroke-width="2" marker-end="url(#arr-n2)"/>
+              <text x="175" y="55" font-family="Nunito,sans-serif" font-size="10" fill="#2D3047" font-weight="700" text-anchor="middle">No</text>
+              <rect x="5" y="64" width="125" height="22" rx="5" fill="#FFF8F0" stroke="#2D3047" stroke-width="2"/>
+              <text x="67.5" y="79" font-family="Nunito,sans-serif" font-size="10" fill="#2D3047" text-anchor="middle">Go play outside</text>
+              <rect x="150" y="64" width="125" height="22" rx="5" fill="#FFF8F0" stroke="#2D3047" stroke-width="2"/>
+              <text x="212.5" y="79" font-family="Nunito,sans-serif" font-size="10" fill="#2D3047" text-anchor="middle">Stay and finish it</text>
+            </svg>
+          </div>
+          <p class="scenario-text">Your homework is half-done. What happens?</p>
+          <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.03rem;">
+            <span class="answer-arrow">→</span>
+            <span class="line" style="flex:1; margin-bottom:0; height:1.1rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+          </div>
+        </div>
+
+        <!-- Flowchart 3 -->
+        <div class="flowchart-wrapper">
+          <div class="flowchart-label">Flowchart 3</div>
+          <div class="flowchart-simple">
+            <svg viewBox="0 0 280 90" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arr-y3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <path d="M0,0 L8,4 L0,8 Z" fill="#2D3047"/>
+                </marker>
+                <marker id="arr-n3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <path d="M0,0 L8,4 L0,8 Z" fill="#2D3047"/>
+                </marker>
+              </defs>
+              <polygon points="140,3 215,22 140,41 65,22" fill="#FFE66D" stroke="#2D3047" stroke-width="2"/>
+              <foreignObject x="70" y="6" width="140" height="32">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:center;justify-content:center;height:100%;text-align:center;font-family:Nunito,sans-serif;font-size:10px;color:#2D3047;font-weight:600;line-height:1.2;">
+                  Is the temperature above 30°C?
+                </div>
+              </foreignObject>
+              <line x1="140" y1="41" x2="76" y2="64" stroke="#2D3047" stroke-width="2" marker-end="url(#arr-y3)"/>
+              <text x="105" y="55" font-family="Nunito,sans-serif" font-size="10" fill="#2D3047" font-weight="700" text-anchor="middle">Yes</text>
+              <line x1="140" y1="41" x2="204" y2="64" stroke="#2D3047" stroke-width="2" marker-end="url(#arr-n3)"/>
+              <text x="175" y="55" font-family="Nunito,sans-serif" font-size="10" fill="#2D3047" font-weight="700" text-anchor="middle">No</text>
+              <rect x="5" y="64" width="125" height="22" rx="5" fill="#FFF8F0" stroke="#2D3047" stroke-width="2"/>
+              <text x="67.5" y="79" font-family="Nunito,sans-serif" font-size="10" fill="#2D3047" text-anchor="middle">Wear shorts</text>
+              <rect x="150" y="64" width="125" height="22" rx="5" fill="#FFF8F0" stroke="#2D3047" stroke-width="2"/>
+              <text x="212.5" y="79" font-family="Nunito,sans-serif" font-size="10" fill="#2D3047" text-anchor="middle">Wear pants</text>
+            </svg>
+          </div>
+          <p class="scenario-text">It's 25°C outside. What do you wear?</p>
+          <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.03rem;">
+            <span class="answer-arrow">→</span>
+            <span class="line" style="flex:1; margin-bottom:0; height:1.1rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Challenge Version -->
+      <div class="col col-challenge">
+        <div class="col-header">Challenge Version</div>
+
+        <!-- Part A -->
+        <div class="part-subtitle">PART A — Write the Conditional in Shorthand</div>
+        <p class="small" style="margin-bottom:0.1rem; font-size:0.72rem; line-height:1.25;">Format: <strong>IF [condition] THEN [action] OTHERWISE [other action].</strong></p>
+
+        <div class="example-callout">
+          <strong>Example:</strong> A microwave that beeps when food is hot → <strong>IF the food is hot THEN beep OTHERWISE keep heating.</strong>
+        </div>
+
+        <div class="task-item">
+          <div class="task-label">Scenario A1</div>
+          <div class="task-desc">A vending machine that gives you a snack if you put in $2 (otherwise it returns your money)</div>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <div class="task-item">
+          <div class="task-label">Scenario A2</div>
+          <div class="task-desc">A school bell — students go inside if it's 8:00 AM (otherwise they keep playing)</div>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <div class="task-item">
+          <div class="task-label">Scenario A3</div>
+          <div class="task-desc">A library book — you can borrow it if you have a library card (otherwise the librarian asks you to sign up)</div>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <!-- Part B -->
+        <div class="part-subtitle">PART B — Draw a Flowchart</div>
+        <div class="task-item">
+          <div class="task-label">Scenario B</div>
+          <div class="task-desc">Decide whether to wear a jacket based on the weather. If the temperature is below 15°C, wear a jacket. Otherwise, leave it at home.</div>
+          <div class="drawing-box" style="margin-top:0.1rem;">
+            <div class="drawing-box-hint">Draw your flowchart here — use a diamond for the question, arrows for Yes/No, and boxes for the actions.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.page-1 -->
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="page-activity page-2">
+
+    <div class="content-area">
+
+      <!-- 5. Self-Check -->
+      <section style="margin-bottom:0.4rem;">
+        <h3 style="font-size:1rem; color:var(--teal-dark); margin-bottom:0.2rem;">Self-Check</h3>
+        <ul class="kid-checklist">
+          <li><span class="checkbox"></span> I read all 3 flowcharts and answered the questions</li>
+          <li><span class="checkbox"></span> I wrote 3 conditionals in IF-THEN-OTHERWISE shorthand</li>
+          <li><span class="checkbox"></span> I drew my own flowchart with a diamond, arrows, and boxes</li>
+          <li><span class="checkbox"></span> I can explain in my own words what a conditional is</li>
+        </ul>
+      </section>
+
+      <!-- 6. Reflection Box -->
+      <section class="reflection-box" style="margin-bottom:0.3rem;">
+        <h3>Reflection Box</h3>
+        <p>Think of one game or app you use. Where does it use a Yes/No conditional? (Hint: think about scoring, levels, login screens, notifications.)</p>
+        <div class="writing-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </section>
+
+      <!-- 7. Bonus: Real-World Conditional Hunt -->
+      <section style="margin-bottom:0.3rem;">
+        <h3 style="font-size:1rem; color:var(--navy); margin-bottom:0.15rem;">Bonus: Real-World Conditional Hunt</h3>
+        <p class="small" style="margin-bottom:0.15rem; font-size:0.8rem;">Conditionals are EVERYWHERE in real life — not just in code! Spot 4 conditionals you notice today and write them down using the IF-THEN format.</p>
+
+        <div class="example-callout">
+          <strong>Example:</strong> Where I spotted it: <em>At a road crossing</em> | The conditional: <strong>IF the traffic light is red THEN cars stop OTHERWISE they go.</strong>
+        </div>
+
+        <!-- Slot 1 -->
+        <div class="bonus-slot">
+          <span class="slot-num">#1</span>
+          <div class="slot-field-label">Where you spotted it:</div>
+          <div class="writing-lines">
+            <span class="line"></span>
+          </div>
+          <div class="slot-field-label">The conditional:</div>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <!-- Slot 2 -->
+        <div class="bonus-slot">
+          <span class="slot-num">#2</span>
+          <div class="slot-field-label">Where you spotted it:</div>
+          <div class="writing-lines">
+            <span class="line"></span>
+          </div>
+          <div class="slot-field-label">The conditional:</div>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <!-- Slot 3 -->
+        <div class="bonus-slot">
+          <span class="slot-num">#3</span>
+          <div class="slot-field-label">Where you spotted it:</div>
+          <div class="writing-lines">
+            <span class="line"></span>
+          </div>
+          <div class="slot-field-label">The conditional:</div>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <!-- Slot 4 -->
+        <div class="bonus-slot">
+          <span class="slot-num">#4</span>
+          <div class="slot-field-label">Where you spotted it:</div>
+          <div class="writing-lines">
+            <span class="line"></span>
+          </div>
+          <div class="slot-field-label">The conditional:</div>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <div class="followup-box">
+          <p>Bonus: Which one surprised you the most?</p>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.content-area -->
+
+    <!-- 8. Teacher / Parent Note -->
+    <aside class="teacher-note">
+      <div class="teacher-note-label">
+        <span>Teacher / Parent Note</span>
+      </div>
+      <p>This activity introduces conditionals (also called selection or branching) — the third core control structure in programming, completing the trio of sequence, iteration, and selection. Kids learn that programs make decisions using Yes/No questions, just like humans do dozens of times a day. Discussion prompt: Ask your child to spot 3 conditionals their parents or teachers used today (e.g., "If you finish your dinner, you can have dessert").</p>
+    </aside>
+
+  </div><!-- /.page-activity .page-2 -->
+
+</body>
+</html>

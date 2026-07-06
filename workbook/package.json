@@ -1,0 +1,29 @@
+{
+  "name": "cs-unplugged-workbook",
+  "version": "1.0.0",
+  "description": "Print-ready HTML/CSS template system for a children's unplugged computer science workbook",
+  "main": "scripts/generate-pdf.js",
+  "scripts": {
+    "pdf": "node scripts/generate-pdf.js",
+    "pdf:sample": "node scripts/generate-pdf.js content/sample-activity.html",
+    "pdf:cover": "node scripts/generate-pdf.js templates/cover.html",
+    "pdf:cert": "node scripts/generate-pdf.js templates/certificate.html"
+  },
+  "keywords": [
+    "workbook",
+    "pdf",
+    "education",
+    "computer-science",
+    "unplugged",
+    "children",
+    "print"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.43.0"
+  },
+  "devDependencies": {
+    "pdf-lib": "^1.17.1"
+  }
+}

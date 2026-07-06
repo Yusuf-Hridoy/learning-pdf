@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}{{ activity.title | default("Activity") }}{% endblock %}
+
+{% block body_class %}page-activity{% endblock %}
+
+{% block content %}
+<div class="page-activity">
+
+  <!-- 1. Activity Header Strip -->
+  <header class="activity-header">
+    <div class="activity-number">{{ activity.number | default("?") }}</div>
+    <h1 class="activity-title">{{ activity.title | default("Activity Title") }}</h1>
+    <span class="difficulty-badge difficulty-{{ activity.difficulty | default("easy") }}">
+      {{ activity.difficulty_label | default("Easy") }}
+    </span>
+  </header>
+
+  <!-- Main content area -->
+  <div class="content-area">
+
+    <!-- 2. Kid Instructions Box -->
+    <section class="kid-box">
+      {{ activity.intro | default("<p>Read the instructions and complete the activity below.</p>") }}
+    </section>
+
+    <!-- 4. Vocabulary Callout -->
+    {% if activity.vocabulary %}
+    <section class="vocab-callout">
+      <span class="vocab-word">{{ activity.vocabulary.word }}</span>
+      <p class="vocab-def"><strong>{{ activity.vocabulary.word }}</strong> — {{ activity.vocabulary.definition }}</p>
+    </section>
+    {% endif %}
+
+    <!-- Activity body (components injected here) -->
+    {{ activity.body | default("") }}
+
+    <!-- 10. Two-column split example placeholder -->
+    {% if activity.has_split %}
+    <div class="two-col">
+      <div class="col col-basic">
+        <div class="col-header">Basic Version</div>
+        {{ activity.basic_version | default("") }}
+      </div>
+      <div class="col col-challenge">
+        <div class="col-header">Challenge Version</div>
+        {{ activity.challenge_version | default("") }}
+      </div>
+    </div>
+    {% endif %}
+
+  </div><!-- /.content-area -->
+
+  <!-- 3. Teacher / Parent Note -->
+  {% if activity.teacher_note %}
+  <aside class="teacher-note">
+    <div class="teacher-note-label">
+      <span>Teacher / Parent Note</span>
+    </div>
+    <p>{{ activity.teacher_note }}</p>
+  </aside>
+  {% endif %}
+
+</div><!-- /.page-activity -->
+{% endblock %}

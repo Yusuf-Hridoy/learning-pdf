@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity 4 — Write Your Own Loop</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Workbook styles -->
+  <link rel="stylesheet" href="../styles/colors.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/print.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; padding: 0; }
+
+    /* Intro row */
+    .intro-with-mascot { display: flex; gap: 0.5rem; align-items: flex-start; margin-top: 0.6rem; }
+    .intro-with-mascot .mascot-box { flex-shrink: 0; width: 80px; height: 80px; }
+    .intro-with-mascot .kid-box { flex: 1; }
+
+    /* Page 1 density overrides — ultra-compact */
+    .page-1 .activity-header { margin-bottom: 0.15rem; padding: 0.15rem 0.3rem; }
+    .page-1 .kid-box { margin-bottom: 0.15rem; padding: 0.5rem 0.3rem 0.15rem; }
+    .page-1 .vocab-callout { margin-bottom: 0.15rem; padding: 0.15rem 0.3rem; }
+    .page-1 .two-col { gap: 0.25rem; margin-bottom: 0.75rem; page-break-inside: auto; }
+    .page-1 .writing-lines { margin-bottom: 0.08rem; }
+    .page-1 .writing-lines .line { height: 1.1rem; margin-bottom: 0.02rem; }
+    .page-1 .col-header { padding: 0.15rem 0.3rem; margin-bottom: 0.15rem; font-size: 0.9rem; }
+    .page-1 .kid-box p { font-size: 0.8rem; line-height: 1.4; margin-bottom: 0; }
+    .page-1 .vocab-def { font-size: 0.75rem; line-height: 1.35; margin-bottom: 0; }
+
+    /* Column widths — give challenge more room */
+    .col-basic { flex: 0.85; min-width: 0; }
+    .col-challenge { flex: 1.15; min-width: 0; }
+
+    /* Example callouts (light gray) */
+    .example-callout {
+      background: #F0F0F0;
+      border-left: 3px solid var(--navy-muted);
+      padding: 0.15rem 0.3rem;
+      margin: 0.08rem 0;
+      font-size: 0.7rem;
+      color: var(--navy-light);
+      border-radius: 0 4px 4px 0;
+      page-break-inside: avoid;
+      line-height: 1.3;
+    }
+    .example-callout strong { color: var(--navy); }
+
+    /* Code example compact override */
+    .page-1 .code-example { padding: 0.15rem 0.3rem; font-size: 0.68rem; line-height: 1.15; margin: 0.08rem 0; }
+
+    /* Part subtitles */
+    .part-subtitle {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--coral);
+      margin-bottom: 0.03rem;
+      margin-top: 0.1rem;
+    }
+
+    /* Task items */
+    .task-item { margin-bottom: 0.08rem; page-break-inside: avoid; }
+    .task-label { font-family: 'Fredoka', sans-serif; font-size: 0.72rem; font-weight: 600; color: var(--navy); margin-bottom: 0.02rem; }
+    .task-desc { font-size: 0.72rem; color: var(--navy-light); margin-bottom: 0.03rem; line-height: 1.25; }
+    .task-hint { font-size: 0.7rem; color: var(--navy-muted); margin-bottom: 0.03rem; font-style: italic; line-height: 1.25; }
+    .answer-arrow { font-size: 0.75rem; color: var(--navy-muted); flex-shrink: 0; }
+
+    /* Scenario pair grid for Part A */
+    .scenario-pair { margin-bottom: 0.1rem; }
+
+    /* Reflection box (now on page 2) */
+    .reflection-box h3 { font-size: 1rem; color: var(--sunny-dark); margin-bottom: 0.15rem; }
+    .reflection-box p { font-size: 0.85rem; margin-bottom: 0.15rem; }
+
+    /* Page 2 density */
+    .page-2 .writing-lines { margin-bottom: 0.1rem; }
+    .page-2 .writing-lines .line { height: 1.1rem; margin-bottom: 0.02rem; }
+    .page-2 .kid-checklist li { margin-bottom: 0.15rem; font-size: 0.85rem; }
+    .page-2 .teacher-note { padding: 0.3rem 0.4rem; }
+
+    /* Robot inventory */
+    .robot-inventory {
+      background: var(--teal-light);
+      border: 1px solid var(--teal);
+      border-radius: 8px;
+      padding: 0.2rem 0.35rem;
+      margin-bottom: 0.15rem;
+      page-break-inside: avoid;
+    }
+    .robot-inventory-label {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--teal-dark);
+      margin-bottom: 0.08rem;
+    }
+    .robot-inventory ul {
+      margin: 0;
+      padding-left: 1rem;
+      font-size: 0.75rem;
+      color: var(--navy-light);
+      line-height: 1.3;
+    }
+    .robot-inventory li { margin-bottom: 0.02rem; }
+
+    /* Follow-up box */
+    .followup-box {
+      border: 2px dashed var(--teal);
+      border-radius: 10px;
+      padding: 0.25rem 0.4rem;
+      background: var(--white);
+      margin-top: 0.15rem;
+      page-break-inside: avoid;
+    }
+    .followup-box p {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.08rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1 ==================== -->
+  <div class="page-1" style="page-break-after: always;">
+
+    <!-- 1. Activity Header Strip -->
+    <header class="activity-header">
+      <div class="activity-number">4</div>
+      <h1 class="activity-title">Write Your Own Loop</h1>
+      <span class="difficulty-badge difficulty-easy">AGES 8-12</span>
+    </header>
+
+    <!-- 2. Kid Instructions Box + Mascot -->
+    <div class="intro-with-mascot">
+      <div class="mascot-box">MASCOT<br>GOES<br>HERE</div>
+      <section class="kid-box">
+        <p>Last time, you learned to spot loops everywhere — in songs, dances, even your weekly chores. Now level up: it's your turn to write loops of your own!</p>
+      </section>
+    </div>
+
+    <!-- 3. Vocabulary Callout -->
+    <section class="vocab-callout">
+      <span class="vocab-word">Repeat</span>
+      <p class="vocab-def"><strong>Repeat</strong> — To do the same thing again and again. In a loop, "repeat" tells the computer how many times to do something.<br><em>Example:</em> "Repeat 'do a push-up' 10 times" is a loop with 10 push-ups inside it.</p>
+    </section>
+
+    <!-- 4. Two-Column Split -->
+    <div class="two-col">
+      <!-- Basic Version -->
+      <div class="col col-basic">
+        <div class="col-header">Basic Version</div>
+        <p class="small" style="margin-bottom:0.1rem; font-size:0.75rem; line-height:1.3;"><strong>Loop It!</strong> — Turn each task into a loop: <strong>Repeat "[action]" [N] times.</strong></p>
+
+        <div class="example-callout">
+          <strong>Example:</strong> Brushing each tooth (32 teeth) → <strong>Repeat "brush one tooth" 32 times.</strong>
+        </div>
+
+        <div class="task-item">
+          <div class="task-label">Scenario 1</div>
+          <div class="task-desc">Doing 20 push-ups</div>
+          <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.03rem;">
+            <span class="answer-arrow">→</span>
+            <span class="line" style="flex:1; margin-bottom:0; height:1.1rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+          </div>
+        </div>
+
+        <div class="task-item">
+          <div class="task-label">Scenario 2</div>
+          <div class="task-desc">Watering 6 plants on the windowsill (one cup of water each)</div>
+          <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.03rem;">
+            <span class="answer-arrow">→</span>
+            <span class="line" style="flex:1; margin-bottom:0; height:1.1rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+          </div>
+        </div>
+
+        <div class="task-item">
+          <div class="task-label">Scenario 3</div>
+          <div class="task-desc">High-fiving every kid in a line of 8 friends</div>
+          <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.03rem;">
+            <span class="answer-arrow">→</span>
+            <span class="line" style="flex:1; margin-bottom:0; height:1.1rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+          </div>
+        </div>
+
+        <div class="task-item">
+          <div class="task-label">Scenario 4</div>
+          <div class="task-desc">Putting one sticker on each of 12 birthday cards</div>
+          <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.03rem;">
+            <span class="answer-arrow">→</span>
+            <span class="line" style="flex:1; margin-bottom:0; height:1.1rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Challenge Version -->
+      <div class="col col-challenge">
+        <div class="col-header">Challenge Version</div>
+        <p class="small" style="margin-bottom:0.1rem; font-size:0.72rem; line-height:1.25;"><strong>Loops with a Twist</strong> — Sometimes you repeat <strong>until</strong> something happens, or put a loop <strong>inside</strong> another loop!</p>
+
+        <div class="part-subtitle">PART A — Loops with a CONDITION</div>
+        <div class="task-desc" style="margin-bottom:0.08rem;">You don't always know how many times. Repeat <strong>until</strong> a condition is true. Format: <strong>Repeat "[action]" until [condition].</strong></div>
+
+        <div class="example-callout">
+          <strong>Example:</strong> Walking up the stairs → <strong>Repeat "take one step up" until you reach the top.</strong>
+        </div>
+
+        <div class="scenario-pair">
+          <div class="task-item">
+            <div class="task-label">Scenario A1</div>
+            <div class="task-desc">Pouring water into a glass (you stop when it's full)</div>
+            <div class="writing-lines">
+              <span class="line"></span>
+              <span class="line"></span>
+            </div>
+          </div>
+          <div class="task-item">
+            <div class="task-label">Scenario A2</div>
+            <div class="task-desc">Practicing free throws (you stop when you make 10 in a row)</div>
+            <div class="writing-lines">
+              <span class="line"></span>
+              <span class="line"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="part-subtitle">PART B — NESTED LOOPS</div>
+        <div class="task-desc" style="margin-bottom:0.05rem;">A loop <strong>INSIDE</strong> another loop. Like 3 sets of 10 push-ups — the outer loop is "do 3 sets," and inside each set is "do 10 push-ups."</div>
+
+        <div class="code-example">Repeat 3 times:
+   Repeat "do 1 push-up" 10 times.
+   Rest for 30 seconds.</div>
+
+        <div class="task-item">
+          <div class="task-label">Scenario B</div>
+          <div class="task-desc">A teacher hands out a quiz to 4 rows of desks. Each row has 5 students. The teacher walks down each row and gives one quiz to each student.</div>
+          <div class="task-hint">Hint: outer loop = 4 rows. Inner loop = 5 students per row.</div>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.page-1 -->
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="page-activity page-2">
+
+    <div class="content-area">
+
+      <!-- 6. Self-Check -->
+      <section style="margin-bottom:0.4rem;">
+        <h3 style="font-size:1rem; color:var(--teal-dark); margin-bottom:0.2rem;">Self-Check</h3>
+        <ul class="kid-checklist">
+          <li><span class="checkbox"></span> I wrote a loop for all 4 Basic scenarios using the correct format</li>
+          <li><span class="checkbox"></span> I wrote 2 condition-based loops using "Repeat ... until ..."</li>
+          <li><span class="checkbox"></span> I wrote 1 nested loop with an outer and inner loop</li>
+          <li><span class="checkbox"></span> I can explain in my own words what "nested" means</li>
+        </ul>
+      </section>
+
+      <!-- 7. Reflection Box -->
+      <section class="reflection-box" style="margin-bottom:0.25rem;">
+        <h3>Reflection Box</h3>
+        <p>Look at one of the loops you wrote. If the number changed — like "32 teeth" became "320 teeth" — would your loop still work the same way? Why is that powerful?</p>
+        <div class="writing-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </section>
+
+      <!-- 8. Bonus: Design a Loop for a Robot -->
+      <section style="margin-bottom:0.25rem;">
+        <h3 style="font-size:1rem; color:var(--navy); margin-bottom:0.15rem;">Bonus: Design a Loop for a Robot</h3>
+        <p class="small" style="margin-bottom:0.15rem; font-size:0.8rem;">You're programming a small cleaning robot for your bedroom! The robot can only do the actions in its list — nothing else.</p>
+
+        <div class="robot-inventory">
+          <div class="robot-inventory-label">Robot's Available Actions</div>
+          <ul>
+            <li>pick up toy</li>
+            <li>put toy in bin</li>
+            <li>vacuum floor square</li>
+            <li>move forward</li>
+            <li>turn left</li>
+            <li>turn right</li>
+          </ul>
+        </div>
+
+        <p class="small" style="margin-bottom:0.1rem; font-size:0.8rem;"><strong>Mission:</strong> Your bedroom has 8 toys on the floor that need to go in the toy bin, AND a 3×3 grid of carpet squares (9 squares total) that need to be vacuumed. Write a loop (or loops!) to tell the robot how to clean the room. You can use as many loops as you need.</p>
+
+        <div class="writing-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+
+        <div class="followup-box">
+          <p>Bonus: Did you use a nested loop? Why or why not?</p>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.content-area -->
+
+    <!-- 8. Teacher / Parent Note -->
+    <aside class="teacher-note">
+      <div class="teacher-note-label">
+        <span>Teacher / Parent Note</span>
+      </div>
+      <p>This activity moves kids from recognizing loops (Activity 3) to writing them. The Challenge version introduces two loop variants they'll meet again in real code: condition-based loops (while-loops, which run until something becomes true) and nested loops (loops inside loops, used in everything from grids to sorting). Discussion prompt: Ask your child to spot one place in their home or school day where a nested loop happens — for example, a morning routine repeated across 5 weekdays is a nested loop.</p>
+    </aside>
+
+  </div><!-- /.page-activity .page-2 -->
+
+</body>
+</html>

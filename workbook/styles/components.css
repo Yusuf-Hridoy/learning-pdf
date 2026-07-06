@@ -1,0 +1,784 @@
+/* ============================================
+   COMPONENTS.CSS — Reusable workbook widgets
+   ============================================
+   Everything here is designed to avoid breaking
+   across pages and to stay readable in B&W.
+   ============================================ */
+
+/* --- 1. Activity Header Strip --- */
+.activity-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--coral-light);
+  border-left: 6px solid var(--coral);
+  border-radius: 0 12px 12px 0;
+  page-break-inside: avoid;
+  margin-bottom: 1.25rem;
+}
+
+.activity-number {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--coral);
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.activity-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--navy);
+  flex: 1;
+  margin: 0;
+}
+
+.difficulty-badge {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.difficulty-easy   { background: var(--teal-light);  color: var(--teal-dark);  border: 2px solid var(--teal); }
+.difficulty-medium { background: var(--sunny-light); color: var(--sunny-dark); border: 2px solid var(--sunny); }
+.difficulty-hard   { background: var(--coral-light); color: var(--coral-dark); border: 2px solid var(--coral); }
+
+/* --- 2. Kid Instructions Box --- */
+.kid-box {
+  background: var(--white);
+  border: 3px solid var(--coral);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  page-break-inside: avoid;
+  position: relative;
+}
+
+.kid-box::before {
+  content: "Kid Instructions";
+  display: inline-block;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--coral);
+  background: var(--white);
+  padding: 0.2rem 0.5rem;
+  line-height: 1;
+  position: absolute;
+  top: -0.8rem;
+  left: 1rem;
+}
+
+.kid-box p:last-child { margin-bottom: 0; }
+
+/* --- 3. Teacher / Parent Note Box --- */
+.teacher-note {
+  background: var(--teal-light);
+  border: 2px dashed var(--teal);
+  border-radius: 12px;
+  padding: 0.875rem 1rem;
+  margin-top: auto; /* pushes to bottom in flex column */
+  page-break-inside: avoid;
+}
+
+.teacher-note-label {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--teal-dark);
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.teacher-note p {
+  font-size: 0.9rem;
+  color: var(--navy-light);
+  margin: 0;
+}
+
+/* --- 4. Vocabulary Callout --- */
+.vocab-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: var(--sunny-light);
+  border-left: 5px solid var(--sunny);
+  border-radius: 0 12px 12px 0;
+  padding: 0.875rem 1.25rem;
+  margin-bottom: 1.25rem;
+  page-break-inside: avoid;
+}
+
+.vocab-word {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--navy);
+  background: var(--sunny);
+  padding: 0.25rem 0.75rem;
+  border-radius: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.vocab-def {
+  font-size: 0.95rem;
+  color: var(--navy-light);
+  margin: 0;
+  padding-top: 0.15rem;
+}
+
+/* --- 4b. Numbered Input Box --- */
+.numbered-input-box {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid var(--navy);
+  border-radius: 4px;
+  flex-shrink: 0;
+  background: var(--white);
+  vertical-align: middle;
+}
+
+/* --- 5. Writing Lines --- */
+/* 5a. Single short line */
+.write-line {
+  display: block;
+  width: 60%;
+  height: 2.2rem;
+  border-bottom: 2px solid var(--gray-mid);
+  margin-bottom: 0.6rem;
+  page-break-inside: avoid;
+}
+
+/* 5b. Paragraph lines */
+.write-lines,
+.writing-lines {
+  margin-bottom: 1rem;
+}
+
+.write-lines .line,
+.writing-lines .line {
+  display: block;
+  width: 100%;
+  height: 2.2rem;
+  border-bottom: 1px solid var(--gray-mid);
+  margin-bottom: 0.35rem;
+  page-break-inside: avoid;
+}
+
+/* 5c. Big box */
+.write-box {
+  width: 100%;
+  min-height: 8rem;
+  border: 2px solid var(--gray-mid);
+  border-radius: 10px;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 2rem,
+    var(--gray-mid) 2rem,
+    var(--gray-mid) calc(2rem + 1px)
+  );
+  margin-bottom: 1rem;
+  page-break-inside: avoid;
+}
+
+/* --- 6. Cut-and-Paste Pieces --- */
+.cut-piece {
+  display: inline-block;
+  padding: 0.75rem 1rem;
+  border: 2px dashed var(--navy);
+  border-radius: 8px;
+  background: var(--white);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0.25rem;
+  page-break-inside: avoid;
+}
+
+.cut-zone {
+  border: 2px dashed var(--navy);
+  border-radius: 12px;
+  padding: 1rem;
+  background: var(--white);
+  margin-bottom: 1rem;
+  page-break-inside: avoid;
+}
+
+.cut-zone-label {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--navy-muted);
+  margin-bottom: 0.5rem;
+}
+
+/* --- 7. Yes / No Flowchart Blocks --- */
+.flow-block {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  page-break-inside: avoid;
+}
+
+.flow-yes { background: var(--teal-light);  color: var(--teal-dark);  border: 2px solid var(--teal); }
+.flow-no  { background: var(--coral-light); color: var(--coral-dark); border: 2px solid var(--coral); }
+.flow-start { background: var(--sunny-light); color: var(--sunny-dark); border: 2px solid var(--sunny); border-radius: 999px; }
+
+.flow-arrow {
+  display: inline-block;
+  width: 2rem;
+  text-align: center;
+  font-weight: 700;
+  color: var(--navy-muted);
+}
+
+/* --- 8. Treasure Hunt Grid (5x5) --- */
+.grid-5x5 {
+  display: grid;
+  grid-template-columns: 2rem repeat(5, 1fr);
+  grid-template-rows: 2rem repeat(5, 1fr);
+  gap: 2px;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
+  background: var(--navy);
+  border: 3px solid var(--navy);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  page-break-inside: avoid;
+}
+
+.grid-5x5 .cell {
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--navy);
+}
+
+.grid-5x5 .cell.header {
+  background: var(--cream-dark);
+  font-size: 0.875rem;
+}
+
+.grid-5x5 .cell.empty {
+  background: var(--cream-dark);
+}
+
+/* --- 9. Checkbox List --- */
+.kid-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+.kid-checklist li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
+  font-size: 1.05rem;
+  page-break-inside: avoid;
+}
+
+.kid-checklist .checkbox {
+  display: inline-block;
+  width: 1.4rem;
+  height: 1.4rem;
+  border: 2.5px solid var(--navy);
+  border-radius: 6px;
+  flex-shrink: 0;
+  background: var(--white);
+}
+
+/* --- 10. Two-Column Split --- */
+.two-col {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+}
+
+.two-col > .col {
+  flex: 1;
+  min-width: 0; /* allow shrinking below content size */
+}
+
+.col-header {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.col-basic    .col-header { background: var(--teal-light);  color: var(--teal-dark); }
+.col-challenge .col-header { background: var(--sunny-light); color: var(--sunny-dark); }
+
+/* --- Mascot Placeholder --- */
+.mascot-box {
+  width: 120px;
+  height: 120px;
+  border: 3px dashed var(--gray-mid);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  color: var(--navy-muted);
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: center;
+  page-break-inside: avoid;
+}
+
+.mascot-inline {
+  display: inline-flex;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+
+/* --- 11. Blank Fill Line --- */
+.blank-fill-line {
+  display: inline-block;
+  border-bottom: 1px solid var(--gray-mid);
+  color: var(--navy);
+  vertical-align: middle;
+  margin: 0 0.2rem;
+  height: 1.2em;
+  page-break-inside: avoid;
+}
+
+.blank-short { width: 80px; }
+.blank-long  { width: 200px; }
+
+/* --- 12. Snippet Quote --- */
+.snippet-quote {
+  background: #FFF3E8;
+  border-left: 3px solid #FF6B6B;
+  padding: 10px 14px;
+  margin: 6px 0;
+  font-style: italic;
+  color: #2D3047;
+  font-size: 0.95em;
+  line-height: 1.4;
+  border-radius: 0 4px 4px 0;
+  page-break-inside: avoid;
+}
+
+.snippet-quote p {
+  margin: 0;
+}
+
+/* --- 13. Pattern Shapes --- */
+.pattern-shapes {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.pattern-shapes svg {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+/* --- 13b. Bug Types Callout --- */
+.bug-types-callout {
+  background: #FFF8E1;
+  border: 1px solid #FFE66D;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-bottom: 0.5rem;
+  page-break-inside: avoid;
+}
+
+.bug-types-callout-label {
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--navy);
+  margin-bottom: 0.15rem;
+}
+
+.bug-types-list {
+  font-size: 0.72rem;
+  color: var(--navy-light);
+  line-height: 1.3;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bug-types-list li {
+  display: inline;
+}
+
+.bug-types-list li:not(:last-child)::after {
+  content: " • ";
+  color: var(--navy-muted);
+}
+
+/* --- 14. Code Example --- */
+.code-example {
+  background: #F5F3EE;
+  border-left: 3px solid #4ECDC4;
+  padding: 10px 14px;
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  color: #2D3047;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+  border-radius: 0 4px 4px 0;
+  margin: 6px 0;
+  page-break-inside: avoid;
+}
+
+/* --- 15. Reflection Box --- */
+.reflection-box {
+  width: 100%;
+  margin-top: 1rem;
+  page-break-inside: avoid;
+}
+
+.reflection-box h3 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--sunny-dark);
+  margin-bottom: 0.15rem;
+}
+
+/* --- 16. Flowchart (Simple Yes/No) --- */
+.flowchart-simple {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto 0.35rem;
+  page-break-inside: avoid;
+}
+
+.flowchart-simple svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 100px;
+}
+
+.flowchart-label {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.1rem;
+}
+
+.flowchart-scenario {
+  font-size: 0.8rem;
+  color: var(--navy-light);
+  margin: 0.1rem 0 0.05rem;
+  line-height: 1.3;
+}
+
+/* --- 18. Flowchart (Nested Decision Tree) --- */
+.flowchart-nested {
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto 0.35rem;
+  page-break-inside: avoid;
+}
+
+.flowchart-nested svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 170px;
+}
+
+/* --- 17. Drawing Box --- */
+.drawing-box {
+  width: 100%;
+  height: 6cm;
+  border: 2px dashed #A0A0A0;
+  border-radius: 10px;
+  background: var(--white);
+  position: relative;
+  page-break-inside: avoid;
+}
+
+.drawing-box-hint {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.75rem;
+  right: 0.75rem;
+  font-size: 0.625rem;
+  color: #888;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+/* --- 19. Sort Row (Bubble / Selection Sort) --- */
+.sort-row {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  flex-wrap: nowrap;
+  page-break-inside: avoid;
+}
+
+.sort-row .sort-box {
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--navy);
+  border-radius: 4px;
+  background: #FFF8F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--navy);
+  flex-shrink: 0;
+}
+
+.sort-row .sort-box.wide {
+  width: 44px;
+}
+
+/* Variant A: filled (default) */
+.sort-row.filled .sort-box {
+  background: #FFF8F0;
+}
+
+/* Variant B: empty (kids write in) */
+.sort-row.empty .sort-box {
+  background: var(--white);
+}
+
+/* Variant C: swap-indicator */
+.sort-row.swap-indicator .sort-box.highlight {
+  background: #FFE8E5;
+}
+
+.sort-row-comparison {
+  font-size: 0.78rem;
+  color: var(--navy-light);
+  margin-top: 0.15rem;
+  margin-bottom: 0.15rem;
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  page-break-inside: avoid;
+}
+
+.sort-row-label {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-right: 0.5rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Inline mini sort row for compact worked examples */
+.sort-row.inline {
+  display: inline-flex;
+  gap: 3px;
+  vertical-align: middle;
+}
+
+.sort-row.inline .sort-box {
+  width: 28px;
+  height: 28px;
+  font-size: 0.85rem;
+  border-width: 1.5px;
+}
+
+/* --- 19c. Sort Box locked variant (individual box or full row) --- */
+.sort-box.locked,
+.sort-row.locked .sort-box {
+  background: #E8E8E8;
+  color: #6B6F80;
+  position: relative;
+}
+
+.sort-box.locked::after,
+.sort-row.locked .sort-box::after {
+  content: "✓";
+  position: absolute;
+  top: 1px;
+  right: 3px;
+  font-size: 7pt;
+  color: var(--navy);
+  line-height: 1;
+}
+
+/* --- 20. Circle Choice (YES/NO) --- */
+.circle-choice {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-right: 1rem;
+}
+
+.circle-choice .circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 2px solid var(--navy);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--navy);
+  background: var(--white);
+}
+
+/* --- 21. Algorithm Pill Labels --- */
+.pill-coral {
+  display: inline-block;
+  background: #FFE8E5;
+  color: var(--navy);
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  margin-bottom: 0.1rem;
+  page-break-inside: avoid;
+}
+
+.pill-teal {
+  display: inline-block;
+  background: #E0F4F1;
+  color: var(--navy);
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  margin-bottom: 0.1rem;
+  page-break-inside: avoid;
+}
+
+/* --- 22. Treasure Hunt Grid --- */
+.treasure-grid {
+  display: grid;
+  gap: 1px;
+  background: #B0B0B0;
+  border: 1px solid #B0B0B0;
+  border-radius: 4px;
+  overflow: hidden;
+  page-break-inside: avoid;
+  max-width: 100%;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.treasure-grid .cell {
+  background: #FFFCF8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--navy);
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+}
+
+.treasure-grid .cell-empty {
+  background: #FFFCF8;
+}
+
+.treasure-grid .cell-wall {
+  background: #A0A0A0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 5px,
+    rgba(255,255,255,0.2) 5px,
+    rgba(255,255,255,0.2) 10px
+  );
+}
+
+.treasure-grid .cell-start {
+  background: #FFFCF8;
+}
+
+.treasure-grid .cell-start .start-arrow {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  display: inline-block;
+  line-height: 0;
+}
+
+.treasure-grid .cell-treasure {
+  background: #FFE66D;
+}
+
+/* Grid label */
+.grid-label {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+  margin-top: 8px;
+}
+
+.grid-caption {
+  font-size: 11px;
+  color: var(--navy-muted);
+  margin-left: 8px;
+  font-weight: 400;
+}
+
+/* --- Spacer utilities --- */
+.spacer-sm { height: 0.5rem; }
+.spacer-md { height: 1rem; }
+.spacer-lg { height: 2rem; }

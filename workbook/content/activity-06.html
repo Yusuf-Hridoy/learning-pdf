@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity 6 — Nested Conditionals: Decision Trees</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Workbook styles -->
+  <link rel="stylesheet" href="../styles/colors.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/print.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; padding: 0; }
+
+    /* Intro row */
+    .intro-with-mascot { display: flex; gap: 0.5rem; align-items: flex-start; margin-top: 0.6rem; }
+    .intro-with-mascot .mascot-box { flex-shrink: 0; width: 80px; height: 80px; }
+    .intro-with-mascot .kid-box { flex: 1; }
+
+    /* Page 1 density overrides */
+    .page-1 .activity-header { margin-bottom: 0.15rem; padding: 0.15rem 0.3rem; }
+    .page-1 .kid-box { margin-bottom: 0.15rem; padding: 0.5rem 0.3rem 0.15rem; }
+    .page-1 .vocab-callout { margin-bottom: 0.15rem; padding: 0.15rem 0.3rem; }
+    .page-1 .two-col { gap: 0.25rem; margin-bottom: 0.5rem; page-break-inside: auto; }
+    .page-1 .writing-lines { margin-bottom: 0.08rem; }
+    .page-1 .writing-lines .line { height: 1.1rem; margin-bottom: 0.02rem; }
+    .page-1 .col-header { padding: 0.15rem 0.3rem; margin-bottom: 0.15rem; font-size: 0.9rem; }
+    .page-1 .kid-box p { font-size: 0.8rem; line-height: 1.4; margin-bottom: 0; }
+    .page-1 .vocab-def { font-size: 0.75rem; line-height: 1.35; margin-bottom: 0; }
+    .page-1 .code-example { padding: 0.2rem 0.3rem; font-size: 0.65rem; line-height: 1.15; margin: 0.05rem 0; }
+
+    /* Column widths */
+    .col-basic { flex: 0.85; min-width: 0; }
+    .col-challenge { flex: 1.15; min-width: 0; }
+
+    /* Part subtitles */
+    .part-subtitle {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--coral);
+      margin-bottom: 0.03rem;
+      margin-top: 0.1rem;
+    }
+
+    /* Task items */
+    .task-item { margin-bottom: 0.08rem; page-break-inside: avoid; }
+    .task-label { font-family: 'Fredoka', sans-serif; font-size: 0.72rem; font-weight: 600; color: var(--navy); margin-bottom: 0.02rem; }
+    .task-desc { font-size: 0.72rem; color: var(--navy-light); margin-bottom: 0.03rem; line-height: 1.25; }
+    .answer-arrow { font-size: 0.75rem; color: var(--navy-muted); flex-shrink: 0; }
+
+    /* Flowchart wrapper */
+    .flowchart-wrapper { margin-bottom: 0.25rem; page-break-inside: avoid; }
+    .flowchart-wrapper .flowchart-label { margin-bottom: 0.05rem; }
+    .scenario-text { font-size: 0.72rem; color: var(--navy-light); margin: 0.08rem 0 0.03rem; line-height: 1.25; }
+
+    /* Page 2 tighter density (carry forward from activity 5) */
+    .page-2 h3 { margin-bottom: 0.08rem; }
+    .page-2 section { margin-bottom: 0.2rem; }
+    .page-2 .writing-lines { margin-bottom: 0.08rem; }
+    .page-2 .writing-lines .line { height: 1rem; margin-bottom: 0.02rem; }
+    .page-2 .kid-checklist { margin: 0; }
+    .page-2 .kid-checklist li { margin-bottom: 0.1rem; font-size: 0.82rem; }
+    .page-2 .teacher-note { padding: 0.2rem 0.35rem; }
+    .page-2 .teacher-note p { font-size: 0.78rem; line-height: 1.3; }
+    .page-2 .reflection-box { margin-top: 0.25rem; margin-bottom: 0.15rem; }
+    .page-2 .reflection-box p { font-size: 0.78rem; line-height: 1.3; margin-bottom: 0.08rem; }
+    .page-2 .followup-box { padding: 0.15rem 0.3rem; margin-top: 0.08rem; }
+    .page-2 .followup-box p { font-size: 0.75rem; margin-bottom: 0.05rem; }
+
+    /* Follow-up box */
+    .followup-box {
+      border: 2px dashed var(--teal);
+      border-radius: 10px;
+      padding: 0.25rem 0.4rem;
+      background: var(--white);
+      margin-top: 0.15rem;
+      page-break-inside: avoid;
+    }
+    .followup-box p {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.08rem;
+    }
+
+    /* Starters list */
+    .starters-list {
+      margin: 0.1rem 0 0.15rem;
+      padding-left: 1.2rem;
+      font-size: 0.75rem;
+      color: var(--navy-light);
+      line-height: 1.3;
+    }
+    .starters-list li { margin-bottom: 0.03rem; }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1 ==================== -->
+  <div class="page-1" style="page-break-after: always;">
+
+    <!-- 1. Activity Header Strip -->
+    <header class="activity-header">
+      <div class="activity-number">6</div>
+      <h1 class="activity-title">Nested Conditionals: Decision Trees</h1>
+      <span class="difficulty-badge difficulty-easy">AGES 8-12</span>
+    </header>
+
+    <!-- 2. Kid Instructions Box + Mascot -->
+    <div class="intro-with-mascot">
+      <div class="mascot-box">MASCOT<br>GOES<br>HERE</div>
+      <section class="kid-box">
+        <p>Last activity, you used one Yes/No question to make a decision. But real life is messier — most decisions have two or three questions stacked together. That's called a <strong>decision tree</strong>!</p>
+      </section>
+    </div>
+
+    <!-- 3. Vocabulary Callout -->
+    <section class="vocab-callout">
+      <span class="vocab-word">Nested</span>
+      <p class="vocab-def"><strong>Nested</strong> — When something is INSIDE another thing of the same type. Like a smaller box inside a bigger box, or a question inside another question.<br><em>Example:</em> Just like nested loops (Activity 4!), conditionals can live inside other conditionals. A question inside a question = a nested conditional.</p>
+    </section>
+
+    <!-- 4. Two-Column Split -->
+    <div class="two-col">
+      <!-- Basic Version -->
+      <div class="col col-basic">
+        <div class="col-header">Basic Version</div>
+        <p class="small" style="margin-bottom:0.1rem; font-size:0.75rem; line-height:1.3;"><strong>Follow the Decision Tree</strong> — Each tree has TWO questions. Follow the path from top to bottom, then answer the questions below!</p>
+
+        <!-- Tree 1 — Lunch Decision -->
+        <div class="flowchart-wrapper">
+          <div class="flowchart-label">Tree 1 — Lunch Decision</div>
+          <div class="flowchart-nested">
+            <svg viewBox="0 0 340 210" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="m1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <path d="M0,0 L8,4 L0,8 Z" fill="#2D3047"/>
+                </marker>
+              </defs>
+              <!-- Outer diamond -->
+              <polygon points="170,7 255,30 170,53 85,30" fill="#FFE66D" stroke="#2D3047" stroke-width="2"/>
+              <foreignObject x="90" y="10" width="160" height="38">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:center;justify-content:center;height:100%;text-align:center;font-family:Nunito,sans-serif;font-size:9px;color:#2D3047;font-weight:600;line-height:1.2;">
+                  Are you hungry?
+                </div>
+              </foreignObject>
+              <!-- Outer Yes arrow -->
+              <line x1="170" y1="53" x2="95" y2="80" stroke="#2D3047" stroke-width="2" marker-end="url(#m1)"/>
+              <text x="128" y="68" font-family="Nunito,sans-serif" font-size="10" fill="#2D3047" font-weight="700" text-anchor="middle">Yes</text>
+              <!-- Outer No arrow -->
+              <line x1="170" y1="53" x2="250" y2="82" stroke="#2D3047" stroke-width="2" marker-end="url(#m1)"/>
+              <text x="206" y="68" font-family="Nunito,sans-serif" font-size="10" fill="#2D3047" font-weight="700" text-anchor="middle">No</text>
+              <!-- Inner diamond -->
+              <polygon points="95,80 165,100 95,120 25,100" fill="#FFE66D" stroke="#2D3047" stroke-width="2"/>
+              <foreignObject x="30" y="84" width="130" height="32">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:center;justify-content:center;height:100%;text-align:center;font-family:Nunito,sans-serif;font-size:9px;color:#2D3047;font-weight:600;line-height:1.2;">
+                  Is there pizza?
+                </div>
+              </foreignObject>
+              <!-- Inner Yes arrow -->
+              <line x1="95" y1="120" x2="77" y2="155" stroke="#2D3047" stroke-width="2" marker-end="url(#m1)"/>
+              <text x="82" y="140" font-family="Nunito,sans-serif" font-size="10" fill="#2D3047" font-weight="700" text-anchor="middle">Yes</text>
+              <!-- Inner No arrow -->
+              <line x1="95" y1="120" x2="210" y2="155" stroke="#2D3047" stroke-width="2" marker-end="url(#m1)"/>
+              <text x="156" y="140" font-family="Nunito,sans-serif" font-size="10" fill="#2D3047" font-weight="700" text-anchor="middle">No</text>
+              <!-- Outer No action box -->
+              <rect x="185" y="82" width="135" height="36" rx="5" fill="#FFF8F0" stroke="#2D3047" stroke-width="2"/>
+              <text x="252" y="104" font-family="Nunito,sans-serif" font-size="9" fill="#2D3047" text-anchor="middle">Wait until dinner</text>
+              <!-- Inner Yes action box -->
+              <rect x="10" y="155" width="135" height="36" rx="5" fill="#FFF8F0" stroke="#2D3047" stroke-width="2"/>
+              <text x="77" y="177" font-family="Nunito,sans-serif" font-size="9" fill="#2D3047" text-anchor="middle">Eat pizza</text>
+              <!-- Inner No action box -->
+              <rect x="145" y="155" width="135" height="36" rx="5" fill="#FFF8F0" stroke="#2D3047" stroke-width="2"/>
+              <text x="212" y="177" font-family="Nunito,sans-serif" font-size="9" fill="#2D3047" text-anchor="middle">Make a sandwich</text>
+            </svg>
+          </div>
+          <p class="scenario-text"><strong>Question 1:</strong> It's noon, you're starving, and there's leftover pizza in the fridge. What do you do?</p>
+          <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.03rem;">
+            <span class="answer-arrow">→</span>
+            <span class="line" style="flex:1; margin-bottom:0; height:1.1rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+          </div>
+          <p class="scenario-text"><strong>Question 2:</strong> You're not hungry yet. What happens?</p>
+          <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.03rem;">
+            <span class="answer-arrow">→</span>
+            <span class="line" style="flex:1; margin-bottom:0; height:1.1rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+          </div>
+        </div>
+
+        <!-- Tree 2 — Weekend Plan -->
+        <div class="flowchart-wrapper">
+          <div class="flowchart-label">Tree 2 — Weekend Plan</div>
+          <div class="flowchart-nested">
+            <svg viewBox="0 0 340 210" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="m2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <path d="M0,0 L8,4 L0,8 Z" fill="#2D3047"/>
+                </marker>
+              </defs>
+              <!-- Outer diamond -->
+              <polygon points="170,7 255,30 170,53 85,30" fill="#FFE66D" stroke="#2D3047" stroke-width="2"/>
+              <foreignObject x="90" y="10" width="160" height="38">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:center;justify-content:center;height:100%;text-align:center;font-family:Nunito,sans-serif;font-size:9px;color:#2D3047;font-weight:600;line-height:1.2;">
+                  Is it the weekend?
+                </div>
+              </foreignObject>
+              <!-- Outer Yes arrow -->
+              <line x1="170" y1="53" x2="95" y2="80" stroke="#2D3047" stroke-width="2" marker-end="url(#m2)"/>
+              <text x="128" y="68" font-family="Nunito,sans-serif" font-size="10" fill="#2D3047" font-weight="700" text-anchor="middle">Yes</text>
+              <!-- Outer No arrow -->
+              <line x1="170" y1="53" x2="250" y2="82" stroke="#2D3047" stroke-width="2" marker-end="url(#m2)"/>
+              <text x="206" y="68" font-family="Nunito,sans-serif" font-size="10" fill="#2D3047" font-weight="700" text-anchor="middle">No</text>
+              <!-- Inner diamond -->
+              <polygon points="95,80 165,100 95,120 25,100" fill="#FFE66D" stroke="#2D3047" stroke-width="2"/>
+              <foreignObject x="30" y="84" width="130" height="32">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:center;justify-content:center;height:100%;text-align:center;font-family:Nunito,sans-serif;font-size:9px;color:#2D3047;font-weight:600;line-height:1.2;">
+                  Is it sunny?
+                </div>
+              </foreignObject>
+              <!-- Inner Yes arrow -->
+              <line x1="95" y1="120" x2="77" y2="155" stroke="#2D3047" stroke-width="2" marker-end="url(#m2)"/>
+              <text x="82" y="140" font-family="Nunito,sans-serif" font-size="10" fill="#2D3047" font-weight="700" text-anchor="middle">Yes</text>
+              <!-- Inner No arrow -->
+              <line x1="95" y1="120" x2="210" y2="155" stroke="#2D3047" stroke-width="2" marker-end="url(#m2)"/>
+              <text x="156" y="140" font-family="Nunito,sans-serif" font-size="10" fill="#2D3047" font-weight="700" text-anchor="middle">No</text>
+              <!-- Outer No action box -->
+              <rect x="185" y="82" width="135" height="36" rx="5" fill="#FFF8F0" stroke="#2D3047" stroke-width="2"/>
+              <text x="252" y="104" font-family="Nunito,sans-serif" font-size="9" fill="#2D3047" text-anchor="middle">Go to school</text>
+              <!-- Inner Yes action box -->
+              <rect x="10" y="155" width="135" height="36" rx="5" fill="#FFF8F0" stroke="#2D3047" stroke-width="2"/>
+              <text x="77" y="177" font-family="Nunito,sans-serif" font-size="9" fill="#2D3047" text-anchor="middle">Go to the park</text>
+              <!-- Inner No action box -->
+              <rect x="145" y="155" width="135" height="36" rx="5" fill="#FFF8F0" stroke="#2D3047" stroke-width="2"/>
+              <text x="212" y="177" font-family="Nunito,sans-serif" font-size="9" fill="#2D3047" text-anchor="middle">Stay home and read</text>
+            </svg>
+          </div>
+          <p class="scenario-text"><strong>Question 1:</strong> It's a sunny Saturday. What do you do?</p>
+          <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.03rem;">
+            <span class="answer-arrow">→</span>
+            <span class="line" style="flex:1; margin-bottom:0; height:1.1rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+          </div>
+          <p class="scenario-text"><strong>Question 2:</strong> It's Tuesday. What do you do?</p>
+          <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.03rem;">
+            <span class="answer-arrow">→</span>
+            <span class="line" style="flex:1; margin-bottom:0; height:1.1rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Challenge Version -->
+      <div class="col col-challenge">
+        <div class="col-header">Challenge Version</div>
+
+        <!-- Part A -->
+        <div class="part-subtitle">PART A — Write the Nested Conditional in Shorthand</div>
+        <div class="code-example">IF [outer condition] THEN
+   IF [inner condition] THEN [action] OTHERWISE [other action]
+OTHERWISE [other action]</div>
+        <p class="small" style="margin:0.08rem 0; font-size:0.7rem; line-height:1.25;"><strong>Example:</strong> A movie ticket: kids under 12 get $5 tickets, kids 12+ pay $10. But if it's Tuesday, everyone pays $5.</p>
+        <div class="code-example">IF it's Tuesday THEN charge $5
+OTHERWISE
+   IF the customer is under 12 THEN charge $5
+   OTHERWISE charge $10</div>
+
+        <div class="task-item">
+          <div class="task-label">Scenario A1</div>
+          <div class="task-desc">A school dismissal — If it's raining, students wait in the cafeteria. Otherwise, if it's a school day, they go outside to be picked up. If it's not a school day, they don't come to school in the first place.</div>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <div class="task-item">
+          <div class="task-label">Scenario A2</div>
+          <div class="task-desc">A library book return — If a book is overdue, the kid pays a fine. If it's not overdue and the book is damaged, the kid pays a damage fee. If it's not overdue and not damaged, no charge.</div>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <!-- Part B -->
+        <div class="part-subtitle">PART B — Spot the Bug</div>
+        <p class="small" style="margin:0.05rem 0; font-size:0.72rem; line-height:1.25;">A programmer wrote this nested conditional for walking a pet dog. There's a bug in it!</p>
+        <div class="code-example">IF the weather is good THEN walk the dog outside
+OTHERWISE
+   IF it's raining THEN walk the dog inside
+   OTHERWISE walk the dog outside     <span style="color:var(--coral);font-style:italic;">← something's off here</span></div>
+        <p class="small" style="margin:0.08rem 0; font-size:0.72rem; line-height:1.25;"><strong>What's the bug? How would you fix it?</strong></p>
+        <div class="writing-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.page-1 -->
+
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="page-activity page-2">
+
+    <div class="content-area">
+
+      <!-- 5. Self-Check -->
+      <section style="margin-bottom:0.25rem;">
+        <h3 style="font-size:1rem; color:var(--teal-dark); margin-bottom:0.15rem;">Self-Check</h3>
+        <ul class="kid-checklist">
+          <li><span class="checkbox"></span> I followed both decision trees and answered all 4 questions</li>
+          <li><span class="checkbox"></span> I wrote 2 nested conditionals in IF-THEN-OTHERWISE shorthand</li>
+          <li><span class="checkbox"></span> I found and fixed the bug in the dog-walking conditional</li>
+          <li><span class="checkbox"></span> I can explain in my own words what "nested" means</li>
+        </ul>
+      </section>
+
+      <!-- 6. Reflection Box -->
+      <section class="reflection-box" style="margin-bottom:0.25rem;">
+        <h3>Reflection Box</h3>
+        <p>Think of a decision you made today that had MORE than one Yes/No question. Write it down and label which question came first.</p>
+        <div class="writing-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </section>
+
+      <!-- 7. Bonus: Design Your Own Decision Tree -->
+      <section style="margin-bottom:0.25rem;">
+        <h3 style="font-size:1rem; color:var(--navy); margin-bottom:0.15rem;">Bonus: Design Your Own Decision Tree</h3>
+        <p class="small" style="margin-bottom:0.1rem; font-size:0.8rem;">Pick ONE everyday decision you make often. Then build a decision tree with TWO Yes/No questions to handle it.</p>
+        <p class="small" style="margin-bottom:0.05rem; font-size:0.75rem; color:var(--navy-light);"><strong>Pick a starter (or invent your own):</strong></p>
+        <ul class="starters-list">
+          <li>What do I wear today?</li>
+          <li>What do I eat for breakfast?</li>
+          <li>Should I play outside?</li>
+        </ul>
+
+        <div class="drawing-box" style="height:8cm; margin-bottom:0.15rem;">
+          <div class="drawing-box-hint">Draw your decision tree here. Use diamonds for questions, arrows for Yes/No, and boxes for the actions.</div>
+        </div>
+
+        <div class="followup-box">
+          <p>Try it! Describe a situation that ends at one of your action boxes. Which box did you land on?</p>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.content-area -->
+
+    <!-- 8. Teacher / Parent Note -->
+    <aside class="teacher-note">
+      <div class="teacher-note-label">
+        <span>Teacher / Parent Note</span>
+      </div>
+      <p>This activity introduces nested conditionals — also called decision trees or "if-elif-else" in real code. Kids learn that real decisions aren't usually one Yes/No question but a chain of them, which mirrors how real software (game logic, app permissions, sorting algorithms) works. Discussion prompt: Ask your child to spot a real nested conditional in your family's daily routine (e.g., "If it's a school day AND if you're not sick, you go to school. Otherwise, you stay home.").</p>
+    </aside>
+
+  </div><!-- /.page-activity .page-2 -->
+
+</body>
+</html>

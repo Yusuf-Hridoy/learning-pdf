@@ -1,0 +1,95 @@
+/* ============================================
+   PRINT.CSS — Page setup, breaks, and counters
+   ============================================
+   Everything in this file is tuned specifically
+   for printing to US Letter via Playwright/Chromium.
+   ============================================ */
+
+/* --- Page setup: US Letter, 0.5in margin --- */
+@page {
+  size: 8.5in 11in;
+  margin: 0.5in;
+
+  /* Page numbers in the footer via CSS generated content */
+  @bottom-center {
+    content: counter(page);
+    font-family: 'Nunito', sans-serif;
+    font-size: 10pt;
+    color: var(--navy-muted);
+  }
+}
+
+/* Cover page gets no page number */
+@page cover {
+  @bottom-center { content: none; }
+}
+
+/* Certificate page gets no page number */
+@page certificate {
+  @bottom-center { content: none; }
+}
+
+/* --- Force exact color rendering (backgrounds & tints) --- */
+* {
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+  color-adjust: exact !important;
+}
+
+/* --- Global page-break safety --- */
+.activity-header,
+.kid-box,
+.teacher-note,
+.vocab-callout,
+.write-line,
+.write-lines .line,
+.write-box,
+.cut-piece,
+.cut-zone,
+.flow-block,
+.grid-5x5,
+.kid-checklist li,
+.mascot-box,
+.two-col,
+.snippet-quote,
+.blank-fill-line,
+.pattern-shapes,
+.code-example,
+.reflection-box {
+  page-break-inside: avoid;
+}
+
+/* Force a new page BEFORE these elements when they appear mid-flow */
+.page-break-before {
+  page-break-before: always;
+}
+
+/* Force a new page AFTER these elements */
+.page-break-after {
+  page-break-after: always;
+}
+
+/* --- Activity page layout --- */
+.page-activity {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(11in - 1in); /* page height minus top+bottom margins */
+}
+
+.page-activity .content-area {
+  flex: 1;
+}
+
+/* --- Body reset for print --- */
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--white);
+  }
+
+  /* Hide anything screen-only */
+  .screen-only {
+    display: none !important;
+  }
+}

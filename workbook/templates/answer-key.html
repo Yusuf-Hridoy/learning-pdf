@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Answer Key — {{ activity.title | default("Activity") }}{% endblock %}
+
+{% block body_class %}page-answer-key{% endblock %}
+
+{% block extra_head %}
+<style>
+  .page-answer-key {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(11in - 1in);
+  }
+  .answer-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    background: var(--teal-light);
+    border-left: 6px solid var(--teal);
+    border-radius: 0 12px 12px 0;
+    margin-bottom: 1.25rem;
+    page-break-inside: avoid;
+  }
+  .answer-header h1 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 0;
+  }
+  .answer-label {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    background: var(--teal);
+    color: var(--white);
+    flex-shrink: 0;
+  }
+  .answer-body {
+    flex: 1;
+  }
+  .answer-body h3 {
+    color: var(--teal-dark);
+    border-bottom: 2px solid var(--teal-light);
+    padding-bottom: 0.3rem;
+    margin-top: 1.25rem;
+  }
+  .answer-body ul {
+    margin: 0 0 1rem 1.25rem;
+    padding: 0;
+  }
+  .answer-body li {
+    margin-bottom: 0.5rem;
+    line-height: 1.55;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-answer-key">
+  <header class="answer-header">
+    <span class="answer-label">Answer Key</span>
+    <h1>{{ activity.title | default("Activity Title") }}</h1>
+  </header>
+
+  <div class="answer-body">
+    {{ activity.answer_content | default("<p>Answers and guidance will appear here.</p>") }}
+  </div>
+</div>
+{% endblock %}

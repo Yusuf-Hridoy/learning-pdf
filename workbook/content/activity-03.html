@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity 3 — Spot the Loop</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Workbook styles -->
+  <link rel="stylesheet" href="../styles/colors.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/print.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; padding: 0; }
+
+    /* Intro row */
+    .intro-with-mascot { display: flex; gap: 0.6rem; align-items: flex-start; }
+    .intro-with-mascot .mascot-box { flex-shrink: 0; width: 90px; height: 90px; }
+    .intro-with-mascot .kid-box { flex: 1; }
+
+    /* Page 1 density overrides — ultra-compact to guarantee fit on one page */
+    .page-1 .activity-header { margin-bottom: 0.2rem; padding: 0.2rem 0.35rem; }
+    .page-1 .kid-box { margin-bottom: 0.2rem; padding: 0.2rem 0.35rem; }
+    .page-1 .vocab-callout { margin-bottom: 0.2rem; padding: 0.2rem 0.35rem; }
+    .page-1 .two-col { gap: 0.3rem; margin-bottom: 0.2rem; page-break-inside: auto; }
+    .page-1 .writing-lines { margin-bottom: 0.1rem; }
+    .page-1 .writing-lines .line { height: 1.4rem; margin-bottom: 0.03rem; }
+    .page-1 .col-header { padding: 0.2rem 0.35rem; margin-bottom: 0.2rem; font-size: 0.95rem; }
+    .page-1 .kid-box p { font-size: 0.85rem; line-height: 1.45; margin-bottom: 0; }
+    .page-1 .vocab-def { font-size: 0.8rem; line-height: 1.4; margin-bottom: 0; }
+
+    /* Snippet quote — keep visual style but shrink for density */
+    .page-1 .snippet-quote { padding: 0.2rem 0.35rem; margin: 0.1rem 0; font-size: 0.7rem; line-height: 1.2; }
+
+    /* Basic items */
+    .basic-item { margin-bottom: 0.1rem; page-break-inside: avoid; }
+    .basic-item-label { font-family: 'Fredoka', sans-serif; font-size: 0.75rem; font-weight: 600; color: var(--navy); margin-bottom: 0.03rem; }
+    .basic-item-hint { font-size: 0.72rem; color: var(--navy-muted); margin-bottom: 0.03rem; font-style: italic; line-height: 1.3; }
+    .basic-item-blanks { font-size: 0.75rem; margin-top: 0.05rem; line-height: 1.4; }
+
+    /* Challenge scenarios */
+    .scenario { margin-bottom: 0.15rem; page-break-inside: avoid; }
+    .scenario-label { font-family: 'Fredoka', sans-serif; font-size: 0.75rem; font-weight: 600; color: var(--navy); margin-bottom: 0.03rem; }
+    .scenario-desc { font-size: 0.72rem; color: var(--navy-light); margin-bottom: 0.08rem; line-height: 1.25; }
+    .scenario-prompt { font-size: 0.75rem; font-weight: 600; color: var(--navy); margin-bottom: 0.05rem; }
+
+    /* Reflection box compact */
+    .page-1 .reflection-box h3 { font-size: 0.85rem; color: var(--sunny-dark); margin-bottom: 0.1rem; }
+    .page-1 .reflection-box p { font-size: 0.8rem; margin-bottom: 0.1rem; }
+
+    /* Pattern rows */
+    .pattern-row { margin-bottom: 0.35rem; }
+    .pattern-label { font-family: 'Fredoka', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--navy); margin-bottom: 0.1rem; }
+    .pattern-text { font-size: 0.85rem; color: var(--navy-light); margin-bottom: 0.1rem; }
+    .pattern-hint { font-size: 0.8rem; color: var(--navy-muted); margin-bottom: 0.1rem; font-style: italic; }
+    .pattern-list { font-size: 0.85rem; color: var(--navy-light); margin: 0 0 0.2rem 0; padding-left: 1.25rem; }
+    .pattern-list li { margin-bottom: 0.03rem; }
+    .pattern-blanks { font-size: 0.85rem; margin-top: 0.1rem; line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1 ==================== -->
+  <div class="page-1" style="page-break-after: always;">
+
+    <!-- 1. Activity Header Strip -->
+    <header class="activity-header">
+      <div class="activity-number">3</div>
+      <h1 class="activity-title">Spot the Loop</h1>
+      <span class="difficulty-badge difficulty-easy">AGES 8-12</span>
+    </header>
+
+    <!-- 2. Kid Instructions Box + Mascot -->
+    <div class="intro-with-mascot">
+      <div class="mascot-box">MASCOT<br>GOES<br>HERE</div>
+      <section class="kid-box">
+        <p>In the last activity, you put your morning routine in order. But here's the cool part — you do that SAME routine almost every single day. That's called a <strong>loop</strong> — when something repeats over and over!</p>
+      </section>
+    </div>
+
+    <!-- 3. Vocabulary Callout -->
+    <section class="vocab-callout">
+      <span class="vocab-word">Loop</span>
+      <p class="vocab-def"><strong>Loop</strong> — Something that repeats. Instead of writing the same step 100 times, you just say "do this 100 times."<br><em>Example:</em> When you do 10 jumping jacks, that's a loop! You're repeating the same move 10 times instead of writing "jump and clap, jump and clap, jump and clap..." over and over.</p>
+    </section>
+
+    <!-- 4. Two-Column Split -->
+    <div class="two-col">
+      <!-- Basic Version -->
+      <div class="col col-basic">
+        <div class="col-header">Basic Version</div>
+        <p class="small" style="margin-bottom:0.2rem; font-size:0.8rem;"><strong>Find the Repeat</strong> — Read each one. Circle the part that repeats, then fill in the blanks below.</p>
+
+        <div class="basic-item">
+          <div class="basic-item-label">1. Song: "If You're Happy and You Know It"</div>
+          <div class="snippet-quote">
+            If you're happy and you know it, clap your hands (clap clap)<br>
+            If you're happy and you know it, clap your hands (clap clap)<br>
+            If you're happy and you know it, then your face will surely show it<br>
+            If you're happy and you know it, clap your hands (clap clap)
+          </div>
+          <div class="basic-item-blanks">
+            What repeats? <span class="blank-fill-line blank-long"></span> How many times? <span class="blank-fill-line blank-short"></span>
+          </div>
+        </div>
+
+        <div class="basic-item">
+          <div class="basic-item-label">2. Workout: P.E. Warm-Up</div>
+          <div class="snippet-quote">
+            Do 10 jumping jacks.<br>
+            Rest for 5 seconds.<br>
+            Do 10 jumping jacks.<br>
+            Rest for 5 seconds.<br>
+            Do 10 jumping jacks.
+          </div>
+          <div class="basic-item-blanks">
+            What repeats? <span class="blank-fill-line blank-long"></span> How many times? <span class="blank-fill-line blank-short"></span>
+          </div>
+        </div>
+
+        <div class="basic-item">
+          <div class="basic-item-label">3. Recipe: Cooking Pancakes</div>
+          <div class="snippet-quote">
+            Pour batter onto the hot pan.<br>
+            Wait until you see bubbles.<br>
+            Flip the pancake.<br>
+            Cook 1 more minute.<br>
+            Take it out — then start the next one!
+          </div>
+          <div class="basic-item-hint">Hint: how many pancakes if you make 5?</div>
+          <div class="basic-item-blanks">
+            What repeats? <span class="blank-fill-line blank-long"></span> How many times? <span class="blank-fill-line blank-short"></span>
+          </div>
+        </div>
+
+        <div class="basic-item">
+          <div class="basic-item-label">4. Daily Habit: Brushing Your Teeth</div>
+          <div class="snippet-quote">
+            Every morning, brush your teeth.<br>
+            Every night, brush your teeth.<br>
+            Do this every single day for a whole week.
+          </div>
+          <div class="basic-item-blanks">
+            What repeats? <span class="blank-fill-line blank-long"></span> How many times in a week? <span class="blank-fill-line blank-short"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Challenge Version -->
+      <div class="col col-challenge">
+        <div class="col-header">Challenge Version</div>
+        <p class="small" style="margin-bottom:0.2rem; font-size:0.8rem;"><strong>Loop Detective</strong> — Real life is full of loops! For each scenario, figure out what's repeating, then write the loop in shorthand like this: Repeat [action] [number] times.</p>
+
+        <div class="scenario">
+          <div class="scenario-label">Scenario A: Morning Attendance</div>
+          <div class="scenario-desc">It's the start of class. The teacher reads from a list of 25 students. For each name, the teacher calls it out, and that student says "Here!" Then the teacher moves to the next name. This continues until every student has been called.</div>
+          <div class="scenario-prompt">Write the loop:</div>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <div class="scenario">
+          <div class="scenario-label">Scenario B: Setting the Dinner Table</div>
+          <div class="scenario-desc">You're helping set the table for your family of 4. At each spot, you place: a plate, a fork on the left, a knife on the right, a spoon next to the knife, and a folded napkin on top of the plate. You do this for every person.</div>
+          <div class="scenario-prompt">Write the loop:</div>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Reflection Box -->
+    <section class="reflection-box" style="margin-bottom:0.2rem;">
+      <h3>Reflection Box</h3>
+      <p>Why is using a loop better than writing the same step 100 times? What might go wrong if you tried to write it out by hand?</p>
+      <div class="writing-lines">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </section>
+
+  </div><!-- /.page-1 -->
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="page-activity page-2">
+
+    <div class="content-area">
+
+      <!-- 6. Self-Check -->
+      <section style="margin-bottom:0.6rem;">
+        <h3 style="font-size:1.05rem; color:var(--teal-dark); margin-bottom:0.3rem;">Self-Check</h3>
+        <ul class="kid-checklist">
+          <li><span class="checkbox"></span> I circled the part that repeats in all 4 Basic examples</li>
+          <li><span class="checkbox"></span> I wrote the loop shorthand for both Challenge scenarios</li>
+          <li><span class="checkbox"></span> I used the format "Repeat [action] [N] times"</li>
+          <li><span class="checkbox"></span> I can explain in my own words why loops are useful</li>
+        </ul>
+      </section>
+
+      <!-- 7. Bonus: Spot the Loop in a Pattern -->
+      <section style="margin-bottom:0.6rem;">
+        <h3 style="font-size:1.05rem; color:var(--navy); margin-bottom:0.3rem;">Bonus: Spot the Loop in a Pattern</h3>
+        <p class="small" style="margin-bottom:0.3rem;">Look at each pattern below. Figure out the loop, then predict what comes next!</p>
+
+        <div class="pattern-row">
+          <div class="pattern-label">Pattern A — Shapes</div>
+          <div class="pattern-shapes">
+            <svg viewBox="0 0 32 32"><polygon points="16,4 28,28 4,28" fill="#FFF8F0" stroke="#2D3047" stroke-width="2"/></svg>
+            <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="#FFF8F0" stroke="#2D3047" stroke-width="2"/></svg>
+            <svg viewBox="0 0 32 32"><rect x="4" y="4" width="24" height="24" fill="#FFF8F0" stroke="#2D3047" stroke-width="2"/></svg>
+            <svg viewBox="0 0 32 32"><polygon points="16,4 28,28 4,28" fill="#FFF8F0" stroke="#2D3047" stroke-width="2"/></svg>
+            <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="#FFF8F0" stroke="#2D3047" stroke-width="2"/></svg>
+            <svg viewBox="0 0 32 32"><rect x="4" y="4" width="24" height="24" fill="#FFF8F0" stroke="#2D3047" stroke-width="2"/></svg>
+            <svg viewBox="0 0 32 32"><rect x="4" y="4" width="24" height="24" fill="none" stroke="#2D3047" stroke-width="2" stroke-dasharray="4,2"/></svg>
+            <svg viewBox="0 0 32 32"><rect x="4" y="4" width="24" height="24" fill="none" stroke="#2D3047" stroke-width="2" stroke-dasharray="4,2"/></svg>
+            <svg viewBox="0 0 32 32"><rect x="4" y="4" width="24" height="24" fill="none" stroke="#2D3047" stroke-width="2" stroke-dasharray="4,2"/></svg>
+          </div>
+          <div class="pattern-blanks">
+            What repeats? <span class="blank-fill-line blank-long"></span><br>
+            The next 3 shapes are: <span class="blank-fill-line blank-long"></span>
+          </div>
+        </div>
+
+        <div class="pattern-row">
+          <div class="pattern-label">Pattern B — A Dance</div>
+          <div class="pattern-text">Step Left → Clap → Step Right → Clap → Step Left → Clap → Step Right → Clap...</div>
+          <div class="pattern-hint">Hint: it's only 4 moves long, then it starts over.</div>
+          <div class="pattern-blanks">
+            What's the loop? <span class="blank-fill-line blank-long"></span>
+          </div>
+        </div>
+
+        <div class="pattern-row">
+          <div class="pattern-label">Pattern C — Weekly Chores</div>
+          <ul class="pattern-list">
+            <li>Monday: Trash</li>
+            <li>Tuesday: Recycling</li>
+            <li>Wednesday: Trash</li>
+            <li>Thursday: Recycling</li>
+            <li>Friday: Trash</li>
+            <li>Saturday: Recycling</li>
+          </ul>
+          <div class="pattern-blanks">
+            What repeats? <span class="blank-fill-line blank-long"></span><br>
+            How long is the loop (how many days before it starts over)? <span class="blank-fill-line blank-short"></span>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.content-area -->
+
+    <!-- 8. Teacher / Parent Note -->
+    <aside class="teacher-note">
+      <div class="teacher-note-label">
+        <span>Teacher / Parent Note</span>
+      </div>
+      <p>This activity introduces loops (also called iteration) — one of the three core control structures in programming, alongside sequence (Activity 2) and selection (coming up in Activity 5). Kids learn that repetition is everywhere in real life, and that programmers use loops to avoid writing the same code over and over — which saves time AND prevents mistakes. Discussion prompt: Ask your child to spot 3 loops in their own daily life — at home, at school, or in a hobby.</p>
+    </aside>
+
+  </div><!-- /.page-activity .page-2 -->
+
+</body>
+</html>

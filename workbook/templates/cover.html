@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS Unplugged Workbook — Cover</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Workbook styles -->
+  <link rel="stylesheet" href="../styles/colors.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/print.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; padding: 0; }
+
+    .page-cover {
+      page: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: calc(11in - 1in);
+      background: var(--cream);
+      padding: 2rem;
+      position: relative;
+    }
+    .cover-accent-bar {
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+      right: 2rem;
+      height: 3px;
+      background: var(--coral);
+      border-radius: 2px;
+    }
+    .cover-mascot {
+      width: 180px;
+      height: 180px;
+      margin-bottom: 1.5rem;
+    }
+    .cover-title {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--coral);
+      margin-bottom: 0.5rem;
+      line-height: 1.1;
+    }
+    .cover-subtitle {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--navy-muted);
+      margin-bottom: 2rem;
+    }
+    .cover-badges {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .cover-age {
+      display: inline-block;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      background: var(--teal);
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+    }
+    .cover-no-computer {
+      display: inline-block;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      background: var(--coral);
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+    }
+    .cover-icons {
+      display: grid;
+      grid-template-columns: 80px 80px;
+      grid-template-rows: 80px 80px;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .cover-icons svg {
+      width: 80px;
+      height: 80px;
+      display: block;
+    }
+    .cover-footer {
+      position: absolute;
+      bottom: 2rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Nunito', sans-serif;
+      font-variant: small-caps;
+      letter-spacing: 0.1em;
+      color: var(--navy);
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-cover">
+    <div class="cover-accent-bar"></div>
+    <div class="mascot-box cover-mascot">MASCOT GOES HERE</div>
+    <h1 class="cover-title">Unplugged<br>Computer Science</h1>
+    <p class="cover-subtitle">26 hands-on activities to teach kids how to think like programmers</p>
+    <div class="cover-badges">
+      <span class="cover-age">Ages 8-12</span>
+      <span class="cover-no-computer">No Computer Needed</span>
+    </div>
+    <div class="cover-icons">
+      <!-- Sequence: 3 numbered circles connected by arrows -->
+      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="40" r="12" fill="var(--teal)"/>
+        <text x="18" y="45" text-anchor="middle" fill="var(--white)" font-family="Fredoka,sans-serif" font-size="14" font-weight="600">1</text>
+        <polygon points="34,36 42,40 34,44" fill="var(--navy-muted)"/>
+        <circle cx="55" cy="40" r="12" fill="var(--teal)"/>
+        <text x="55" y="45" text-anchor="middle" fill="var(--white)" font-family="Fredoka,sans-serif" font-size="14" font-weight="600">2</text>
+      </svg>
+      <!-- Loop: circular arrow -->
+      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 55 25 A 24 24 0 1 0 55 55" fill="none" stroke="var(--coral)" stroke-width="5" stroke-linecap="round"/>
+        <polygon points="55,15 65,30 45,30" fill="var(--coral)"/>
+      </svg>
+      <!-- Conditional: diamond with Yes/No branches -->
+      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="40,16 64,40 40,64 16,40" fill="var(--sunny)"/>
+        <text x="28" y="30" fill="var(--navy)" font-family="Nunito,sans-serif" font-size="9" font-weight="700">Yes</text>
+        <text x="50" y="30" fill="var(--navy)" font-family="Nunito,sans-serif" font-size="9" font-weight="700">No</text>
+      </svg>
+      <!-- Binary/pattern: 3x3 grid of filled and empty dots -->
+      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="8" fill="var(--navy)"/>
+        <circle cx="40" cy="24" r="8" fill="none" stroke="var(--navy)" stroke-width="3"/>
+        <circle cx="56" cy="24" r="8" fill="var(--navy)"/>
+        <circle cx="24" cy="40" r="8" fill="none" stroke="var(--navy)" stroke-width="3"/>
+        <circle cx="40" cy="40" r="8" fill="var(--navy)"/>
+        <circle cx="56" cy="40" r="8" fill="none" stroke="var(--navy)" stroke-width="3"/>
+        <circle cx="24" cy="56" r="8" fill="var(--navy)"/>
+        <circle cx="40" cy="56" r="8" fill="none" stroke="var(--navy)" stroke-width="3"/>
+        <circle cx="56" cy="56" r="8" fill="var(--navy)"/>
+      </svg>
+    </div>
+    <div class="cover-footer">Homeschool + Classroom Edition</div>
+  </div>
+
+</body>
+</html>

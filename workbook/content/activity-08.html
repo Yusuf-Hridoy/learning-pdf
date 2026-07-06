@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity 8 — Sorting: Bubble Sort Unplugged</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Workbook styles -->
+  <link rel="stylesheet" href="../styles/colors.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/print.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; padding: 0; }
+
+    /* ==================== PAGE 1 — ULTRA COMPACT ==================== */
+    .page-1 .activity-header { margin-bottom: 0.1rem; padding: 0.1rem 0.4rem; }
+    .page-1 .kid-box { margin-bottom: 0.1rem; padding: 0.4rem 0.5rem 0.1rem; }
+    .page-1 .vocab-callout { margin-bottom: 0.1rem; padding: 0.2rem 0.5rem; }
+    .page-1 .two-col { gap: 0.5rem; margin-bottom: 0.15rem; page-break-inside: auto; }
+    .page-1 .col-header { padding: 0.2rem 0.4rem; margin-bottom: 0.12rem; font-size: 0.85rem; }
+
+    .page-1 .kid-box p { font-size: 0.8rem; line-height: 1.35; margin-bottom: 0; }
+    .page-1 .vocab-def { font-size: 0.75rem; line-height: 1.3; margin-bottom: 0; }
+
+    /* How It Works section */
+    .how-it-works { margin-bottom: 0.1rem; }
+    .how-it-works-header {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 8px;
+      margin-bottom: 0.12rem;
+      text-align: center;
+      background: var(--teal-light);
+      color: var(--teal-dark);
+    }
+    .how-it-works p {
+      font-size: 0.74rem;
+      line-height: 1.25;
+      margin-bottom: 0.08rem;
+    }
+    .how-it-works ol {
+      margin: 0.06rem 0;
+      padding-left: 1.1rem;
+      font-size: 0.71rem;
+      line-height: 1.2;
+    }
+    .how-it-works li { margin-bottom: 0.01rem; }
+
+    /* Worked example */
+    .worked-example { margin-top: 0.08rem; }
+    .worked-label {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.04rem;
+    }
+    .compact-pass {
+      font-size: 0.7rem;
+      font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+      line-height: 1.15;
+      margin: 0;
+      color: var(--navy-light);
+    }
+    .bubble-note {
+      font-size: 0.73rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-top: 0.08rem;
+      line-height: 1.2;
+    }
+
+    /* Sort row groups */
+    .sort-row-group {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-bottom: 0.04rem;
+      flex-wrap: wrap;
+    }
+    .sort-row-group .sort-row-label {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+
+    /* Column widths */
+    .col-basic { flex: 0.9; min-width: 0; }
+    .col-challenge { flex: 1.1; min-width: 0; }
+
+    /* Part subtitles */
+    .part-subtitle {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--coral);
+      margin-bottom: 0.04rem;
+      margin-top: 0.08rem;
+    }
+
+    /* Questions and labels */
+    .question-label {
+      font-size: 0.71rem;
+      color: var(--navy-light);
+      margin: 0.05rem 0 0.02rem;
+      line-height: 1.2;
+    }
+    .answer-arrow {
+      font-size: 0.75rem;
+      color: var(--navy-muted);
+      flex-shrink: 0;
+    }
+
+    /* Code example compact */
+    .page-1 .code-example {
+      padding: 0.15rem 0.35rem;
+      font-size: 0.65rem;
+      line-height: 1.2;
+      margin: 0.04rem 0;
+    }
+
+    /* Circle choice */
+    .circle-option {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .circle-option .circle {
+      width: 1.3rem;
+      height: 1.3rem;
+      border: 2px solid var(--navy);
+      border-radius: 50%;
+      display: inline-block;
+      background: var(--white);
+    }
+
+    /* Writing lines compact */
+    .page-1 .writing-lines { margin-bottom: 0.04rem; }
+    .page-1 .writing-lines .line {
+      height: 0.95rem;
+      margin-bottom: 0.01rem;
+    }
+
+    /* Intro row */
+    .intro-with-mascot { display: flex; gap: 0.5rem; align-items: flex-start; margin-top: 0.4rem; }
+    .intro-with-mascot .mascot-box { flex-shrink: 0; width: 70px; height: 70px; font-size: 0.65rem; }
+
+    /* Tight sort rows */
+    .sort-row { gap: 3px; }
+    .sort-row .sort-box { width: 34px; height: 34px; font-size: 0.95rem; }
+    .sort-row .sort-box.wide { width: 42px; }
+
+    /* ==================== PAGE 2 ==================== */
+    .page-2 h3 { margin-bottom: 0.1rem; }
+    .page-2 section { margin-bottom: 0.25rem; }
+    .page-2 .writing-lines { margin-bottom: 0.1rem; }
+    .page-2 .writing-lines .line { height: 1.05rem; margin-bottom: 0.03rem; }
+    .page-2 .kid-checklist { margin: 0; }
+    .page-2 .kid-checklist li { margin-bottom: 0.5rem; font-size: 0.85rem; }
+    .page-2 .teacher-note { padding: 0.25rem 0.4rem; }
+    .page-2 .teacher-note p { font-size: 0.78rem; line-height: 1.3; }
+    .page-2 .reflection-box { margin-top: 0.3rem; margin-bottom: 0.2rem; }
+    .page-2 .reflection-box p { font-size: 0.8rem; line-height: 1.35; margin-bottom: 0.1rem; }
+    .page-2 .followup-box { padding: 0.2rem 0.35rem; margin-top: 0.1rem; }
+    .page-2 .followup-box p { font-size: 0.78rem; margin-bottom: 0.08rem; }
+
+    /* Step rows for bonus */
+    .step-row { display: flex; align-items: baseline; gap: 0.3rem; margin-bottom: 0.08rem; }
+    .step-num { font-family: 'Fredoka', sans-serif; font-size: 0.74rem; font-weight: 600; color: var(--navy); min-width: 1rem; text-align: right; }
+    .step-row .line { flex: 1; height: 1.05rem; border-bottom: 1px solid var(--gray-mid); display: block; margin-bottom: 0; }
+
+    /* Followup box */
+    .followup-box {
+      border: 2px dashed var(--teal);
+      border-radius: 10px;
+      padding: 0.25rem 0.4rem;
+      background: var(--white);
+      margin-top: 0.15rem;
+      page-break-inside: avoid;
+    }
+    .followup-box p {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1 ==================== -->
+  <div class="page-1" style="page-break-after: always;">
+
+    <!-- 1. Activity Header Strip -->
+    <header class="activity-header">
+      <div class="activity-number">8</div>
+      <h1 class="activity-title">Sorting: Bubble Sort Unplugged</h1>
+      <span class="difficulty-badge difficulty-easy">AGES 8-12</span>
+    </header>
+
+    <!-- 2. Kid Instructions Box + Mascot -->
+    <div class="intro-with-mascot">
+      <div class="mascot-box">MASCOT<br>GOES<br>HERE</div>
+      <section class="kid-box">
+        <p>You've learned loops, conditionals, and nested loops. Now let's put them ALL together to make a real algorithm — one that real programmers use every single day!</p>
+      </section>
+    </div>
+
+    <!-- 3. Vocabulary Callout -->
+    <section class="vocab-callout">
+      <span class="vocab-word">Sort</span>
+      <p class="vocab-def"><strong>Sort</strong> — To put things in order, like smallest to largest, A to Z, or shortest to tallest.<br><em>Example:</em> When you line up by height in P.E. class, your teacher is sorting you — usually shortest to tallest!</p>
+    </section>
+
+    <!-- 4. How It Works — Bubble Sort -->
+    <section class="how-it-works">
+      <div class="how-it-works-header">How It Works — Bubble Sort</div>
+      <p>Bubble sort is one of the simplest sorting algorithms. Here are the rules:</p>
+      <ol>
+        <li>Look at the first TWO items</li>
+        <li>Are they in the wrong order? SWAP them.</li>
+        <li>Move to the NEXT pair</li>
+        <li>Repeat until you reach the end — that's one PASS</li>
+        <li>Keep doing passes until nothing swaps. Now it's sorted!</li>
+      </ol>
+
+      <div class="worked-example">
+        <div class="worked-label">Worked Example — Sort: [3] [1] [4] [2]</div>
+        <div class="sort-row-group">
+          <span class="sort-row-label">Start:</span>
+          <div class="sort-row filled">
+            <div class="sort-box">3</div>
+            <div class="sort-box">1</div>
+            <div class="sort-box">4</div>
+            <div class="sort-box">2</div>
+          </div>
+        </div>
+        <p class="compact-pass"><strong>Pass 1:</strong> 3↔1 SWAP, 3↔4 keep, 4↔2 SWAP → [1, 3, 2, 4]</p>
+        <p class="compact-pass"><strong>Pass 2:</strong> 1↔3 keep, 3↔2 SWAP, 3↔4 keep → [1, 2, 3, 4]</p>
+        <p class="compact-pass"><strong>Pass 3:</strong> Check all pairs → no swaps needed → DONE!</p>
+        <p class="bubble-note">Notice — the biggest number (4) BUBBLED UP to the end first. That's why it's called bubble sort!</p>
+      </div>
+    </section>
+
+    <!-- 5. Two-Column Split -->
+    <div class="two-col">
+      <!-- Basic Version -->
+      <div class="col col-basic">
+        <div class="col-header">Basic Version</div>
+        <p class="small" style="margin-bottom:0.08rem; font-size:0.73rem; line-height:1.25;"><strong>Sort the Numbers</strong> — Use bubble sort to put these numbers in order from smallest to largest. Write the list after each pass.</p>
+
+        <div class="sort-row-group">
+          <span class="sort-row-label">Start:</span>
+          <div class="sort-row filled">
+            <div class="sort-box">5</div>
+            <div class="sort-box">2</div>
+            <div class="sort-box">8</div>
+            <div class="sort-box">3</div>
+          </div>
+        </div>
+        <div class="sort-row-group">
+          <span class="sort-row-label">Pass 1:</span>
+          <div class="sort-row empty">
+            <div class="sort-box"></div>
+            <div class="sort-box"></div>
+            <div class="sort-box"></div>
+            <div class="sort-box"></div>
+          </div>
+        </div>
+        <div class="sort-row-group">
+          <span class="sort-row-label">Pass 2:</span>
+          <div class="sort-row empty">
+            <div class="sort-box"></div>
+            <div class="sort-box"></div>
+            <div class="sort-box"></div>
+            <div class="sort-box"></div>
+          </div>
+        </div>
+        <div class="sort-row-group">
+          <span class="sort-row-label">Pass 3:</span>
+          <div class="sort-row empty">
+            <div class="sort-box"></div>
+            <div class="sort-box"></div>
+            <div class="sort-box"></div>
+            <div class="sort-box"></div>
+          </div>
+        </div>
+
+        <div class="question-label" style="margin-top:0.1rem;">How many passes did it take?</div>
+        <span class="blank-fill-line blank-short" style="margin-top:0.05rem; display:inline-block;"></span>
+
+        <div class="question-label" style="margin-top:0.1rem;">Is the list sorted?</div>
+        <div style="margin-top:0.05rem;">
+          <span class="circle-option"><span class="circle"></span> YES</span>
+          <span class="circle-option"><span class="circle"></span> NO</span>
+        </div>
+      </div>
+
+      <!-- Challenge Version -->
+      <div class="col col-challenge">
+        <div class="col-header">Challenge Version</div>
+
+        <!-- Part A -->
+        <div class="part-subtitle">PART A — Line Up the Friends</div>
+        <p class="small" style="margin:0.03rem 0; font-size:0.71rem; line-height:1.2;">Imagine you're lining up 5 friends by height (shortest to tallest). Their heights in cm are:</p>
+
+        <div class="sort-row-group">
+          <span class="sort-row-label">Start:</span>
+          <div class="sort-row filled">
+            <div class="sort-box wide">140</div>
+            <div class="sort-box wide">125</div>
+            <div class="sort-box wide">150</div>
+            <div class="sort-box wide">130</div>
+            <div class="sort-box wide">145</div>
+          </div>
+        </div>
+        <p class="small" style="margin:0.03rem 0; font-size:0.68rem; line-height:1.2;">Use bubble sort. Write each pass below. (You may not need all 4 rows — leave the last row empty if sorted.)</p>
+
+        <div class="sort-row-group">
+          <span class="sort-row-label">Pass 1:</span>
+          <div class="sort-row empty">
+            <div class="sort-box wide"></div>
+            <div class="sort-box wide"></div>
+            <div class="sort-box wide"></div>
+            <div class="sort-box wide"></div>
+            <div class="sort-box wide"></div>
+          </div>
+        </div>
+        <div class="sort-row-group">
+          <span class="sort-row-label">Pass 2:</span>
+          <div class="sort-row empty">
+            <div class="sort-box wide"></div>
+            <div class="sort-box wide"></div>
+            <div class="sort-box wide"></div>
+            <div class="sort-box wide"></div>
+            <div class="sort-box wide"></div>
+          </div>
+        </div>
+        <div class="sort-row-group">
+          <span class="sort-row-label">Pass 3:</span>
+          <div class="sort-row empty">
+            <div class="sort-box wide"></div>
+            <div class="sort-box wide"></div>
+            <div class="sort-box wide"></div>
+            <div class="sort-box wide"></div>
+            <div class="sort-box wide"></div>
+          </div>
+        </div>
+        <div class="sort-row-group">
+          <span class="sort-row-label">Pass 4:</span>
+          <div class="sort-row empty">
+            <div class="sort-box wide"></div>
+            <div class="sort-box wide"></div>
+            <div class="sort-box wide"></div>
+            <div class="sort-box wide"></div>
+            <div class="sort-box wide"></div>
+          </div>
+        </div>
+
+        <div class="question-label" style="margin-top:0.08rem;">How many passes were needed?</div>
+        <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.03rem;">
+          <span class="answer-arrow">➜</span>
+          <span class="line" style="flex:1; margin-bottom:0; height:0.95rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+        </div>
+
+        <!-- Part B -->
+        <div class="part-subtitle">PART B — Why Does Bubble Sort Need NESTED Loops?</div>
+        <p class="small" style="margin:0.03rem 0; font-size:0.7rem; line-height:1.2;">Bubble sort has TWO loops working together — the OUTER loop counts passes, and the INNER loop compares pairs within a pass.</p>
+        <div class="code-example">Repeat until no swaps happen:
+   Repeat for each pair in the list:
+      IF the pair is in the wrong order THEN swap them</div>
+        <div class="question-label" style="margin-top:0.05rem;">Which loop runs more times in total — the outer loop or the inner loop? Why?</div>
+        <div class="writing-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.page-1 -->
+
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="page-activity page-2">
+
+    <div class="content-area">
+
+      <!-- 6. Self-Check -->
+      <section>
+        <h3 style="font-size:1rem; color:var(--teal-dark); margin-bottom:0.15rem;">Self-Check</h3>
+        <ul class="kid-checklist">
+          <li><span class="checkbox"></span> I followed the worked example and understood why 4 "bubbled up" first</li>
+          <li><span class="checkbox"></span> I sorted the numbers [5, 2, 8, 3] using bubble sort</li>
+          <li><span class="checkbox"></span> I sorted the 5 heights and counted how many passes it took</li>
+          <li><span class="checkbox"></span> I can explain why bubble sort uses nested loops</li>
+        </ul>
+      </section>
+
+      <!-- 7. Reflection Box -->
+      <section class="reflection-box">
+        <h3>Reflection Box</h3>
+        <p>Bubble sort works, but is it FAST? If you had to sort 100 numbers, would bubble sort feel slow or quick? Why do you think real computers use FASTER sorting algorithms most of the time?</p>
+        <div class="writing-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </section>
+
+      <!-- 8. Bonus: Sort Real Things -->
+      <section>
+        <h3 style="font-size:1rem; color:var(--navy); margin-bottom:0.1rem;">Bonus: Sort Real Things</h3>
+        <p class="small" style="margin-bottom:0.1rem; font-size:0.8rem;">Time to leave the page! Grab 5 things from around your house — books, toys, coins, anything! Line them up in a random order. Now use bubble sort to put them in order by size (smallest to biggest).</p>
+
+        <div class="question-label" style="margin-top:0.1rem;"><strong>Items I sorted:</strong></div>
+        <div class="step-row"><span class="step-num">1.</span><span class="line"></span></div>
+        <div class="step-row"><span class="step-num">2.</span><span class="line"></span></div>
+        <div class="step-row"><span class="step-num">3.</span><span class="line"></span></div>
+        <div class="step-row"><span class="step-num">4.</span><span class="line"></span></div>
+        <div class="step-row"><span class="step-num">5.</span><span class="line"></span></div>
+
+        <div class="question-label" style="margin-top:0.1rem;">What order did you sort them in? (size, weight, color, alphabet?)</div>
+        <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.03rem;">
+          <span class="answer-arrow">➜</span>
+          <span class="line" style="flex:1; margin-bottom:0; height:1.05rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+        </div>
+
+        <div class="question-label" style="margin-top:0.1rem;">How many passes did you need?</div>
+        <span class="blank-fill-line blank-short" style="margin-top:0.05rem; display:inline-block;"></span>
+
+        <div class="followup-box">
+          <p>Bonus reflection: Did doing it with REAL things feel different from doing it on paper? Why?</p>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.content-area -->
+
+    <!-- 9. Teacher / Parent Note -->
+    <aside class="teacher-note">
+      <div class="teacher-note-label">
+        <span>Teacher / Parent Note</span>
+      </div>
+      <p>This is the first named algorithm in the workbook — and it uses every concept your child has learned so far: sequence (Activity 2), loops (Activities 3-4), nested loops (Activity 4), conditionals (Activity 5), and even debugging (Activity 7) when sorts go wrong. Bubble sort isn't the fastest sorting algorithm — but it's the most intuitive, which is why nearly every CS course on Earth starts here. Discussion prompt: Ask your child to spot something in real life that gets sorted regularly (a library shelf, a hand of cards, a classroom by height) and talk through what algorithm might be at work.</p>
+    </aside>
+
+  </div><!-- /.page-activity .page-2 -->
+
+</body>
+</html>

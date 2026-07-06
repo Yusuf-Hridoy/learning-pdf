@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity 10 — Pattern Recognition</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Workbook styles -->
+  <link rel="stylesheet" href="../styles/colors.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/print.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; padding: 0; }
+
+    /* ==================== PAGE 1 — ULTRA COMPACT ==================== */
+    .page-1 .activity-header { margin-bottom: 0.02rem; padding: 0.04rem 0.2rem; }
+    .page-1 .kid-box { margin-bottom: 0.02rem; padding: 0.2rem 0.3rem 0.02rem; }
+    .page-1 .vocab-callout { margin-bottom: 0.02rem; padding: 0.06rem 0.3rem; }
+    .page-1 .two-col { gap: 0.2rem; margin-bottom: 0; }
+    .page-1 .col-header { padding: 0.06rem 0.2rem; margin-bottom: 0.03rem; font-size: 0.72rem; }
+
+    .page-1 .kid-box p { font-size: 0.68rem; line-height: 1.15; margin-bottom: 0; }
+    .page-1 .vocab-def { font-size: 0.62rem; line-height: 1.1; margin-bottom: 0; }
+
+    /* How It Works section */
+    .how-it-works { margin-bottom: 0.05rem; }
+    .how-it-works-header {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.06rem 0.25rem;
+      border-radius: 4px;
+      margin-bottom: 0.02rem;
+      text-align: center;
+      background: var(--teal-light);
+      color: var(--teal-dark);
+    }
+    .how-it-works-intro {
+      font-size: 0.58rem;
+      line-height: 1.05;
+      margin-bottom: 0.02rem;
+    }
+
+    /* Pattern type blocks — horizontal row */
+    .pattern-types-row {
+      display: flex;
+      gap: 0.15rem;
+      margin-bottom: 0.01rem;
+    }
+    .pattern-type-block {
+      flex: 1;
+      min-width: 0;
+      margin-bottom: 0;
+      page-break-inside: avoid;
+    }
+    .pattern-type-name {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0;
+      display: block;
+    }
+    .pattern-type-tagline {
+      font-size: 0.54rem;
+      color: var(--navy-light);
+      line-height: 1.05;
+      margin-bottom: 0.01rem;
+      display: block;
+    }
+    .pattern-example {
+      font-size: 0.54rem;
+      color: var(--navy);
+      line-height: 1.05;
+      margin-bottom: 0.01rem;
+      margin-top: 0.01rem;
+    }
+    .pattern-example .seq-label {
+      font-weight: 600;
+      margin-right: 0.08rem;
+    }
+    .pattern-rule {
+      font-size: 0.54rem;
+      color: var(--navy-light);
+      line-height: 1.05;
+      margin-bottom: 0;
+    }
+    .pattern-rule strong {
+      color: var(--navy);
+    }
+
+    /* Detective tip callout */
+    .detective-tip {
+      background: var(--teal-light);
+      border: 1px solid var(--teal);
+      border-radius: 3px;
+      padding: 0.06rem 0.2rem;
+      margin-top: 0.02rem;
+      font-size: 0.58rem;
+      line-height: 1.1;
+      color: var(--navy);
+      page-break-inside: avoid;
+    }
+    .detective-tip .tip-label {
+      font-weight: 700;
+      color: var(--coral);
+    }
+
+    /* Inline sequence renderers */
+    .inline-seq {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.1rem;
+      flex-wrap: wrap;
+      vertical-align: middle;
+    }
+    .seq-shape {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    .seq-shape.blank-shape {
+      width: 20px;
+      height: 20px;
+      border: 1.5px dashed var(--navy);
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .seq-number {
+      font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .seq-comma {
+      font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+      font-size: 0.65rem;
+      color: var(--navy-muted);
+      margin-right: 0.02rem;
+    }
+
+    /* Answer box (single small sort-row-style box) */
+    .answer-box {
+      display: inline-block;
+      width: 26px;
+      height: 26px;
+      border: 1.5px solid var(--navy);
+      border-radius: 3px;
+      background: var(--white);
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+
+    /* Column widths */
+    .col-basic { flex: 0.88; min-width: 0; }
+    .col-challenge { flex: 1.12; min-width: 0; }
+
+    /* Part subtitles */
+    .part-subtitle {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: var(--coral);
+      margin-bottom: 0.01rem;
+      margin-top: 0.02rem;
+    }
+
+    /* Pattern labels in columns */
+    .pattern-label {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0;
+      margin-top: 0.02rem;
+    }
+
+    /* Questions and labels */
+    .question-label {
+      font-size: 0.56rem;
+      color: var(--navy-light);
+      margin: 0.01rem 0 0;
+      line-height: 1.05;
+    }
+    .answer-arrow {
+      font-size: 0.6rem;
+      color: var(--navy-muted);
+      flex-shrink: 0;
+    }
+
+    /* Writing lines compact */
+    .page-1 .writing-lines { margin-bottom: 0; }
+    .page-1 .writing-lines .line {
+      height: 0.65rem;
+      margin-bottom: 0;
+    }
+
+    /* Circle option compact */
+    .circle-option {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.08rem;
+      font-size: 0.58rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-right: 0.25rem;
+    }
+    .circle-option .circle {
+      width: 0.85rem;
+      height: 0.85rem;
+      border: 1.5px solid var(--navy);
+      border-radius: 50%;
+      display: inline-block;
+      background: var(--white);
+      flex-shrink: 0;
+    }
+
+    /* Intro row */
+    .intro-with-mascot { display: flex; gap: 0.25rem; align-items: flex-start; margin-top: 0.15rem; }
+    .intro-with-mascot .mascot-box { flex-shrink: 0; width: 45px; height: 45px; font-size: 0.48rem; }
+
+    /* Empty boxes row for Part B */
+    .empty-boxes-row {
+      display: flex;
+      gap: 2px;
+      align-items: center;
+      margin: 0.01rem 0 0.03rem;
+    }
+    .empty-boxes-row .sort-box {
+      width: 22px;
+      height: 22px;
+      border: 1.5px solid var(--navy);
+      border-radius: 3px;
+      background: var(--white);
+      flex-shrink: 0;
+    }
+
+    /* Hint text */
+    .hint-text {
+      font-size: 0.56rem;
+      font-style: italic;
+      color: var(--navy-muted);
+      margin-bottom: 0;
+    }
+
+    /* ==================== PAGE 2 ==================== */
+    .page-2 h3 { margin-bottom: 0.06rem; font-size: 0.92rem; }
+    .page-2 section { margin-bottom: 0.15rem; }
+    .page-2 .writing-lines { margin-bottom: 0.06rem; }
+    .page-2 .writing-lines .line { height: 0.9rem; margin-bottom: 0.02rem; }
+    .page-2 .kid-checklist { margin: 0; }
+    .page-2 .kid-checklist li { margin-bottom: 0.25rem; font-size: 0.76rem; }
+    .page-2 .teacher-note { padding: 0.12rem 0.25rem; }
+    .page-2 .teacher-note p { font-size: 0.68rem; line-height: 1.2; }
+    .page-2 .reflection-box { margin-top: 0.15rem; margin-bottom: 0.12rem; }
+    .page-2 .reflection-box p { font-size: 0.74rem; line-height: 1.3; margin-bottom: 0.06rem; }
+    .page-2 .followup-box { padding: 0.12rem 0.25rem; margin-top: 0.08rem; }
+    .page-2 .followup-box p { font-size: 0.72rem; margin-bottom: 0.05rem; }
+
+    /* Bonus slot */
+    .bonus-slot {
+      margin-bottom: 0.04rem;
+      page-break-inside: avoid;
+    }
+    .bonus-slot-header {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.01rem;
+    }
+    .bonus-slot .question-label {
+      font-size: 0.62rem;
+      margin: 0.01rem 0;
+    }
+    .bonus-slot .line {
+      display: block;
+      width: 100%;
+      height: 0.85rem;
+      border-bottom: 1px solid var(--gray-mid);
+      margin-bottom: 0.02rem;
+    }
+
+    /* Followup box */
+    .followup-box {
+      border: 1.5px dashed var(--teal);
+      border-radius: 8px;
+      padding: 0.15rem 0.3rem;
+      background: var(--white);
+      margin-top: 0.1rem;
+      page-break-inside: avoid;
+    }
+    .followup-box p {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.06rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1 ==================== -->
+  <div class="page-1" style="page-break-after: always;">
+
+    <!-- 1. Activity Header Strip -->
+    <header class="activity-header">
+      <div class="activity-number">10</div>
+      <h1 class="activity-title">Pattern Recognition</h1>
+      <span class="difficulty-badge difficulty-easy">AGES 8-12</span>
+    </header>
+
+    <!-- 2. Kid Instructions Box + Mascot -->
+    <div class="intro-with-mascot">
+      <div class="mascot-box">MASCOT<br>GOES<br>HERE</div>
+      <section class="kid-box">
+        <p>Algorithms work because the world has PATTERNS — repeating shapes, growing numbers, hidden rules. Today, you become a pattern detective: find the rule, predict what's next!</p>
+      </section>
+    </div>
+
+    <!-- 3. Vocabulary Callout -->
+    <section class="vocab-callout">
+      <span class="vocab-word">Pattern</span>
+      <p class="vocab-def"><strong>Pattern</strong> — A rule that tells you what comes next in a sequence. Find the rule = predict the future!<br><em>Example:</em> Your weekly schedule has a pattern — school, school, school, school, school, weekend! Once you know the rule, you can predict any day.</p>
+    </section>
+
+    <!-- 4. How It Works — Three Types of Patterns -->
+    <section class="how-it-works">
+      <div class="how-it-works-header">How It Works — Three Types of Patterns</div>
+      <p class="how-it-works-intro">There are three main types of patterns. Once you know them, you can spot patterns almost anywhere!</p>
+
+      <div class="pattern-types-row">
+        <div class="pattern-type-block">
+          <div class="pattern-type-name">1. REPEATING</div>
+          <div class="pattern-type-tagline">the same thing happens over and over</div>
+          <div class="pattern-example">
+            <span class="seq-label">Example:</span>
+            <span class="inline-seq">
+              <svg class="seq-shape" viewBox="0 0 32 32"><rect x="4" y="4" width="24" height="24" fill="#FFF8F0" stroke="#2D3047" stroke-width="2"/></svg>
+              <svg class="seq-shape" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="none" stroke="#2D3047" stroke-width="2"/></svg>
+              <svg class="seq-shape" viewBox="0 0 32 32"><rect x="4" y="4" width="24" height="24" fill="#FFF8F0" stroke="#2D3047" stroke-width="2"/></svg>
+              <svg class="seq-shape" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="none" stroke="#2D3047" stroke-width="2"/></svg>
+              <svg class="seq-shape" viewBox="0 0 32 32"><rect x="4" y="4" width="24" height="24" fill="#FFF8F0" stroke="#2D3047" stroke-width="2"/></svg>
+              <svg class="seq-shape" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="none" stroke="#2D3047" stroke-width="2"/></svg>
+              <span class="seq-shape blank-shape"></span>
+            </span>
+          </div>
+          <div class="pattern-rule"><strong>Rule:</strong> The loop is "square, circle." &rarr; Next: square</div>
+        </div>
+
+        <div class="pattern-type-block">
+          <div class="pattern-type-name">2. GROWING</div>
+          <div class="pattern-type-tagline">each step gets bigger by a rule</div>
+          <div class="pattern-example">
+            <span class="seq-label">Example:</span>
+            <span class="inline-seq">
+              <span class="seq-number">2</span><span class="seq-comma">,</span>
+              <span class="seq-number">4</span><span class="seq-comma">,</span>
+              <span class="seq-number">6</span><span class="seq-comma">,</span>
+              <span class="seq-number">8</span><span class="seq-comma">,</span>
+              <span class="seq-number">___</span>
+            </span>
+          </div>
+          <div class="pattern-rule"><strong>Rule:</strong> The rule is "+2 each time." &rarr; Next: 10</div>
+        </div>
+
+        <div class="pattern-type-block">
+          <div class="pattern-type-name">3. RULE-BASED</div>
+          <div class="pattern-type-tagline">every step follows a hidden instruction</div>
+          <div class="pattern-example">
+            <span class="seq-label">Example:</span>
+            <span class="inline-seq">
+              <span class="seq-number">1</span><span class="seq-comma">,</span>
+              <span class="seq-number">4</span><span class="seq-comma">,</span>
+              <span class="seq-number">9</span><span class="seq-comma">,</span>
+              <span class="seq-number">16</span><span class="seq-comma">,</span>
+              <span class="seq-number">___</span>
+            </span>
+          </div>
+          <div class="pattern-rule"><strong>Rule:</strong> Each number is its position squared. &rarr; Next: 25</div>
+        </div>
+      </div>
+
+      <div class="detective-tip">
+        <span class="tip-label">Detective Trick:</span> Try to find the rule in just 2-3 items before you guess what's next!
+      </div>
+    </section>
+
+    <!-- 5. Two-Column Split -->
+    <div class="two-col">
+      <!-- Basic Version -->
+      <div class="col col-basic">
+        <div class="col-header">Basic Version</div>
+        <p class="small" style="margin-bottom:0.04rem; font-size:0.68rem; line-height:1.15;"><strong>Find the Next One</strong> — For each pattern, figure out the rule and predict the next item!</p>
+
+        <!-- Pattern 1 -->
+        <div class="pattern-label">Pattern 1</div>
+        <div class="inline-seq" style="margin-bottom:0.03rem;">
+          <svg class="seq-shape" viewBox="0 0 32 32"><polygon points="16,4 28,28 4,28" fill="none" stroke="#2D3047" stroke-width="2"/></svg>
+          <svg class="seq-shape" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="none" stroke="#2D3047" stroke-width="2"/></svg>
+          <svg class="seq-shape" viewBox="0 0 32 32"><polygon points="16,4 28,28 4,28" fill="none" stroke="#2D3047" stroke-width="2"/></svg>
+          <svg class="seq-shape" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="none" stroke="#2D3047" stroke-width="2"/></svg>
+          <svg class="seq-shape" viewBox="0 0 32 32"><polygon points="16,4 28,28 4,28" fill="none" stroke="#2D3047" stroke-width="2"/></svg>
+          <span class="seq-shape blank-shape"></span>
+        </div>
+        <div class="question-label">What's the rule?</div>
+        <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.02rem;">
+          <span class="answer-arrow">&rarr;</span>
+          <span class="line" style="flex:1; margin-bottom:0; height:0.8rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+        </div>
+        <div class="question-label" style="margin-top:0.02rem;">What comes next?</div>
+        <div class="answer-box" style="margin-top:0.02rem;"></div>
+
+        <!-- Pattern 2 -->
+        <div class="pattern-label">Pattern 2</div>
+        <div class="inline-seq" style="margin-bottom:0.03rem;">
+          <span class="seq-number">5</span><span class="seq-comma">,</span>
+          <span class="seq-number">10</span><span class="seq-comma">,</span>
+          <span class="seq-number">15</span><span class="seq-comma">,</span>
+          <span class="seq-number">20</span><span class="seq-comma">,</span>
+          <span class="seq-number">___</span>
+        </div>
+        <div class="question-label">What's the rule?</div>
+        <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.02rem;">
+          <span class="answer-arrow">&rarr;</span>
+          <span class="line" style="flex:1; margin-bottom:0; height:0.8rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+        </div>
+        <div class="question-label" style="margin-top:0.02rem;">What comes next?</div>
+        <div class="answer-box" style="margin-top:0.02rem;"></div>
+
+        <!-- Pattern 3 -->
+        <div class="pattern-label">Pattern 3</div>
+        <div class="inline-seq" style="margin-bottom:0.03rem;">
+          <span class="seq-number">A</span><span class="seq-comma">,</span>
+          <span class="seq-number">B</span><span class="seq-comma">,</span>
+          <span class="seq-number">C</span><span class="seq-comma">,</span>
+          <span class="seq-number">A</span><span class="seq-comma">,</span>
+          <span class="seq-number">B</span><span class="seq-comma">,</span>
+          <span class="seq-number">C</span><span class="seq-comma">,</span>
+          <span class="seq-number">A</span><span class="seq-comma">,</span>
+          <span class="seq-number">___</span>
+        </div>
+        <div class="question-label">What's the rule?</div>
+        <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.02rem;">
+          <span class="answer-arrow">&rarr;</span>
+          <span class="line" style="flex:1; margin-bottom:0; height:0.8rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+        </div>
+        <div class="question-label" style="margin-top:0.02rem;">What comes next?</div>
+        <div class="answer-box" style="margin-top:0.02rem;"></div>
+
+        <!-- Pattern 4 -->
+        <div class="pattern-label">Pattern 4</div>
+        <div class="inline-seq" style="margin-bottom:0.03rem;">
+          <span class="seq-number">2</span><span class="seq-comma">,</span>
+          <span class="seq-number">4</span><span class="seq-comma">,</span>
+          <span class="seq-number">8</span><span class="seq-comma">,</span>
+          <span class="seq-number">16</span><span class="seq-comma">,</span>
+          <span class="seq-number">___</span>
+        </div>
+        <div class="question-label">What's the rule?</div>
+        <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.02rem;">
+          <span class="answer-arrow">&rarr;</span>
+          <span class="line" style="flex:1; margin-bottom:0; height:0.8rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+        </div>
+        <div class="question-label" style="margin-top:0.04rem;">What comes next?</div>
+        <div class="answer-box" style="margin-top:0.03rem;"></div>
+      </div>
+
+      <!-- Challenge Version -->
+      <div class="col col-challenge">
+        <div class="col-header">Challenge Version</div>
+
+        <!-- Part A -->
+        <div class="part-subtitle">PART A — Spot the Hidden Rule</div>
+        <p class="small" style="margin:0.01rem 0; font-size:0.65rem; line-height:1.1;">These are trickier! For each pattern, identify the type, find the rule, and predict what comes next.</p>
+
+        <!-- Pattern A1 -->
+        <div class="pattern-label">Pattern A1</div>
+        <div class="inline-seq" style="margin-bottom:0.03rem;">
+          <span class="seq-number">1</span><span class="seq-comma">,</span>
+          <span class="seq-number">1</span><span class="seq-comma">,</span>
+          <span class="seq-number">2</span><span class="seq-comma">,</span>
+          <span class="seq-number">3</span><span class="seq-comma">,</span>
+          <span class="seq-number">5</span><span class="seq-comma">,</span>
+          <span class="seq-number">8</span><span class="seq-comma">,</span>
+          <span class="seq-number">___</span>
+        </div>
+        <div class="question-label">Type:</div>
+        <div style="margin-top:0.02rem;">
+          <span class="circle-option"><span class="circle"></span> Repeating</span>
+          <span class="circle-option"><span class="circle"></span> Growing</span>
+          <span class="circle-option"><span class="circle"></span> Rule-based</span>
+        </div>
+        <div class="question-label" style="margin-top:0.04rem;">Rule:</div>
+        <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.02rem;">
+          <span class="answer-arrow">&rarr;</span>
+          <span class="line" style="flex:1; margin-bottom:0; height:0.8rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+        </div>
+        <div class="question-label" style="margin-top:0.04rem;">Next:</div>
+        <div class="answer-box" style="margin-top:0.03rem;"></div>
+
+        <!-- Pattern A2 -->
+        <div class="pattern-label">Pattern A2</div>
+        <div class="inline-seq" style="margin-bottom:0.03rem;">
+          <span class="seq-number">100</span><span class="seq-comma">,</span>
+          <span class="seq-number">90</span><span class="seq-comma">,</span>
+          <span class="seq-number">81</span><span class="seq-comma">,</span>
+          <span class="seq-number">73</span><span class="seq-comma">,</span>
+          <span class="seq-number">66</span><span class="seq-comma">,</span>
+          <span class="seq-number">___</span>
+        </div>
+        <div class="question-label">Type:</div>
+        <div style="margin-top:0.02rem;">
+          <span class="circle-option"><span class="circle"></span> Repeating</span>
+          <span class="circle-option"><span class="circle"></span> Growing</span>
+          <span class="circle-option"><span class="circle"></span> Rule-based</span>
+        </div>
+        <div class="question-label" style="margin-top:0.04rem;">Rule:</div>
+        <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.02rem;">
+          <span class="answer-arrow">&rarr;</span>
+          <span class="line" style="flex:1; margin-bottom:0; height:0.8rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+        </div>
+        <div class="question-label" style="margin-top:0.04rem;">Next:</div>
+        <div class="answer-box" style="margin-top:0.03rem;"></div>
+
+        <!-- Pattern A3 -->
+        <div class="pattern-label">Pattern A3</div>
+        <div class="inline-seq" style="margin-bottom:0.03rem;">
+          <span class="seq-number">M</span><span class="seq-comma">,</span>
+          <span class="seq-number">T</span><span class="seq-comma">,</span>
+          <span class="seq-number">W</span><span class="seq-comma">,</span>
+          <span class="seq-number">T</span><span class="seq-comma">,</span>
+          <span class="seq-number">F</span><span class="seq-comma">,</span>
+          <span class="seq-number">S</span><span class="seq-comma">,</span>
+          <span class="seq-number">___</span>
+        </div>
+        <div class="question-label">Type:</div>
+        <div style="margin-top:0.02rem;">
+          <span class="circle-option"><span class="circle"></span> Repeating</span>
+          <span class="circle-option"><span class="circle"></span> Growing</span>
+          <span class="circle-option"><span class="circle"></span> Rule-based</span>
+        </div>
+        <div class="question-label" style="margin-top:0.04rem;">Rule:</div>
+        <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.02rem;">
+          <span class="answer-arrow">&rarr;</span>
+          <span class="line" style="flex:1; margin-bottom:0; height:0.8rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+        </div>
+        <div class="question-label" style="margin-top:0.04rem;">Next:</div>
+        <div class="answer-box" style="margin-top:0.03rem;"></div>
+
+        <!-- Part B -->
+        <div class="part-subtitle" style="margin-top:0.06rem;">PART B — Write Your Own Pattern</div>
+        <p class="small" style="margin:0.01rem 0 0.03rem; font-size:0.65rem; line-height:1.1;">Now it's your turn! Make up your own pattern. Write the first 5 items, then keep the rule a secret so others have to figure it out.</p>
+
+        <div class="question-label">My pattern type:</div>
+        <div style="margin-top:0.02rem;">
+          <span class="circle-option"><span class="circle"></span> Repeating</span>
+          <span class="circle-option"><span class="circle"></span> Growing</span>
+          <span class="circle-option"><span class="circle"></span> Rule-based</span>
+        </div>
+
+        <div class="question-label" style="margin-top:0.04rem;">First 5 items of my pattern:</div>
+        <div class="empty-boxes-row">
+          <div class="sort-box"></div>
+          <div class="sort-box"></div>
+          <div class="sort-box"></div>
+          <div class="sort-box"></div>
+          <div class="sort-box"></div>
+        </div>
+
+        <div class="question-label">The hidden rule:</div>
+        <div class="hint-text">(don't share with the person trying to guess!)</div>
+        <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.02rem;">
+          <span class="answer-arrow">&rarr;</span>
+          <span class="line" style="flex:1; margin-bottom:0; height:0.8rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+        </div>
+        <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.02rem;">
+          <span class="answer-arrow">&rarr;</span>
+          <span class="line" style="flex:1; margin-bottom:0; height:0.8rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+        </div>
+
+        <div class="question-label" style="margin-top:0.02rem;">What comes next?</div>
+        <div class="answer-box" style="margin-top:0.02rem;"></div>
+      </div>
+    </div>
+
+  </div><!-- /.page-1 -->
+
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="page-activity page-2">
+
+    <div class="content-area">
+
+      <!-- 6. Self-Check -->
+      <section>
+        <h3 style="font-size:1rem; color:var(--teal-dark); margin-bottom:0.15rem;">Self-Check</h3>
+        <ul class="kid-checklist">
+          <li><span class="checkbox"></span> I found the rule and next item for all 4 Basic patterns</li>
+          <li><span class="checkbox"></span> I named the type (repeating, growing, rule-based) for all 3 Challenge patterns</li>
+          <li><span class="checkbox"></span> I invented my own pattern with a hidden rule</li>
+          <li><span class="checkbox"></span> I can explain the 3 pattern types in my own words</li>
+        </ul>
+      </section>
+
+      <!-- 7. Reflection Box -->
+      <section class="reflection-box">
+        <h3>Reflection Box</h3>
+        <p>Real programmers use pattern recognition to FIND BUGS, predict user behavior, and even teach computers to recognize cats in photos. Can you think of one pattern your phone or favorite app has noticed about YOU?</p>
+        <div class="writing-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </section>
+
+      <!-- 8. Bonus: Pattern Hunter -->
+      <section>
+        <h3 style="font-size:1rem; color:var(--navy); margin-bottom:0.1rem;">Bonus: Pattern Hunter</h3>
+        <p class="small" style="margin-bottom:0.1rem; font-size:0.8rem;">Go on a pattern hunt around your home! Find 4 real patterns in everyday things — wallpaper, tiles, music, the calendar, even how often you eat meals. Patterns are EVERYWHERE once you start looking.</p>
+
+        <!-- Slot 1 -->
+        <div class="bonus-slot">
+          <div class="bonus-slot-header">Pattern #1</div>
+          <div class="question-label">Where I found it:</div>
+          <span class="line" style="display:block; width:100%; height:1.05rem; border-bottom:1px solid var(--gray-mid); margin-bottom:0.03rem;"></span>
+          <div class="question-label">What's the pattern?</div>
+          <span class="line" style="display:block; width:100%; height:1.05rem; border-bottom:1px solid var(--gray-mid); margin-bottom:0.03rem;"></span>
+          <div style="margin-top:0.03rem;">
+            <span class="question-label" style="display:inline; margin-right:0.3rem;">Type:</span>
+            <span class="circle-option" style="margin-right:0.5rem;"><span class="circle"></span> Repeating</span>
+            <span class="circle-option" style="margin-right:0.5rem;"><span class="circle"></span> Growing</span>
+            <span class="circle-option"><span class="circle"></span> Rule-based</span>
+          </div>
+        </div>
+
+        <!-- Slot 2 -->
+        <div class="bonus-slot">
+          <div class="bonus-slot-header">Pattern #2</div>
+          <div class="question-label">Where I found it:</div>
+          <span class="line" style="display:block; width:100%; height:1.05rem; border-bottom:1px solid var(--gray-mid); margin-bottom:0.03rem;"></span>
+          <div class="question-label">What's the pattern?</div>
+          <span class="line" style="display:block; width:100%; height:1.05rem; border-bottom:1px solid var(--gray-mid); margin-bottom:0.03rem;"></span>
+          <div style="margin-top:0.03rem;">
+            <span class="question-label" style="display:inline; margin-right:0.3rem;">Type:</span>
+            <span class="circle-option" style="margin-right:0.5rem;"><span class="circle"></span> Repeating</span>
+            <span class="circle-option" style="margin-right:0.5rem;"><span class="circle"></span> Growing</span>
+            <span class="circle-option"><span class="circle"></span> Rule-based</span>
+          </div>
+        </div>
+
+        <!-- Slot 3 -->
+        <div class="bonus-slot">
+          <div class="bonus-slot-header">Pattern #3</div>
+          <div class="question-label">Where I found it:</div>
+          <span class="line" style="display:block; width:100%; height:1.05rem; border-bottom:1px solid var(--gray-mid); margin-bottom:0.03rem;"></span>
+          <div class="question-label">What's the pattern?</div>
+          <span class="line" style="display:block; width:100%; height:1.05rem; border-bottom:1px solid var(--gray-mid); margin-bottom:0.03rem;"></span>
+          <div style="margin-top:0.03rem;">
+            <span class="question-label" style="display:inline; margin-right:0.3rem;">Type:</span>
+            <span class="circle-option" style="margin-right:0.5rem;"><span class="circle"></span> Repeating</span>
+            <span class="circle-option" style="margin-right:0.5rem;"><span class="circle"></span> Growing</span>
+            <span class="circle-option"><span class="circle"></span> Rule-based</span>
+          </div>
+        </div>
+
+        <!-- Slot 4 -->
+        <div class="bonus-slot">
+          <div class="bonus-slot-header">Pattern #4</div>
+          <div class="question-label">Where I found it:</div>
+          <span class="line" style="display:block; width:100%; height:1.05rem; border-bottom:1px solid var(--gray-mid); margin-bottom:0.03rem;"></span>
+          <div class="question-label">What's the pattern?</div>
+          <span class="line" style="display:block; width:100%; height:1.05rem; border-bottom:1px solid var(--gray-mid); margin-bottom:0.03rem;"></span>
+          <div style="margin-top:0.03rem;">
+            <span class="question-label" style="display:inline; margin-right:0.3rem;">Type:</span>
+            <span class="circle-option" style="margin-right:0.5rem;"><span class="circle"></span> Repeating</span>
+            <span class="circle-option" style="margin-right:0.5rem;"><span class="circle"></span> Growing</span>
+            <span class="circle-option"><span class="circle"></span> Rule-based</span>
+          </div>
+        </div>
+
+        <div class="followup-box">
+          <p>Which was the most surprising pattern you found? Why?</p>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.content-area -->
+
+    <!-- 9. Teacher / Parent Note -->
+    <aside class="teacher-note">
+      <div class="teacher-note-label">
+        <span>Teacher / Parent Note</span>
+      </div>
+      <p>Pattern recognition is the underlying skill behind almost every algorithm — from sorting (Activities 8-9) to debugging (Activity 7), and beyond that into search engines, recommendation systems, and machine learning. The 3 pattern types kids learn here map directly to real CS structures: repeating &harr; loops, growing &harr; recursion, rule-based &harr; functions. Discussion prompt: Ask your child to predict a pattern about your family's week — when does laundry get done? when is takeout night? — and see if they can predict the next "event" based on the pattern.</p>
+    </aside>
+
+  </div><!-- /.page-activity .page-2 -->
+
+</body>
+</html>

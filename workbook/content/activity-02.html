@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity 2 — Sequencing Puzzle</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Workbook styles -->
+  <link rel="stylesheet" href="../styles/colors.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/print.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; padding: 0; }
+
+    /* Intro row */
+    .intro-with-mascot { display: flex; gap: 0.75rem; align-items: flex-start; }
+    .intro-with-mascot .mascot-box { flex-shrink: 0; width: 100px; height: 100px; }
+    .intro-with-mascot .kid-box { flex: 1; }
+
+    /* Algorithm steps for challenge */
+    .algorithm { margin-bottom: 0.25rem; }
+    .algorithm-label {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.05rem;
+    }
+    .algorithm-steps {
+      list-style: decimal;
+      padding-left: 1rem;
+      margin: 0 0 0.1rem 0;
+      font-size: 0.75rem;
+      color: var(--navy-light);
+    }
+    .algorithm-steps li { margin-bottom: 0; }
+    .algorithm-prompt {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.1rem;
+    }
+
+    /* Cut & sort grid */
+    .cut-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+    .cut-grid .cut-piece {
+      text-align: center;
+      font-size: 0.8rem;
+      padding: 0.5rem 0.3rem;
+    }
+
+    /* Page 1 density overrides */
+    .page-1 .activity-header { margin-bottom: 0.25rem; padding: 0.25rem 0.4rem; }
+    .page-1 .kid-box { margin-bottom: 0.25rem; padding: 0.25rem 0.4rem; }
+    .page-1 .vocab-callout { margin-bottom: 0.25rem; padding: 0.25rem 0.4rem; }
+    .page-1 .two-col { gap: 0.35rem; margin-bottom: 0.25rem; }
+    .page-1 .sequence-item { margin-bottom: 0.1rem; font-size: 0.85rem; }
+    .page-1 .writing-lines { margin-bottom: 0.15rem; }
+    .page-1 .writing-lines .line { height: 1.7rem; margin-bottom: 0.05rem; }
+    .page-1 .col-header { padding: 0.25rem 0.4rem; margin-bottom: 0.25rem; font-size: 1rem; }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1 ==================== -->
+  <div class="page-1" style="page-break-after: always;">
+
+    <!-- 1. Activity Header Strip -->
+    <header class="activity-header">
+      <div class="activity-number">2</div>
+      <h1 class="activity-title">Sequencing Puzzle — Morning Routine</h1>
+      <span class="difficulty-badge difficulty-easy">AGES 8-12</span>
+    </header>
+
+    <!-- 2. Kid Instructions Box + Mascot -->
+    <div class="intro-with-mascot">
+      <div class="mascot-box">MASCOT<br>GOES<br>HERE</div>
+      <section class="kid-box">
+        <p>Last time, you wrote an algorithm for making a sandwich. But what if you spread the peanut butter <strong>BEFORE</strong> you got the bread out? Algorithms only work when the steps are in the right order — let's see what happens when they're not!</p>
+      </section>
+    </div>
+
+    <!-- 3. Vocabulary Callout -->
+    <section class="vocab-callout">
+      <span class="vocab-word">Sequence</span>
+      <p class="vocab-def"><strong>Sequence</strong> — The exact order that steps happen in, from first to last.<br><em>Example:</em> Your morning is a sequence — you wake up, then brush your teeth, then eat breakfast. Switch the order and your day gets weird fast!</p>
+    </section>
+
+    <!-- 4. Two-Column Split -->
+    <div class="two-col">
+      <!-- Basic Version -->
+      <div class="col col-basic">
+        <div class="col-header">Basic Version</div>
+        <p class="small" style="margin-bottom:0.25rem;"><strong>Fix the Mixed-Up Morning</strong> — These morning steps got all jumbled up! Number them 1 to 8 in the correct order so the morning actually works.</p>
+
+        <div class="sequence-item"><span class="numbered-input-box"></span> Put on shoes</div>
+        <div class="sequence-item"><span class="numbered-input-box"></span> Wake up</div>
+        <div class="sequence-item"><span class="numbered-input-box"></span> Brush teeth</div>
+        <div class="sequence-item"><span class="numbered-input-box"></span> Eat breakfast</div>
+        <div class="sequence-item"><span class="numbered-input-box"></span> Get dressed</div>
+        <div class="sequence-item"><span class="numbered-input-box"></span> Pack school bag</div>
+        <div class="sequence-item"><span class="numbered-input-box"></span> Wash face</div>
+        <div class="sequence-item"><span class="numbered-input-box"></span> Go to school</div>
+      </div>
+
+      <!-- Challenge Version -->
+      <div class="col col-challenge">
+        <div class="col-header">Challenge Version</div>
+        <p class="small" style="margin-bottom:0.25rem;"><strong>Spot the Broken Sequence</strong> — Each algorithm below has <strong>ONE</strong> step in the wrong place. Find it, circle it, and write where it should go.</p>
+
+        <div class="algorithm">
+          <div class="algorithm-label">Algorithm A: Making Cereal</div>
+          <ol class="algorithm-steps">
+            <li>Get a bowl from the cupboard</li>
+            <li>Pour the cereal into the bowl</li>
+            <li>Eat the cereal</li>
+            <li>Pour milk on the cereal</li>
+            <li>Get a spoon</li>
+          </ol>
+          <div class="algorithm-prompt">Which step is in the wrong place? Where should it go?</div>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <div class="algorithm">
+          <div class="algorithm-label">Algorithm B: Getting Ready for Soccer Practice</div>
+          <ol class="algorithm-steps">
+            <li>Put on your soccer cleats</li>
+            <li>Put on your soccer socks</li>
+            <li>Put on your jersey and shorts</li>
+            <li>Grab your water bottle</li>
+            <li>Head to the field</li>
+          </ol>
+          <div class="algorithm-prompt">Which step is in the wrong place? Where should it go?</div>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Reflection Box -->
+    <section style="margin-bottom:0.25rem;">
+      <h3 style="font-size:0.9rem; color:var(--sunny-dark); margin-bottom:0.15rem;">Reflection Box</h3>
+      <p class="small" style="margin-bottom:0.15rem;">What happens if you put on your shoes <strong>BEFORE</strong> your socks? Why does order matter for algorithms?</p>
+      <div class="writing-lines">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </section>
+
+  </div><!-- /.page-1 -->
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="page-activity page-2">
+
+    <div class="content-area">
+
+      <!-- 6. Self-Check -->
+      <section style="margin-bottom:1rem;">
+        <h3 style="font-size:1.1rem; color:var(--teal-dark); margin-bottom:0.5rem;">Self-Check</h3>
+        <ul class="kid-checklist">
+          <li><span class="checkbox"></span> I numbered all 8 morning steps from 1 to 8</li>
+          <li><span class="checkbox"></span> I found the wrong step in both Challenge algorithms</li>
+          <li><span class="checkbox"></span> I explained where the wrong step should go</li>
+          <li><span class="checkbox"></span> I can explain why order matters in my own words</li>
+        </ul>
+      </section>
+
+      <!-- 7. Bonus: Cut & Sort -->
+      <section style="margin-bottom:1rem;">
+        <h3 style="font-size:1.1rem; color:var(--navy); margin-bottom:0.5rem;">Bonus: Cut &amp; Sort — Brushing Your Teeth</h3>
+        <p class="small" style="margin-bottom:0.5rem;">Cut out these 6 steps and glue them in the correct order on a separate piece of paper.</p>
+        <div class="cut-zone">
+          <div class="cut-zone-label">Cut along the dashed lines</div>
+          <div class="cut-grid">
+            <span class="cut-piece">Spit out the toothpaste and rinse your mouth</span>
+            <span class="cut-piece">Pick up your toothbrush</span>
+            <span class="cut-piece">Brush your teeth for 2 minutes</span>
+            <span class="cut-piece">Put toothpaste on the toothbrush</span>
+            <span class="cut-piece">Wet the toothbrush under the tap</span>
+            <span class="cut-piece">Rinse the toothbrush and put it back</span>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.content-area -->
+
+    <!-- 8. Teacher / Parent Note -->
+    <aside class="teacher-note">
+      <div class="teacher-note-label">
+        <span>Teacher / Parent Note</span>
+      </div>
+      <p>This activity introduces sequencing — the CS principle that the same instructions in a different order produce different results (or no result at all). In real code, sequence bugs are one of the most common errors beginners hit: variables used before they're defined, files saved before they're written, etc. Discussion prompt: Ask your child to think of a time when doing things in the wrong order caused a problem in real life — putting on a coat before a sweater, sending a text before reading it, etc. The connection between everyday sequence mistakes and code bugs makes the concept stick.</p>
+    </aside>
+
+  </div><!-- /.page-activity .page-2 -->
+
+</body>
+</html>

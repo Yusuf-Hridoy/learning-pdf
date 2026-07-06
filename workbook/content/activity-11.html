@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity 11 — Treasure Hunt Grid</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Workbook styles -->
+  <link rel="stylesheet" href="../styles/colors.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/print.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; padding: 0; }
+
+    /* Treasure grid sizing variants */
+    .treasure-grid.mini {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      max-width: 65px;
+    }
+    .treasure-grid.compact {
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      max-width: 100px;
+    }
+    .page-2 .treasure-grid {
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      max-width: 130px;
+    }
+
+    /* ==================== PAGE 1 — ULTRA COMPACT ==================== */
+    .page-1 .activity-header { padding: 0.04rem 0.25rem 0.8rem; }
+    .page-1 .activity-header .activity-number { width: 1.5rem; height: 1.5rem; font-size: 0.85rem; }
+    .page-1 .activity-header .activity-title { font-size: 1rem; }
+    .page-1 .kid-box { margin-bottom: 0.01rem; padding: 0.06rem 0.25rem 0.01rem; }
+    .page-1 .kid-box::before {
+      font-size: 0.55rem;
+      padding: 0.08rem 0.4rem;
+      left: 0.6rem;
+    }
+    .page-1 .kid-box p { font-size: 0.52rem; line-height: 1.0; margin-bottom: 0; }
+    .page-1 .vocab-callout { margin-bottom: 0.01rem; padding: 0.04rem 0.25rem; }
+    .page-1 .vocab-def { font-size: 0.48rem; line-height: 1.0; margin-bottom: 0; }
+    .page-1 .two-col { gap: 0.1rem; margin-bottom: 0; }
+    .page-1 .col-header { padding: 0.04rem 0.15rem; margin-bottom: 0.03rem; font-size: 0.6rem; }
+
+    .intro-with-mascot { display: flex; gap: 0.3rem; align-items: flex-start; }
+    .intro-with-mascot .mascot-box { flex-shrink: 0; width: 35px; height: 35px; font-size: 0.4rem; }
+
+    /* How It Works section */
+    .how-it-works { margin-bottom: 0.04rem; }
+    .how-it-works-header {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 600;
+      padding: 0.04rem 0.15rem;
+      border-radius: 4px;
+      margin-bottom: 0.02rem;
+      text-align: center;
+      background: var(--teal-light);
+      color: var(--teal-dark);
+    }
+    .how-it-works-intro { font-size: 0.48rem; line-height: 1.0; margin-bottom: 0.02rem; }
+    .command-list { list-style: none; padding: 0; margin: 0 0 0.02rem; display: flex; flex-wrap: wrap; gap: 0 0.4rem; }
+    .command-list li { font-size: 0.46rem; line-height: 1.0; margin-bottom: 0; }
+    .starting-note { font-size: 0.46rem; font-style: italic; color: var(--navy-muted); margin-bottom: 0.03rem; }
+
+    /* Mini example */
+    .mini-example { margin-bottom: 0.03rem; }
+    .mini-example-label {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.5rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.01rem;
+    }
+    .mini-example-grid-wrap { display: flex; gap: 0.25rem; align-items: flex-start; margin-bottom: 0.01rem; }
+    .mini-example-grid-wrap .treasure-grid.mini .cell { font-size: 8px; }
+    .mini-example-grid-wrap .treasure-grid.mini .cell-start .start-arrow svg { width: 4px; height: 4px; }
+    .mini-example-program { flex: 1; }
+    .mini-example-program-label { font-size: 0.46rem; font-weight: 600; margin-bottom: 0; }
+    .mini-program-list { list-style: none; padding: 0; margin: 0; }
+    .mini-program-list li { font-family: ui-monospace, monospace; font-size: 0.44rem; line-height: 1.0; color: var(--navy); }
+    .mini-example-result { font-size: 0.46rem; font-style: italic; color: var(--teal-dark); margin-bottom: 0.01rem; }
+    .closing-note { font-size: 0.48rem; font-style: italic; color: var(--navy); margin-bottom: 0; }
+
+    /* Column content */
+    .col-basic { flex: 0.95; min-width: 0; }
+    .col-challenge { flex: 1.05; min-width: 0; }
+
+    .part-subtitle {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.54rem;
+      font-weight: 600;
+      color: var(--coral);
+      margin-bottom: 0;
+      margin-top: 0.04rem;
+    }
+
+    .col-instruction { font-size: 0.5rem; line-height: 1.0; margin-bottom: 0.04rem; }
+    .col-tip {
+      font-size: 0.46rem;
+      font-style: italic;
+      color: var(--navy-muted);
+      line-height: 1.0;
+      margin-bottom: 0.04rem;
+      background: var(--sunny-light);
+      padding: 0.04rem 0.12rem;
+      border-radius: 4px;
+    }
+
+    /* Grid labels in columns */
+    .grid-label { font-size: 0.5rem; margin-bottom: 0.02rem; margin-top: 0.04rem; }
+    .grid-caption { font-size: 0.44rem; margin-left: 0.15rem; }
+
+    /* Compact treasure grids in columns */
+    .page-1 .treasure-grid.compact .cell { font-size: 7px; }
+    .page-1 .treasure-grid.compact .cell-start .start-arrow { bottom: 0px; right: 0px; }
+    .page-1 .treasure-grid.compact .cell-start .start-arrow svg { width: 4px; height: 4px; }
+
+    /* Program numbered lines */
+    .program-lines {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 0.04rem;
+    }
+    .program-lines li {
+      display: flex;
+      align-items: baseline;
+      gap: 0.08rem;
+      margin-bottom: 0;
+      line-height: 1;
+    }
+    .program-lines .line-num {
+      font-family: ui-monospace, monospace;
+      font-size: 0.52rem;
+      color: var(--navy-muted);
+      width: 0.65rem;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .program-lines .line-input {
+      flex: 1;
+      height: 0.42rem;
+      border-bottom: 1px solid var(--gray-mid);
+      display: block;
+    }
+
+    .program-label {
+      font-size: 0.46rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0;
+      margin-top: 0.04rem;
+    }
+
+    .question-label {
+      font-size: 0.46rem;
+      color: var(--navy-light);
+      margin: 0.01rem 0;
+      line-height: 1.0;
+    }
+
+    .code-example { font-size: 0.44rem; padding: 0.04rem 0.1rem; margin: 0.02rem 0; line-height: 1.05; }
+
+    .trace-hint {
+      font-size: 0.44rem;
+      font-style: italic;
+      color: var(--navy-muted);
+      margin-bottom: 0.02rem;
+    }
+
+    .writing-lines { margin-bottom: 0; }
+    .writing-lines .line { height: 0.38rem; margin-bottom: 0; }
+
+    /* ==================== PAGE 2 ==================== */
+    .page-2 h3 { margin-bottom: 0.1rem; font-size: 0.92rem; }
+    .page-2 section { margin-bottom: 0.15rem; }
+    .page-2 .writing-lines { margin-bottom: 0.08rem; }
+    .page-2 .writing-lines .line { height: 0.85rem; margin-bottom: 0.03rem; }
+    .page-2 .kid-checklist { margin: 0 0 0.1rem; }
+    .page-2 .kid-checklist li { margin-bottom: 0.18rem; font-size: 0.76rem; }
+    .page-2 .teacher-note { padding: 0.2rem 0.4rem; }
+    .page-2 .teacher-note p { font-size: 0.68rem; line-height: 1.2; }
+    .page-2 .reflection-box { margin-top: 0.12rem; margin-bottom: 0.12rem; }
+    .page-2 .reflection-box p { font-size: 0.72rem; line-height: 1.25; margin-bottom: 0.08rem; }
+
+    .bonus-header {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.08rem;
+    }
+    .bonus-setup { font-size: 0.72rem; line-height: 1.25; margin-bottom: 0.08rem; }
+    .bonus-instruction {
+      font-size: 0.68rem;
+      font-style: italic;
+      color: var(--navy-muted);
+      margin-bottom: 0.12rem;
+    }
+
+    .page-2 .treasure-grid {
+      grid-template-columns: repeat(5, 30px);
+      grid-template-rows: repeat(5, 30px);
+    }
+    .page-2 .treasure-grid .cell { font-size: 12px; }
+    .page-2 .treasure-grid .cell-start .start-arrow svg { width: 7px; height: 7px; }
+
+    .followup-box {
+      border: 1.5px dashed var(--teal);
+      border-radius: 8px;
+      padding: 0.15rem 0.3rem;
+      background: var(--white);
+      margin-top: 0.12rem;
+      page-break-inside: avoid;
+    }
+    .followup-box p {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.06rem;
+    }
+    .followup-box .writing-lines .line { height: 0.8rem; margin-bottom: 0.02rem; }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1 ==================== -->
+  <div class="page-1" style="page-break-after: always;">
+
+    <!-- 1. Activity Header Strip -->
+    <header class="activity-header">
+      <div class="activity-number">11</div>
+      <h1 class="activity-title">Treasure Hunt Grid</h1>
+      <span class="difficulty-badge difficulty-easy">AGES 8-12</span>
+    </header>
+
+    <!-- 2. Kid Instructions Box + Mascot -->
+    <div class="intro-with-mascot">
+      <div class="mascot-box">MASCOT<br>GOES<br>HERE</div>
+      <section class="kid-box">
+        <p>This is the big one. You've learned sequences, loops, conditionals, and debugging. Now use them ALL together to guide a robot named Bolt through a grid to find the treasure!</p>
+      </section>
+    </div>
+
+    <!-- 3. Vocabulary Callout -->
+    <section class="vocab-callout">
+      <span class="vocab-word">Navigate</span>
+      <p class="vocab-def"><strong>Navigate</strong> — To find a path from one place to another. Programs that navigate are called pathfinders.<br><em>Example:</em> Google Maps navigates you to a restaurant — it uses an algorithm to find the best path!</p>
+    </section>
+
+    <!-- 4. How It Works — Meet Bolt -->
+    <section class="how-it-works">
+      <div class="how-it-works-header">How It Works — Meet Bolt</div>
+      <p class="how-it-works-intro">Meet BOLT, your robot. Bolt understands just 3 commands:</p>
+      <ul class="command-list">
+        <li><strong>MOVE FORWARD</strong> — move 1 square in the direction Bolt is facing</li>
+        <li><strong>TURN LEFT</strong> — rotate 90° to the left (stay in the same square)</li>
+        <li><strong>TURN RIGHT</strong> — rotate 90° to the right (stay in the same square)</li>
+      </ul>
+      <p class="starting-note">Bolt always starts facing RIGHT unless the grid says otherwise.</p>
+
+      <div class="mini-example">
+        <div class="mini-example-label">Mini-example (3×3 grid)</div>
+        <div class="mini-example-grid-wrap">
+          <div class="code-example">      1     2     3
+  1 [   ] [   ] [ T ]
+  2 [   ] [   ] [   ]
+  3 [S►] [   ] [   ]</div>
+          <div class="mini-example-program">
+            <div class="mini-example-program-label">Program to reach the treasure:</div>
+            <ol class="mini-program-list">
+              <li>1. MOVE FORWARD</li>
+              <li>2. MOVE FORWARD</li>
+              <li>3. TURN LEFT</li>
+              <li>4. MOVE FORWARD</li>
+              <li>5. MOVE FORWARD</li>
+            </ol>
+          </div>
+        </div>
+        <p class="mini-example-result">Bolt reaches the treasure!</p>
+      </div>
+
+      <p class="closing-note">Easy, right? Now let's make it harder — with WALLS in the way!</p>
+    </section>
+
+    <!-- 5. Two-Column Split -->
+    <div class="two-col">
+      <!-- Basic Version -->
+      <div class="col col-basic">
+        <div class="col-header">Basic Version</div>
+        <p class="col-instruction"><strong>Get Bolt to the Treasure</strong> — Bolt starts at the top-left, facing RIGHT. The treasure is on the same row at the far right — but WALLS block the direct path! Write Bolt's program to reach the treasure without hitting any walls.</p>
+
+        <div class="grid-label">Grid 1</div>
+        <div class="code-example">      1     2     3     4     5
+  1 [S►] [   ] [###] [   ] [ T ]
+  2 [   ] [   ] [###] [   ] [   ]
+  3 [   ] [   ] [   ] [   ] [   ]
+  4 [   ] [   ] [   ] [   ] [   ]
+  5 [   ] [   ] [   ] [   ] [   ]</div>
+
+        <div class="program-label">Bolt's Program:</div>
+        <ol class="program-lines">
+          <li><span class="line-num">1</span><span class="line-input"></span></li>
+          <li><span class="line-num">2</span><span class="line-input"></span></li>
+          <li><span class="line-num">3</span><span class="line-input"></span></li>
+          <li><span class="line-num">4</span><span class="line-input"></span></li>
+          <li><span class="line-num">5</span><span class="line-input"></span></li>
+          <li><span class="line-num">6</span><span class="line-input"></span></li>
+          <li><span class="line-num">7</span><span class="line-input"></span></li>
+          <li><span class="line-num">8</span><span class="line-input"></span></li>
+          <li><span class="line-num">9</span><span class="line-input"></span></li>
+          <li><span class="line-num">10</span><span class="line-input"></span></li>
+          <li><span class="line-num">11</span><span class="line-input"></span></li>
+          <li><span class="line-num">12</span><span class="line-input"></span></li>
+        </ol>
+        <div class="question-label">How many commands did you use? <span class="blank-fill-line blank-short" style="width:50px; display:inline-block;"></span></div>
+      </div>
+
+      <!-- Challenge Version -->
+      <div class="col col-challenge">
+        <div class="col-header">Challenge Version</div>
+
+        <!-- Part A -->
+        <div class="part-subtitle">PART A — Use a LOOP to Shorten Your Program</div>
+        <p class="col-instruction">Bolt starts at the bottom-left, facing UP. The treasure is at the top-right. Walls block the direct path up — Bolt has to go around!</p>
+        <p class="col-tip">The trick: This path repeats the same move many times. Use a LOOP like "REPEAT MOVE 4 TIMES" to make your program shorter.</p>
+
+        <div class="grid-label">Grid 2 <span class="grid-caption">Start: bottom-left ▲, Treasure: top-right</span></div>
+        <div class="code-example">      1     2     3     4     5
+  1 [   ] [   ] [   ] [   ] [ T ]
+  2 [   ] [   ] [   ] [   ] [   ]
+  3 [###] [###] [   ] [   ] [   ]
+  4 [   ] [   ] [   ] [   ] [   ]
+  5 [S▲] [   ] [   ] [   ] [   ]</div>
+
+        <div class="program-label">Bolt's Program (with loops!):</div>
+        <ol class="program-lines">
+          <li><span class="line-num">1</span><span class="line-input"></span></li>
+          <li><span class="line-num">2</span><span class="line-input"></span></li>
+          <li><span class="line-num">3</span><span class="line-input"></span></li>
+          <li><span class="line-num">4</span><span class="line-input"></span></li>
+          <li><span class="line-num">5</span><span class="line-input"></span></li>
+          <li><span class="line-num">6</span><span class="line-input"></span></li>
+          <li><span class="line-num">7</span><span class="line-input"></span></li>
+          <li><span class="line-num">8</span><span class="line-input"></span></li>
+        </ol>
+        <div class="question-label">How many commands? <span class="blank-fill-line blank-short" style="width:50px; display:inline-block;"></span></div>
+        <div class="question-label">Could you do it in FEWER commands? Try!</div>
+        <div class="writing-lines"><span class="line" style="height:0.55rem;"></span></div>
+
+        <!-- Part B -->
+        <div class="part-subtitle">PART B — Debug Bolt's Program</div>
+        <p class="col-instruction">A programmer wrote this program to guide Bolt from (5,1) facing UP to the treasure at (1,3). But there's a BUG — Bolt crashes into a wall!</p>
+
+        <div class="grid-label">Grid 3</div>
+        <div class="code-example">      1     2     3     4     5
+  1 [###] [   ] [ T ] [   ] [   ]
+  2 [   ] [   ] [   ] [   ] [   ]
+  3 [   ] [   ] [   ] [   ] [   ]
+  4 [   ] [   ] [   ] [   ] [   ]
+  5 [S▲] [   ] [   ] [   ] [   ]</div>
+
+        <div class="program-label">Buggy program:</div>
+        <div class="code-example">1. MOVE FORWARD
+2. MOVE FORWARD
+3. MOVE FORWARD
+4. MOVE FORWARD
+5. TURN RIGHT
+6. MOVE FORWARD
+7. MOVE FORWARD</div>
+        <p class="trace-hint">Finger-trace Bolt's path on the grid. Which step crashes into the wall?</p>
+        <div class="question-label">What's the bug?</div>
+        <div class="writing-lines"><span class="line" style="height:0.55rem;"></span><span class="line" style="height:0.55rem;"></span></div>
+        <div class="program-label">Write the corrected program:</div>
+        <ol class="program-lines">
+          <li><span class="line-num">1</span><span class="line-input"></span></li>
+          <li><span class="line-num">2</span><span class="line-input"></span></li>
+          <li><span class="line-num">3</span><span class="line-input"></span></li>
+          <li><span class="line-num">4</span><span class="line-input"></span></li>
+          <li><span class="line-num">5</span><span class="line-input"></span></li>
+          <li><span class="line-num">6</span><span class="line-input"></span></li>
+          <li><span class="line-num">7</span><span class="line-input"></span></li>
+          <li><span class="line-num">8</span><span class="line-input"></span></li>
+        </ol>
+      </div>
+    </div>
+
+  </div><!-- /.page-1 -->
+
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="page-activity page-2">
+
+    <div class="content-area">
+
+      <!-- 6. Self-Check -->
+      <section>
+        <h3 style="font-size:0.95rem; color:var(--teal-dark); margin-bottom:0.1rem;">Self-Check</h3>
+        <ul class="kid-checklist">
+          <li><span class="checkbox"></span> I got Bolt to the treasure in Grid 1 without hitting walls</li>
+          <li><span class="checkbox"></span> I used a LOOP to shorten my program in Grid 2</li>
+          <li><span class="checkbox"></span> I found and fixed the bug in Grid 3</li>
+          <li><span class="checkbox"></span> I can explain how SEQUENCE, LOOPS, and DEBUGGING all worked together</li>
+        </ul>
+      </section>
+
+      <!-- 7. Reflection Box -->
+      <section class="reflection-box">
+        <h3>Reflection Box</h3>
+        <p>Real navigation algorithms (like Google Maps) have to think about thousands of possible paths at once. How is what YOU just did similar? How is it different?</p>
+        <div class="writing-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </section>
+
+      <!-- 8. Bonus: Design Your Own Grid -->
+      <section>
+        <div class="bonus-header">Bonus: Design Your Own Grid</div>
+        <p class="bonus-setup">Now flip it around! Design your OWN treasure hunt grid. Place a START, a TREASURE, and at least 3 walls. Then write the program that solves it.</p>
+        <p class="bonus-instruction">Use a pencil — write "S" for start, "T" for treasure, and shade in 3+ walls. Don't forget to draw an arrow showing which direction S is facing!</p>
+
+        <div class="grid-label">Your Grid</div>
+        <div class="code-example">      1     2     3     4     5
+  1 [   ] [   ] [   ] [   ] [   ]
+  2 [   ] [   ] [   ] [   ] [   ]
+  3 [   ] [   ] [   ] [   ] [   ]
+  4 [   ] [   ] [   ] [   ] [   ]
+  5 [   ] [   ] [   ] [   ] [   ]</div>
+
+        <div class="program-label">Your Solution Program:</div>
+        <ol class="program-lines">
+          <li><span class="line-num">1</span><span class="line-input"></span></li>
+          <li><span class="line-num">2</span><span class="line-input"></span></li>
+          <li><span class="line-num">3</span><span class="line-input"></span></li>
+          <li><span class="line-num">4</span><span class="line-input"></span></li>
+          <li><span class="line-num">5</span><span class="line-input"></span></li>
+          <li><span class="line-num">6</span><span class="line-input"></span></li>
+          <li><span class="line-num">7</span><span class="line-input"></span></li>
+          <li><span class="line-num">8</span><span class="line-input"></span></li>
+        </ol>
+
+        <div class="followup-box">
+          <p>Trade your grid with a friend or family member! Did they solve it? How many commands did THEY use?</p>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.content-area -->
+
+    <!-- 9. Teacher / Parent Note -->
+    <aside class="teacher-note">
+      <div class="teacher-note-label">
+        <span>Teacher / Parent Note</span>
+      </div>
+      <p>This is the INTEGRATION activity. Up to now, each activity has taught ONE concept in isolation. This activity makes kids use them ALL TOGETHER — sequence (Activity 2) for the order of commands, loops (Activities 3-4) to shorten repeated moves, conditionals (Activities 5-6) when planning around walls, and debugging (Activity 7) when programs fail. This is also the first puzzle activity in the workbook — there's no single right answer, just paths that work or don't, which is genuine CS thinking. Discussion prompt: After your child finishes, sit together and walk through Bolt's program step by step on the grid — finger-trace Bolt's path to make the program execution visible. This is how real programmers debug.</p>
+    </aside>
+
+  </div><!-- /.page-activity .page-2 -->
+
+</body>
+</html>

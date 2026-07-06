@@ -1,0 +1,120 @@
+
+/* ============================================
+   TYPOGRAPHY.CSS — Fredoka + Nunito
+   ============================================
+   Fonts are loaded via Google Fonts CDN links in
+   each HTML <head>.  We declare @font-face here
+   so print engines know exactly which files to
+   embed rather than falling back to local fonts.
+   ============================================ */
+
+/* --- Fredoka (Headings) --- */
+@font-face {
+  font-family: 'Fredoka';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/fredoka/v14/X7n64b87HvSqjb_WIi2yDCRwoQ_k7367_DWs89XyHw9lnhOA-Q.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Fredoka';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/fredoka/v14/X7n64b87HvSqjb_WIi2yDCRwoQ_k7367_F7r89XyHw9lnhOA-Q.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Fredoka';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/fredoka/v14/X7n64b87HvSqjb_WIi2yDCRwoQ_k7367_DW089XyHw9lnhOA-Q.woff2') format('woff2');
+}
+
+/* --- Nunito (Body) --- */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/nunito/v26/XRXV3I6Li01BKofINeaBTMnFcQ.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/nunito/v26/XRXV3I6Li01BKofIOOaBTMnFcQ.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/nunito/v26/XRXV3I6Li01BKofINeaBTMnFcQ.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/nunito/v26/XRXX3I6Li01BKofIMNaDRss.woff2') format('woff2');
+}
+
+/* --- Base typography --- */
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-main);
+  background: var(--bg-page);
+}
+
+/* --- Headings --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Fredoka', 'Trebuchet MS', sans-serif;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0 0 0.5em 0;
+  color: var(--text-main);
+}
+
+h1 { font-size: 2.25rem; }   /* 36px */
+h2 { font-size: 1.75rem; }   /* 28px */
+h3 { font-size: 1.4rem; }    /* 22.4px */
+h4 { font-size: 1.15rem; }   /* 18.4px */
+
+/* --- Body text --- */
+p {
+  margin: 0 0 1em 0;
+  max-width: 65ch; /* comfy reading measure */
+}
+
+.lead {
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.small {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* --- Utility --- */
+.text-center { text-align: center; }
+.text-coral  { color: var(--coral); }
+.text-teal   { color: var(--teal); }
+.text-sunny  { color: var(--sunny-dark); }
+.text-navy   { color: var(--navy); }

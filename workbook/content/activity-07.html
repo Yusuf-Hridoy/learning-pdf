@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity 7 — Debug the Robot</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Workbook styles -->
+  <link rel="stylesheet" href="../styles/colors.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/print.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; padding: 0; }
+
+    /* Intro row */
+    .intro-with-mascot { display: flex; gap: 0.5rem; align-items: flex-start; margin-top: 0.6rem; }
+    .intro-with-mascot .mascot-box { flex-shrink: 0; width: 80px; height: 80px; }
+    .intro-with-mascot .kid-box { flex: 1; }
+
+    /* Page 1 density overrides */
+    .page-1 .activity-header { margin-bottom: 0.15rem; padding: 0.15rem 0.3rem; }
+    .page-1 .kid-box { margin-bottom: 0.15rem; padding: 0.5rem 0.3rem 0.15rem; }
+    .page-1 .vocab-callout { margin-bottom: 0.15rem; padding: 0.15rem 0.3rem; }
+    .page-1 .two-col { gap: 0.25rem; margin-bottom: 0.5rem; page-break-inside: auto; }
+    .page-1 .writing-lines { margin-bottom: 0.08rem; }
+    .page-1 .writing-lines .line { height: 1.1rem; margin-bottom: 0.02rem; }
+    .page-1 .col-header { padding: 0.15rem 0.3rem; margin-bottom: 0.15rem; font-size: 0.9rem; }
+    .page-1 .kid-box p { font-size: 0.8rem; line-height: 1.4; margin-bottom: 0; }
+    .page-1 .vocab-def { font-size: 0.75rem; line-height: 1.35; margin-bottom: 0; }
+    .page-1 .code-example { padding: 0.2rem 0.3rem; font-size: 0.65rem; line-height: 1.25; margin: 0.05rem 0; }
+
+    /* Column widths */
+    .col-basic { flex: 0.85; min-width: 0; }
+    .col-challenge { flex: 1.15; min-width: 0; }
+
+    /* Part subtitles */
+    .part-subtitle {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--coral);
+      margin-bottom: 0.03rem;
+      margin-top: 0.1rem;
+    }
+
+    /* Program blocks */
+    .program-block { margin-bottom: 0.2rem; page-break-inside: avoid; }
+    .program-label { font-family: 'Fredoka', sans-serif; font-size: 0.72rem; font-weight: 600; color: var(--navy); margin-bottom: 0.05rem; }
+    .answer-arrow { font-size: 0.75rem; color: var(--navy-muted); flex-shrink: 0; }
+    .question-label { font-size: 0.72rem; color: var(--navy-light); margin: 0.08rem 0 0.03rem; }
+
+    /* Page 2 tighter density */
+    .page-2 h3 { margin-bottom: 0.08rem; }
+    .page-2 section { margin-bottom: 0.2rem; }
+    .page-2 .writing-lines { margin-bottom: 0.08rem; }
+    .page-2 .writing-lines .line { height: 1rem; margin-bottom: 0.02rem; }
+    .page-2 .kid-checklist { margin: 0; }
+    .page-2 .kid-checklist li { margin-bottom: 0.1rem; font-size: 0.82rem; }
+    .page-2 .teacher-note { padding: 0.2rem 0.35rem; }
+    .page-2 .teacher-note p { font-size: 0.78rem; line-height: 1.3; }
+    .page-2 .reflection-box { margin-top: 0.25rem; margin-bottom: 0.15rem; }
+    .page-2 .reflection-box p { font-size: 0.78rem; line-height: 1.3; margin-bottom: 0.08rem; }
+    .page-2 .followup-box { padding: 0.15rem 0.3rem; margin-top: 0.08rem; }
+    .page-2 .followup-box p { font-size: 0.75rem; margin-bottom: 0.05rem; }
+
+    /* Bonus numbered steps */
+    .step-row { display: flex; align-items: baseline; gap: 0.3rem; margin-bottom: 0.06rem; }
+    .step-num { font-family: 'Fredoka', sans-serif; font-size: 0.72rem; font-weight: 600; color: var(--navy); min-width: 1rem; text-align: right; }
+    .step-row .line { flex: 1; height: 1rem; border-bottom: 1px solid var(--gray-mid); display: block; margin-bottom: 0; }
+
+    /* Starters list */
+    .starters-list {
+      margin: 0.1rem 0 0.15rem;
+      padding-left: 1.2rem;
+      font-size: 0.75rem;
+      color: var(--navy-light);
+      line-height: 1.3;
+    }
+    .starters-list li { margin-bottom: 0.03rem; }
+
+    /* Footer hint */
+    .footer-hint {
+      font-size: 0.68rem;
+      color: var(--navy-muted);
+      font-style: italic;
+      margin-top: 0.1rem;
+    }
+
+    /* Follow-up box */
+    .followup-box {
+      border: 2px dashed var(--teal);
+      border-radius: 10px;
+      padding: 0.25rem 0.4rem;
+      background: var(--white);
+      margin-top: 0.15rem;
+      page-break-inside: avoid;
+    }
+    .followup-box p {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.08rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1 ==================== -->
+  <div class="page-1" style="page-break-after: always;">
+
+    <!-- 1. Activity Header Strip -->
+    <header class="activity-header">
+      <div class="activity-number">7</div>
+      <h1 class="activity-title">Debug the Robot</h1>
+      <span class="difficulty-badge difficulty-easy">AGES 8-12</span>
+    </header>
+
+    <!-- 2. Kid Instructions Box + Mascot -->
+    <div class="intro-with-mascot">
+      <div class="mascot-box">MASCOT<br>GOES<br>HERE</div>
+      <section class="kid-box">
+        <p>You've written algorithms, loops, and conditionals. But what happens when code goes <strong>WRONG</strong>? That's when you become a <strong>debugger</strong> — the detective of the coding world!</p>
+      </section>
+    </div>
+
+    <!-- 3. Vocabulary Callout -->
+    <section class="vocab-callout">
+      <span class="vocab-word">Bug</span>
+      <p class="vocab-def"><strong>Bug</strong> — A mistake in code that makes it do the wrong thing. Finding and fixing bugs is called debugging.<br><em>Fun fact:</em> The first computer "bug" was an actual moth stuck inside a computer in 1947! Engineers literally taped it to their notebook. The name stuck.</p>
+    </section>
+
+    <!-- 4. Two-Column Split -->
+    <div class="two-col">
+      <!-- Basic Version -->
+      <div class="col col-basic">
+        <div class="col-header">Basic Version</div>
+        <p class="small" style="margin-bottom:0.1rem; font-size:0.75rem; line-height:1.3;"><strong>Find the Bug</strong> — You're a robot inspector! Each program below has ONE bug. Find it before the robot does the wrong thing!</p>
+
+        <!-- Bug Types Callout -->
+        <div class="bug-types-callout">
+          <div class="bug-types-callout-label">Three kinds of bugs to watch for:</div>
+          <ul class="bug-types-list">
+            <li><strong>Sequence bug</strong> — steps in the wrong order</li>
+            <li><strong>Missing-step bug</strong> — a step is left out</li>
+            <li><strong>Wrong-value bug</strong> — a number, condition, or word is wrong</li>
+          </ul>
+        </div>
+
+        <!-- Program 1 -->
+        <div class="program-block">
+          <div class="program-label">Buggy Program 1: Make a Cup of Tea</div>
+          <div class="code-example">1. Pour the hot water into the cup
+2. Drink the tea
+3. Add the tea bag
+4. Wait 3 minutes
+5. Remove the tea bag</div>
+          <div class="question-label">What's wrong?</div>
+          <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.03rem;">
+            <span class="answer-arrow">→</span>
+            <span class="line" style="flex:1; margin-bottom:0; height:1.1rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+          </div>
+          <div class="question-label">How would you fix it?</div>
+          <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.03rem;">
+            <span class="answer-arrow">→</span>
+            <span class="line" style="flex:1; margin-bottom:0; height:1.1rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+          </div>
+        </div>
+
+        <!-- Program 2 -->
+        <div class="program-block">
+          <div class="program-label">Buggy Program 2: Walking the Dog</div>
+          <div class="code-example">1. Get the dog's leash
+2. Walk to the park
+3. Walk back home
+4. Hang the leash on the hook</div>
+          <div class="question-label">What's wrong?</div>
+          <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.03rem;">
+            <span class="answer-arrow">→</span>
+            <span class="line" style="flex:1; margin-bottom:0; height:1.1rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+          </div>
+          <div class="question-label">How would you fix it?</div>
+          <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.03rem;">
+            <span class="answer-arrow">→</span>
+            <span class="line" style="flex:1; margin-bottom:0; height:1.1rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+          </div>
+        </div>
+
+        <!-- Program 3 -->
+        <div class="program-block">
+          <div class="program-label">Buggy Program 3: Set an Alarm for School</div>
+          <div class="code-example">1. Open the clock app
+2. Tap "New Alarm"
+3. Set the time to 7:00 PM
+4. Tap "Save"</div>
+          <div class="question-label">What's wrong?</div>
+          <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.03rem;">
+            <span class="answer-arrow">→</span>
+            <span class="line" style="flex:1; margin-bottom:0; height:1.1rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+          </div>
+          <div class="question-label">How would you fix it?</div>
+          <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.03rem;">
+            <span class="answer-arrow">→</span>
+            <span class="line" style="flex:1; margin-bottom:0; height:1.1rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Challenge Version -->
+      <div class="col col-challenge">
+        <div class="col-header">Challenge Version</div>
+
+        <!-- Part A -->
+        <div class="part-subtitle">PART A — Find TWO Bugs in One Program</div>
+        <p class="small" style="margin:0.05rem 0; font-size:0.72rem; line-height:1.25;">This program has TWO bugs. Find them both!</p>
+        <div class="program-label" style="margin-top:0.1rem;">Buggy Program: A Robot Serving Juice at a Party</div>
+        <div class="code-example">1. Get a clean glass from the cupboard
+2. Pour orange juice into the glass
+3. Pour orange juice into the glass
+4. Add 3 ice cubes
+5. Hand the glass to the guest
+6. Wash the glass</div>
+        <p class="small" style="margin:0.08rem 0; font-size:0.72rem; line-height:1.25;"><strong>What are the two bugs and how would you fix them?</strong></p>
+        <div class="writing-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+
+        <!-- Part B -->
+        <div class="part-subtitle">PART B — Debug a Loop</div>
+        <p class="small" style="margin:0.05rem 0; font-size:0.72rem; line-height:1.25;">This loop is supposed to water all 5 plants on the windowsill. But something's off!</p>
+        <div class="code-example">Repeat "water one plant" 4 times</div>
+        <div class="question-label">What's the bug?</div>
+        <div class="writing-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+        <div class="question-label">Write the corrected loop:</div>
+        <div class="writing-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.page-1 -->
+
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="page-activity page-2">
+
+    <div class="content-area">
+
+      <!-- 5. Self-Check -->
+      <section style="margin-bottom:0.25rem;">
+        <h3 style="font-size:1rem; color:var(--teal-dark); margin-bottom:0.15rem;">Self-Check</h3>
+        <ul class="kid-checklist">
+          <li><span class="checkbox"></span> I found the bug in all 3 Basic programs and explained the fix</li>
+          <li><span class="checkbox"></span> I found BOTH bugs in the juice-serving program</li>
+          <li><span class="checkbox"></span> I fixed the buggy plant-watering loop</li>
+          <li><span class="checkbox"></span> I can name the 3 types of bugs (sequence, missing-step, wrong-value)</li>
+        </ul>
+      </section>
+
+      <!-- 6. Reflection Box -->
+      <section class="reflection-box" style="margin-bottom:0.25rem;">
+        <h3>Reflection Box</h3>
+        <p>Have you ever followed instructions (like a recipe or a craft tutorial) that had a bug in them? What went wrong? How did you figure out the fix?</p>
+        <div class="writing-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </section>
+
+      <!-- 7. Bonus: Be the Bug -->
+      <section style="margin-bottom:0.25rem;">
+        <h3 style="font-size:1rem; color:var(--navy); margin-bottom:0.15rem;">Bonus: Be the Bug</h3>
+        <p class="small" style="margin-bottom:0.1rem; font-size:0.8rem;">Now flip it around! Write a 5-step instruction set for an everyday task — but put a bug in it on purpose. Then trade with a friend or family member and see if THEY can find your bug.</p>
+        <p class="small" style="margin-bottom:0.05rem; font-size:0.75rem; color:var(--navy-light);"><strong>Pick a starter (or invent your own):</strong></p>
+        <ul class="starters-list">
+          <li>How to brush your teeth</li>
+          <li>How to make a paper airplane</li>
+          <li>How to feed a pet</li>
+        </ul>
+
+        <div class="question-label" style="margin-top:0.1rem;"><strong>Task:</strong></div>
+        <div style="display:flex; align-items:center; gap:0.25rem; margin-top:0.03rem;">
+          <span class="answer-arrow">→</span>
+          <span class="line" style="flex:1; margin-bottom:0; height:1rem; border-bottom:1px solid var(--gray-mid); display:block;"></span>
+        </div>
+
+        <div class="question-label" style="margin-top:0.1rem;"><strong>Your Buggy Instructions:</strong></div>
+        <div class="step-row"><span class="step-num">1.</span><span class="line"></span></div>
+        <div class="step-row"><span class="step-num">2.</span><span class="line"></span></div>
+        <div class="step-row"><span class="step-num">3.</span><span class="line"></span></div>
+        <div class="step-row"><span class="step-num">4.</span><span class="line"></span></div>
+        <div class="step-row"><span class="step-num">5.</span><span class="line"></span></div>
+
+        <div class="followup-box">
+          <p>What was your bug? (Don't show this part to the friend until they're done!)</p>
+          <div class="writing-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <div class="footer-hint">Hint: Try a sequence bug, a missing-step bug, or a wrong-value bug — like the ones you saw above!</div>
+      </section>
+
+    </div><!-- /.content-area -->
+
+    <!-- 8. Teacher / Parent Note -->
+    <aside class="teacher-note">
+      <div class="teacher-note-label">
+        <span>Teacher / Parent Note</span>
+      </div>
+      <p>This activity introduces debugging — the most-practiced skill in real software development. Kids learn that finding bugs is just as important as writing code, and that there are common bug patterns (sequence, missing-step, wrong-value) that show up over and over. Discussion prompt: Ask your child to describe a bug they spotted in real life this week — even outside of code (a wrong recipe step, a confusing sign, a broken routine).</p>
+    </aside>
+
+  </div><!-- /.page-activity .page-2 -->
+
+</body>
+</html>
