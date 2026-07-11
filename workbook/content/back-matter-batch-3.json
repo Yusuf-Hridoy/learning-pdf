@@ -1,0 +1,442 @@
+{
+  "batch": "back-matter-3",
+  "pages": [
+    {
+      "page_id": "pacing-guides",
+      "output_filename": "pacing-guides.pdf",
+      "page_type": "pacing_guides_expanded",
+      "header": "Pacing Guides",
+      "intro": "Choose the schedule that fits your teaching or learning rhythm. These pacing plans expand on the 3 pacing options introduced in the How to Use page — pick the one that fits and adapt as needed.",
+      "sections": [
+        {
+          "section_number": 1,
+          "title": "1-Week Intensive Plan",
+          "summary": "For summer camps, spring break, or focused CS immersion. 2–3 activities per day for 5–7 days.",
+          "accent_color": "coral",
+          "schedule_type": "day_by_day",
+          "days": [
+            {
+              "day": 1,
+              "theme": "Foundations of Algorithms",
+              "items": [
+                {"type": "activity", "text": "Activity 1: What is an Algorithm?"},
+                {"type": "activity", "text": "Activity 2: Sequencing Puzzle"},
+                {"type": "discussion", "text": "What's the difference between random steps and an algorithm?"}
+              ]
+            },
+            {
+              "day": 2,
+              "theme": "Loops",
+              "items": [
+                {"type": "activity", "text": "Activity 3: Spot the Loop"},
+                {"type": "activity", "text": "Activity 4: Write Your Own Loop"},
+                {"type": "hands_on", "text": "Do the Loop Bonus outside (pattern hunt)"}
+              ]
+            },
+            {
+              "day": 3,
+              "theme": "Conditionals",
+              "items": [
+                {"type": "activity", "text": "Activity 5: Yes/No Conditionals"},
+                {"type": "activity", "text": "Activity 6: Nested Conditionals"},
+                {"type": "discussion", "text": "Draw a decision tree for your morning routine"}
+              ]
+            },
+            {
+              "day": 4,
+              "theme": "Debugging & Sorting Part 1",
+              "items": [
+                {"type": "activity", "text": "Activity 7: Debug the Robot"},
+                {"type": "activity", "text": "Activity 8: Bubble Sort"},
+                {"type": "hands_on", "text": "Do the \"Sort Real Things\" bonus with household objects"}
+              ]
+            },
+            {
+              "day": 5,
+              "theme": "Sorting Part 2 & Patterns",
+              "items": [
+                {"type": "activity", "text": "Activity 9: Selection Sort"},
+                {"type": "activity", "text": "Activity 10: Pattern Recognition"},
+                {"type": "reflection", "text": "How is selection sort different from bubble sort?"}
+              ]
+            },
+            {
+              "day": 6,
+              "theme": "Integration",
+              "items": [
+                {"type": "activity", "text": "Activity 11: Treasure Hunt Grid"},
+                {"type": "note", "text": "Take a break — this one is meaty!"}
+              ]
+            },
+            {
+              "day": 7,
+              "theme": "Capstone",
+              "items": [
+                {"type": "activity", "text": "Activity 12: Design Your Own Algorithm"},
+                {"type": "activity", "text": "Complete the Vocabulary Review, Mini-Quiz, and Reflection Page"},
+                {"type": "celebration", "text": "Celebration! Kids get to teach someone one concept"}
+              ]
+            }
+          ]
+        },
+        {
+          "section_number": 2,
+          "title": "4-Week Unit Plan",
+          "summary": "For homeschool, after-school programs, or supplementary CS. 3 activities per week for 4 weeks.",
+          "accent_color": "teal",
+          "schedule_type": "week_by_week",
+          "weeks": [
+            {
+              "week": 1,
+              "theme": "Foundations of Algorithms",
+              "items": [
+                {"type": "activity", "text": "Activity 1: What is an Algorithm?"},
+                {"type": "activity", "text": "Activity 2: Sequencing Puzzle"},
+                {"type": "activity", "text": "Activity 3: Spot the Loop"},
+                {"type": "reflection", "text": "Weekly reflection: Where did you see loops today?"}
+              ]
+            },
+            {
+              "week": 2,
+              "theme": "Loops & Conditionals",
+              "items": [
+                {"type": "activity", "text": "Activity 4: Write Your Own Loop"},
+                {"type": "activity", "text": "Activity 5: Yes/No Conditionals"},
+                {"type": "activity", "text": "Activity 6: Nested Conditionals"},
+                {"type": "discussion", "text": "Design a decision tree for a weekly household task"}
+              ]
+            },
+            {
+              "week": 3,
+              "theme": "Debugging & Sorting",
+              "items": [
+                {"type": "activity", "text": "Activity 7: Debug the Robot"},
+                {"type": "activity", "text": "Activity 8: Bubble Sort"},
+                {"type": "activity", "text": "Activity 9: Selection Sort"},
+                {"type": "hands_on", "text": "Do the \"Algorithm Race\" bonus with a family member"}
+              ]
+            },
+            {
+              "week": 4,
+              "theme": "Integration & Capstone",
+              "items": [
+                {"type": "activity", "text": "Activity 10: Pattern Recognition"},
+                {"type": "activity", "text": "Activity 11: Treasure Hunt Grid"},
+                {"type": "activity", "text": "Activity 12: Design Your Own Algorithm"},
+                {"type": "activity", "text": "Complete Vocabulary Review, Mini-Quiz, and Reflection Page"}
+              ]
+            }
+          ]
+        },
+        {
+          "section_number": 3,
+          "title": "12-Week Semester Plan",
+          "summary": "For elementary CS class or gentle weekly rhythm. 1 activity per week for 12 weeks.",
+          "accent_color": "yellow",
+          "schedule_type": "table",
+          "table": {
+            "columns": ["Week", "Activity", "Focus"],
+            "rows": [
+              [1, "Activity 1 — What is an Algorithm?", "Definitions"],
+              [2, "Activity 2 — Sequencing Puzzle", "Order matters"],
+              [3, "Activity 3 — Spot the Loop", "Recognizing repetition"],
+              [4, "Activity 4 — Write Your Own Loop", "Writing loops"],
+              [5, "Activity 5 — Yes/No Conditionals", "Decision-making"],
+              [6, "Activity 6 — Nested Conditionals", "Decision trees"],
+              [7, "Activity 7 — Debug the Robot", "Finding bugs"],
+              [8, "Activity 8 — Bubble Sort", "First named algorithm"],
+              [9, "Activity 9 — Selection Sort", "Comparing algorithms"],
+              [10, "Activity 10 — Pattern Recognition", "Finding rules"],
+              [11, "Activity 11 — Treasure Hunt Grid", "Integration"],
+              [12, "Activity 12 — Design Your Own Algorithm", "Synthesis"]
+            ]
+          }
+        }
+      ],
+      "closing_reminder": "Reminder: Every activity has both a Basic (ages 8-10) and Challenge (ages 10-12) version. Kids can revisit any activity in Challenge mode after completing Basic — that's the built-in extension."
+    },
+    {
+      "page_id": "answer-key-1-6",
+      "output_filename": "answer-key-1-6.pdf",
+      "page_type": "answer_key_page_1",
+      "header": "Full Answer Key — Activities 1–6",
+      "intro": "Answers for every Basic and Challenge exercise. Bonus activities are open-ended and don't have single correct answers — see grading notes.",
+      "activities": [
+        {
+          "number": 1,
+          "title": "What is an Algorithm?",
+          "basic": {
+            "label": "Write 5 Sandwich Steps",
+            "content": "Open-ended. Grade against the Self-Check criteria: at least 5 steps, steps in a workable order, steps are specific (e.g., \"open the bread bag,\" not \"get bread\")."
+          },
+          "challenge": {
+            "label": "Test Your Algorithm on Someone",
+            "content": "Open-ended. The goal is that the tester follows the steps literally and the kid identifies what was missing or ambiguous. Any honest gap they spot (didn't say to open the jar, didn't mention a knife) counts as success."
+          },
+          "bonus": {
+            "label": "Cut & Sort correct order:",
+            "items": [
+              "Open the bread bag",
+              "Take two slices of bread",
+              "Get a butter knife",
+              "Spread peanut butter",
+              "Close the sandwich"
+            ],
+            "note": "(Accept swapping steps 2 and 3.)"
+          }
+        },
+        {
+          "number": 2,
+          "title": "Sequencing Puzzle — Morning Routine",
+          "basic": {
+            "label": "Number the 8 morning steps",
+            "items": [
+              "Wake up",
+              "Wash face",
+              "Brush teeth",
+              "Get dressed",
+              "Eat breakfast",
+              "Pack school bag",
+              "Put on shoes",
+              "Go to school"
+            ],
+            "note": "(Accept reasonable variations: wash face / brush teeth may swap; eat breakfast may come before get dressed. \"Wake up\" must be first; \"Go to school\" must be last.)"
+          },
+          "challenge": {
+            "label": "Spot the Broken Sequence",
+            "items": [
+              "**Algorithm A (Making Cereal):** Step 3 \"Eat the cereal\" is in the wrong place — it should be LAST, after getting the spoon.",
+              "**Algorithm B (Soccer Practice):** Step 1 \"Put on your soccer cleats\" is in the wrong place — cleats go on AFTER socks, so it belongs after step 2."
+            ]
+          },
+          "bonus": {
+            "label": "Brushing Your Teeth correct order:",
+            "items": [
+              "Pick up your toothbrush",
+              "Wet the toothbrush under the tap",
+              "Put toothpaste on the toothbrush",
+              "Brush your teeth for 2 minutes",
+              "Spit out the toothpaste and rinse your mouth",
+              "Rinse the toothbrush and put it back"
+            ],
+            "note": "(Accept wetting the brush before or after applying toothpaste.)"
+          }
+        },
+        {
+          "number": 3,
+          "title": "Spot the Loop",
+          "basic": {
+            "label": "Find the Repeat",
+            "items": [
+              "**Song:** \"If you're happy and you know it, clap your hands (clap clap)\" repeats — 3 times.",
+              "**P.E. Warm-Up:** \"Do 10 jumping jacks\" repeats 3 times (with \"rest 5 seconds\" repeating twice in between).",
+              "**Pancakes:** The whole pour → wait → flip → cook → remove cycle repeats once per pancake — 5 times for 5 pancakes.",
+              "**Brushing Teeth:** Brushing repeats twice per day (morning + night) — 14 times in a week."
+            ]
+          },
+          "challenge": {
+            "label": "Loop Detective",
+            "items": [
+              "**Scenario A:** Repeat \"call the next name and hear 'Here!'\" 25 times.",
+              "**Scenario B:** Repeat \"set one place (plate, fork, knife, spoon, napkin)\" 4 times."
+            ]
+          },
+          "bonus": {
+            "label": "Spot the Loop in a Pattern",
+            "items": [
+              "**Pattern A:** Triangle, circle, square repeats. Next 3 shapes: triangle, circle, square.",
+              "**Pattern B:** The loop is 4 moves: Step Left → Clap → Step Right → Clap.",
+              "**Pattern C:** Trash / Recycling alternates. Loop length: 2 days."
+            ]
+          }
+        },
+        {
+          "number": 4,
+          "title": "Write Your Own Loop",
+          "basic": {
+            "label": "Loop It!",
+            "items": [
+              "Scenario 1: **REPEAT \"do a push-up\" 20 TIMES**",
+              "Scenario 2: **REPEAT \"water one plant\" 6 TIMES**",
+              "Scenario 3: **REPEAT \"high-five one friend\" 8 TIMES**",
+              "Scenario 4: **REPEAT \"put one sticker on a card\" 12 TIMES**"
+            ]
+          },
+          "challenge": {
+            "items": [
+              "**Part A A1:** REPEAT \"pour water into glass\" **UNTIL** glass is full",
+              "**Part A A2:** REPEAT \"practice free throw\" **UNTIL** 10 in a row are made",
+              "**Part B:** REPEAT 4 TIMES { REPEAT \"hand quiz to next student\" 5 TIMES }"
+            ]
+          },
+          "bonus_note": "Robot cleaning loop. Accept any valid loop using the robot's allowed actions."
+        },
+        {
+          "number": 5,
+          "title": "Yes/No Conditionals",
+          "basic": {
+            "label": "Read the Flowchart",
+            "items": [
+              "**Flowchart 1** (rainy Monday): **Bring an umbrella**",
+              "**Flowchart 2** (homework half-done): **Stay and finish it** (half-done ≠ finished)",
+              "**Flowchart 3** (25°C outside): **Wear pants** (25 is NOT above 30)"
+            ]
+          },
+          "challenge": {
+            "label": "Build Your Own Conditional",
+            "items": [
+              "**Part A A1:** IF you put in $2 THEN give snack OTHERWISE return money",
+              "**Part A A2:** IF it's 8:00 AM THEN go inside OTHERWISE keep playing",
+              "**Part A A3:** IF you have a library card THEN borrow the book OTHERWISE sign up at the desk",
+              "**Part B:** Diamond \"Is temperature below 15°C?\" → Yes: \"Wear a jacket\" / No: \"Leave it at home\""
+            ]
+          },
+          "bonus_note": "Real-world conditional hunt. Accept any 4 valid IF-THEN-OTHERWISE conditionals from real life."
+        },
+        {
+          "number": 6,
+          "title": "Nested Conditionals",
+          "basic": {
+            "label": "Follow the Decision Tree",
+            "items": [
+              "**Tree 1 Q1** (starving, has pizza): **Eat pizza**",
+              "**Tree 1 Q2** (not hungry): **Wait until dinner**",
+              "**Tree 2 Q1** (sunny Saturday): **Go to the park**",
+              "**Tree 2 Q2** (Tuesday): **Go to school**"
+            ]
+          },
+          "challenge": {
+            "label": "Build a Nested Conditional",
+            "items": [
+              "**Part A A1:** IF it's a school day THEN { IF raining THEN wait in cafeteria OTHERWISE go outside } OTHERWISE stay home",
+              "**Part A A2:** IF book is overdue THEN pay a fine OTHERWISE { IF book is damaged THEN pay damage fee OTHERWISE no charge }",
+              "**Part B Bug:** Inner OTHERWISE says \"walk the dog outside\" — but the outer OTHERWISE already means the weather isn't good. Contradiction. **Fix:** change the inner OTHERWISE to \"give the dog a treat.\""
+            ]
+          },
+          "bonus_note": "Open-ended decision tree. Accept any 2-question tree that produces 3 distinct outcomes."
+        }
+      ]
+    },
+    {
+      "page_id": "answer-key-7-12",
+      "output_filename": "answer-key-7-12.pdf",
+      "page_type": "answer_key_page_2",
+      "header": "Full Answer Key — Activities 7–12",
+      "intro": null,
+      "activities": [
+        {
+          "number": 7,
+          "title": "Debug the Robot",
+          "basic": {
+            "label": "Find the Bug",
+            "items": [
+              "**Program 1 (Tea):** SEQUENCE BUG. \"Drink the tea\" is out of order — should be LAST.",
+              "**Program 2 (Walking Dog):** MISSING-STEP BUG. No step to put leash on dog. Add \"Put leash on the dog\" between steps 1 and 2.",
+              "**Program 3 (Alarm):** WRONG-VALUE BUG. 7:00 PM should be 7:00 AM."
+            ]
+          },
+          "challenge": {
+            "label": "Two-Bug Hunt",
+            "items": [
+              "**Part A (Juice):** Bug 1 — Step 3 is a duplicate. Delete it. Bug 2 — \"Wash the glass\" should be AFTER the guest finishes drinking.",
+              "**Part B (Watering loop):** Loop runs 4 times but there are 5 plants. **Fix:** change 4 to 5. Bonus insight if kid also notices the loop doesn't move to the next plant."
+            ]
+          },
+          "bonus_note": "Open-ended \"Be the Bug.\" Accept any 5-step instruction set with a deliberate, identifiable bug."
+        },
+        {
+          "number": 8,
+          "title": "Bubble Sort",
+          "basic": {
+            "label": "Sort [5, 2, 8, 3]",
+            "items": [
+              "**Pass 1:** [2, 5, 3, 8]",
+              "**Pass 2:** [2, 3, 5, 8]",
+              "**Pass 3:** [2, 3, 5, 8] *(verification, no swaps)*",
+              "**Passes needed:** 2"
+            ]
+          },
+          "challenge": {
+            "items": [
+              "**Part A — Heights [140, 125, 150, 130, 145]:** Pass 1: [125, 140, 130, 145, 150]. Pass 2: [125, 130, 140, 145, 150]. Pass 3: verification.",
+              "**Part B:** The INNER loop runs more times. For every ONE pass of the outer loop, the inner loop runs through every pair. Bubble sort's power (and cost) comes from nested loops."
+            ]
+          },
+          "bonus_note": "Open-ended (real-world sorting)."
+        },
+        {
+          "number": 9,
+          "title": "Selection Sort",
+          "basic": {
+            "label": "Sort [6, 3, 9, 1]",
+            "items": [
+              "**After Selection 1:** [1, 3, 9, 6]",
+              "**After Selection 2:** [1, 3, 9, 6]",
+              "**After Selection 3:** [1, 3, 6, 9]",
+              "**First item locked in:** 1"
+            ]
+          },
+          "challenge": {
+            "label": "Sort [8, 3, 5, 1, 4] Both Ways",
+            "items": [
+              "**Bubble Sort:** Pass 1: [3, 5, 1, 4, 8]. Pass 2: [3, 1, 4, 5, 8]. Pass 3: [1, 3, 4, 5, 8].",
+              "**Selection Sort:** After Sel 1: [1, 3, 5, 8, 4]. After Sel 2: [1, 3, 5, 8, 4]. After Sel 3: [1, 3, 4, 8, 5]. After Sel 4: [1, 3, 4, 5, 8].",
+              "**Same final answer:** YES.",
+              "**Part B:** Open-ended discussion. Both are valid. Selection sort has fewer swaps; bubble sort can early-exit if list is nearly sorted."
+            ]
+          },
+          "bonus_note": "Open-ended (algorithm race)."
+        },
+        {
+          "number": 10,
+          "title": "Pattern Recognition",
+          "basic": {
+            "label": "Find the Next One",
+            "items": [
+              "**Pattern 1:** Triangle-circle repeating. Next: **circle**.",
+              "**Pattern 2:** Add 5. Next: **25**.",
+              "**Pattern 3:** A-B-C repeating. Next: **B**.",
+              "**Pattern 4:** Double. Next: **32**."
+            ]
+          },
+          "challenge": {
+            "items": [
+              "**A1:** Fibonacci (add previous two). Next: **13**. Type: Rule-based.",
+              "**A2:** Differences decrease by 1 (−10, −9, −8, −7, then −6). Next: **60**. Type: Rule-based.",
+              "**A3:** Days of the week. Next: **S** (Sunday). Type: Repeating (or Rule-based — both accepted).",
+              "**Part B:** Open-ended."
+            ]
+          },
+          "bonus_note": "Open-ended pattern hunt."
+        },
+        {
+          "number": 11,
+          "title": "Treasure Hunt Grid",
+          "basic": {
+            "label": "Grid 1 (one valid path — others accepted)",
+            "content": "**MOVE → TURN RIGHT → MOVE → MOVE → TURN LEFT → MOVE → MOVE → MOVE → TURN LEFT → MOVE → MOVE** = **11 commands**"
+          },
+          "challenge": {
+            "items": [
+              "**Part A — Grid 2 with loops:** Without loops: 10 commands. With loops: TURN RIGHT → REPEAT MOVE 4 TIMES → TURN LEFT → REPEAT MOVE 4 TIMES = **4 commands**.",
+              "**Part B — Grid 3 debug:** Bug — step 4 walks Bolt into the wall at (1,1). **Fix:** TURN RIGHT before step 4. Corrected: MOVE → MOVE → MOVE → TURN RIGHT → MOVE → MOVE → TURN LEFT → MOVE = **8 commands**."
+            ]
+          },
+          "bonus_note": "Open-ended (design your own grid)."
+        },
+        {
+          "number": 12,
+          "title": "Design Your Own Algorithm",
+          "basic": {
+            "content": "Open-ended. Accept any 5-step algorithm following the design process (pick problem → list steps → look for patterns → write → test)."
+          },
+          "challenge": {
+            "content": "Open-ended. Must use at least one **loop** AND one **conditional**."
+          },
+          "bonus_note": "Open-ended (teach someone). The point is that the kid actually taught someone."
+        }
+      ],
+      "closing_footer": "End of Answer Key."
+    }
+  ]
+}

@@ -10,12 +10,12 @@
   size: 8.5in 11in;
   margin: 0.5in;
 
-  /* Page numbers in the footer via CSS generated content */
+  /* No built-in footer page numbers. Page numbers are stamped uniformly
+     during the final merge via scripts/merge-workbook.js. Keeping this
+     empty prevents orphan counter glyphs from leaking into the PDF text
+     layer on activity pages. */
   @bottom-center {
-    content: counter(page);
-    font-family: 'Nunito', sans-serif;
-    font-size: 10pt;
-    color: var(--navy-muted);
+    content: none;
   }
 }
 

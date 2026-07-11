@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Answer Key — Activities 7–12</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Workbook styles -->
+  <link rel="stylesheet" href="../styles/colors.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/print.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; padding: 0; }
+
+    .page-back-matter { padding: 0.05rem 0; page: back-matter; }
+    .front-matter-header { margin-bottom: 0.15rem; }
+    .front-matter-header h1 { font-size: 1.6rem; }
+
+    .ak-intro {
+      font-size: 9pt;
+      font-style: italic;
+      color: var(--navy);
+      text-align: center;
+      max-width: 92%;
+      margin: 0 auto 0.2rem;
+      line-height: 1.3;
+    }
+
+    .ak-columns {
+      column-count: 2;
+      column-gap: 8px;
+    }
+
+    .ak-block {
+      background: #FFFCF8;
+      border-left: 3px solid var(--coral);
+      border-radius: 4px;
+      padding: 4px 6px;
+      margin-bottom: 5px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .ak-block-title {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 10pt;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.06rem;
+      line-height: 1.1;
+    }
+
+    .ak-part { margin-bottom: 0.08rem; }
+    .ak-part:last-of-type { margin-bottom: 0.05rem; }
+
+    .ak-section-label {
+      font-size: 7.5pt;
+      font-weight: 700;
+      color: var(--coral);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.02rem;
+      line-height: 1.1;
+    }
+
+    .ak-section-sublabel {
+      font-weight: 400;
+      font-style: italic;
+      color: var(--navy-muted);
+      text-transform: none;
+      letter-spacing: normal;
+    }
+
+    .ak-part-content {
+      font-size: 7.5pt;
+      color: var(--navy);
+      line-height: 1.2;
+      margin: 0 0 0.04rem 0;
+    }
+
+    .ak-part-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .ak-part-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 3px;
+      font-size: 7.5pt;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 0.01rem;
+    }
+
+    .ak-bullet {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--coral);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .ak-part-note {
+      font-size: 7.5pt;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.2;
+      margin: 0.02rem 0 0.04rem 0;
+    }
+
+    .ak-bonus {
+      font-size: 7.5pt;
+      color: var(--navy);
+      line-height: 1.15;
+      border-top: 1px dashed var(--teal);
+      padding-top: 0.04rem;
+      margin-top: 0.04rem;
+    }
+
+    .ak-bonus-label {
+      font-style: italic;
+      color: var(--teal-dark);
+      font-weight: 600;
+      font-size: 7pt;
+    }
+
+    .ak-bonus-text {
+      font-style: italic;
+    }
+
+    .ak-bonus-list {
+      margin: 0.03rem 0 0.03rem 0.85rem;
+      padding: 0;
+      font-size: 7.5pt;
+      color: var(--navy);
+      line-height: 1.15;
+    }
+
+    .ak-bonus-list li {
+      margin-bottom: 0.01rem;
+      padding-left: 0.1rem;
+    }
+
+    .ak-bonus-note {
+      font-style: italic;
+      font-size: 7pt;
+      color: var(--navy-muted);
+      margin-top: 0.03rem;
+    }
+
+    .ak-footer {
+      text-align: center;
+      font-size: 8.5pt;
+      font-style: italic;
+      color: var(--navy-muted);
+      margin-top: 0.08rem;
+      page-break-inside: avoid;
+    }
+  </style>
+</head>
+<body class="page-back-matter">
+
+  <header class="front-matter-header">
+    <h1>Full Answer Key — Activities 7–12</h1>
+    <div class="accent-bar"></div>
+  </header>
+
+  
+
+  <div class="ak-columns">
+    
+    <div class="ak-block">
+      <div class="ak-block-title">Activity 7: Debug the Robot</div>
+      <div class="ak-part">
+        <div class="ak-section-label">BASIC <span class="ak-section-sublabel">— Find the Bug</span></div>
+        <ul class="ak-part-list"><li><span class="ak-bullet"></span><span><strong>Program 1 (Tea):</strong> SEQUENCE BUG. &quot;Drink the tea&quot; is out of order — should be LAST.</span></li><li><span class="ak-bullet"></span><span><strong>Program 2 (Walking Dog):</strong> MISSING-STEP BUG. No step to put leash on dog. Add &quot;Put leash on the dog&quot; between steps 1 and 2.</span></li><li><span class="ak-bullet"></span><span><strong>Program 3 (Alarm):</strong> WRONG-VALUE BUG. 7:00 PM should be 7:00 AM.</span></li></ul>
+      </div>
+      <div class="ak-part">
+        <div class="ak-section-label">CHALLENGE <span class="ak-section-sublabel">— Two-Bug Hunt</span></div>
+        <ul class="ak-part-list"><li><span class="ak-bullet"></span><span><strong>Part A (Juice):</strong> Bug 1 — Step 3 is a duplicate. Delete it. Bug 2 — &quot;Wash the glass&quot; should be AFTER the guest finishes drinking.</span></li><li><span class="ak-bullet"></span><span><strong>Part B (Watering loop):</strong> Loop runs 4 times but there are 5 plants. <strong>Fix:</strong> change 4 to 5. Bonus insight if kid also notices the loop doesn't move to the next plant.</span></li></ul>
+      </div>
+      
+      <div class="ak-bonus">
+        <span class="ak-bonus-label">BONUS Grading Note:</span>
+        <span class="ak-bonus-text">Open-ended &quot;Be the Bug.&quot; Accept any 5-step instruction set with a deliberate, identifiable bug.</span>
+      </div>
+    
+    </div>
+  
+    <div class="ak-block">
+      <div class="ak-block-title">Activity 8: Bubble Sort</div>
+      <div class="ak-part">
+        <div class="ak-section-label">BASIC <span class="ak-section-sublabel">— Sort [5, 2, 8, 3]</span></div>
+        <ul class="ak-part-list"><li><span class="ak-bullet"></span><span><strong>Pass 1:</strong> [2, 5, 3, 8]</span></li><li><span class="ak-bullet"></span><span><strong>Pass 2:</strong> [2, 3, 5, 8]</span></li><li><span class="ak-bullet"></span><span><strong>Pass 3:</strong> [2, 3, 5, 8] *(verification, no swaps)*</span></li><li><span class="ak-bullet"></span><span><strong>Passes needed:</strong> 2</span></li></ul>
+      </div>
+      <div class="ak-part">
+        <div class="ak-section-label">CHALLENGE </div>
+        <ul class="ak-part-list"><li><span class="ak-bullet"></span><span><strong>Part A — Heights [140, 125, 150, 130, 145]:</strong> Pass 1: [125, 140, 130, 145, 150]. Pass 2: [125, 130, 140, 145, 150]. Pass 3: verification.</span></li><li><span class="ak-bullet"></span><span><strong>Part B:</strong> The INNER loop runs more times. For every ONE pass of the outer loop, the inner loop runs through every pair. Bubble sort's power (and cost) comes from nested loops.</span></li></ul>
+      </div>
+      
+      <div class="ak-bonus">
+        <span class="ak-bonus-label">BONUS Grading Note:</span>
+        <span class="ak-bonus-text">Open-ended (real-world sorting).</span>
+      </div>
+    
+    </div>
+  
+    <div class="ak-block">
+      <div class="ak-block-title">Activity 9: Selection Sort</div>
+      <div class="ak-part">
+        <div class="ak-section-label">BASIC <span class="ak-section-sublabel">— Sort [6, 3, 9, 1]</span></div>
+        <ul class="ak-part-list"><li><span class="ak-bullet"></span><span><strong>After Selection 1:</strong> [1, 3, 9, 6]</span></li><li><span class="ak-bullet"></span><span><strong>After Selection 2:</strong> [1, 3, 9, 6]</span></li><li><span class="ak-bullet"></span><span><strong>After Selection 3:</strong> [1, 3, 6, 9]</span></li><li><span class="ak-bullet"></span><span><strong>First item locked in:</strong> 1</span></li></ul>
+      </div>
+      <div class="ak-part">
+        <div class="ak-section-label">CHALLENGE <span class="ak-section-sublabel">— Sort [8, 3, 5, 1, 4] Both Ways</span></div>
+        <ul class="ak-part-list"><li><span class="ak-bullet"></span><span><strong>Bubble Sort:</strong> Pass 1: [3, 5, 1, 4, 8]. Pass 2: [3, 1, 4, 5, 8]. Pass 3: [1, 3, 4, 5, 8].</span></li><li><span class="ak-bullet"></span><span><strong>Selection Sort:</strong> After Sel 1: [1, 3, 5, 8, 4]. After Sel 2: [1, 3, 5, 8, 4]. After Sel 3: [1, 3, 4, 8, 5]. After Sel 4: [1, 3, 4, 5, 8].</span></li><li><span class="ak-bullet"></span><span><strong>Same final answer:</strong> YES.</span></li><li><span class="ak-bullet"></span><span><strong>Part B:</strong> Open-ended discussion. Both are valid. Selection sort has fewer swaps; bubble sort can early-exit if list is nearly sorted.</span></li></ul>
+      </div>
+      
+      <div class="ak-bonus">
+        <span class="ak-bonus-label">BONUS Grading Note:</span>
+        <span class="ak-bonus-text">Open-ended (algorithm race).</span>
+      </div>
+    
+    </div>
+  
+    <div class="ak-block">
+      <div class="ak-block-title">Activity 10: Pattern Recognition</div>
+      <div class="ak-part">
+        <div class="ak-section-label">BASIC <span class="ak-section-sublabel">— Find the Next One</span></div>
+        <ul class="ak-part-list"><li><span class="ak-bullet"></span><span><strong>Pattern 1:</strong> Triangle-circle repeating. Next: <strong>circle</strong>.</span></li><li><span class="ak-bullet"></span><span><strong>Pattern 2:</strong> Add 5. Next: <strong>25</strong>.</span></li><li><span class="ak-bullet"></span><span><strong>Pattern 3:</strong> A-B-C repeating. Next: <strong>B</strong>.</span></li><li><span class="ak-bullet"></span><span><strong>Pattern 4:</strong> Double. Next: <strong>32</strong>.</span></li></ul>
+      </div>
+      <div class="ak-part">
+        <div class="ak-section-label">CHALLENGE </div>
+        <ul class="ak-part-list"><li><span class="ak-bullet"></span><span><strong>A1:</strong> Fibonacci (add previous two). Next: <strong>13</strong>. Type: Rule-based.</span></li><li><span class="ak-bullet"></span><span><strong>A2:</strong> Differences decrease by 1 (−10, −9, −8, −7, then −6). Next: <strong>60</strong>. Type: Rule-based.</span></li><li><span class="ak-bullet"></span><span><strong>A3:</strong> Days of the week. Next: <strong>S</strong> (Sunday). Type: Repeating (or Rule-based — both accepted).</span></li><li><span class="ak-bullet"></span><span><strong>Part B:</strong> Open-ended.</span></li></ul>
+      </div>
+      
+      <div class="ak-bonus">
+        <span class="ak-bonus-label">BONUS Grading Note:</span>
+        <span class="ak-bonus-text">Open-ended pattern hunt.</span>
+      </div>
+    
+    </div>
+  
+    <div class="ak-block">
+      <div class="ak-block-title">Activity 11: Treasure Hunt Grid</div>
+      <div class="ak-part">
+        <div class="ak-section-label">BASIC <span class="ak-section-sublabel">— Grid 1 (one valid path — others accepted)</span></div>
+        <p class="ak-part-content"><strong>MOVE → TURN RIGHT → MOVE → MOVE → TURN LEFT → MOVE → MOVE → MOVE → TURN LEFT → MOVE → MOVE</strong> = <strong>11 commands</strong></p>
+      </div>
+      <div class="ak-part">
+        <div class="ak-section-label">CHALLENGE </div>
+        <ul class="ak-part-list"><li><span class="ak-bullet"></span><span><strong>Part A — Grid 2 with loops:</strong> Without loops: 10 commands. With loops: TURN RIGHT → REPEAT MOVE 4 TIMES → TURN LEFT → REPEAT MOVE 4 TIMES = <strong>4 commands</strong>.</span></li><li><span class="ak-bullet"></span><span><strong>Part B — Grid 3 debug:</strong> Bug — step 4 walks Bolt into the wall at (1,1). <strong>Fix:</strong> TURN RIGHT before step 4. Corrected: MOVE → MOVE → MOVE → TURN RIGHT → MOVE → MOVE → TURN LEFT → MOVE = <strong>8 commands</strong>.</span></li></ul>
+      </div>
+      
+      <div class="ak-bonus">
+        <span class="ak-bonus-label">BONUS Grading Note:</span>
+        <span class="ak-bonus-text">Open-ended (design your own grid).</span>
+      </div>
+    
+    </div>
+  
+    <div class="ak-block">
+      <div class="ak-block-title">Activity 12: Design Your Own Algorithm</div>
+      <div class="ak-part">
+        <div class="ak-section-label">BASIC </div>
+        <p class="ak-part-content">Open-ended. Accept any 5-step algorithm following the design process (pick problem → list steps → look for patterns → write → test).</p>
+      </div>
+      <div class="ak-part">
+        <div class="ak-section-label">CHALLENGE </div>
+        <p class="ak-part-content">Open-ended. Must use at least one <strong>loop</strong> AND one <strong>conditional</strong>.</p>
+      </div>
+      
+      <div class="ak-bonus">
+        <span class="ak-bonus-label">BONUS Grading Note:</span>
+        <span class="ak-bonus-text">Open-ended (teach someone). The point is that the kid actually taught someone.</span>
+      </div>
+    
+    </div>
+  
+  </div>
+
+  <div class="ak-footer">End of Answer Key.</div>
+
+</body>
+</html>

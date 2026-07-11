@@ -4,7 +4,7 @@
     "number": 1,
     "title": "What is an Algorithm?",
     "difficulty": "easy",
-    "difficulty_label": "Ages 8-10",
+    "difficulty_label": "Ages 8-12",
     "intro": "<p>An <strong>algorithm</strong> is just a list of steps to do something. Even making a sandwich is an algorithm! Let's see if you can write one.</p>",
     "vocabulary": {
       "word": "Algorithm",

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pacing Guides</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Workbook styles -->
+  <link rel="stylesheet" href="../styles/colors.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/print.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; padding: 0; }
+
+    .page-back-matter { padding: 0.03rem 0; page: back-matter; }
+    .front-matter-header { margin-bottom: 0.1rem; }
+    .front-matter-header h1 { font-size: 1.5rem; }
+
+    .pg-intro {
+      font-size: 9pt;
+      color: var(--navy);
+      text-align: center;
+      max-width: 82%;
+      margin: 0 auto 0.12rem;
+      line-height: 1.25;
+    }
+
+    .pg-section { margin-bottom: 0.12rem; }
+    .pg-section:last-child { margin-bottom: 0.08rem; }
+
+    .pg-section-title {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 13pt;
+      font-weight: 700;
+      margin: 0 0 0.04rem 0;
+    }
+    .pg-section.coral .pg-section-title { color: var(--coral); }
+    .pg-section.teal .pg-section-title { color: var(--teal-dark); }
+    .pg-section.yellow .pg-section-title { color: var(--sunny-dark); }
+
+    .pg-section-accent-bar {
+      width: 100%;
+      height: 2px;
+      border-radius: 1px;
+      margin-bottom: 0.05rem;
+    }
+    .pg-section.coral .pg-section-accent-bar { background: var(--coral); }
+    .pg-section.teal .pg-section-accent-bar { background: var(--teal); }
+    .pg-section.yellow .pg-section-accent-bar { background: var(--sunny); }
+
+    .pg-summary {
+      font-size: 8.5pt;
+      font-style: italic;
+      color: var(--navy-muted);
+      margin: 0 0 0.05rem 0;
+      line-height: 1.2;
+    }
+
+    .pg-blocks-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px 6px;
+    }
+
+    .pg-day-block, .pg-week-block {
+      background: var(--white);
+      border-left: 2px solid var(--coral);
+      border-radius: 0 3px 3px 0;
+      padding: 2px 4px;
+      page-break-inside: avoid;
+    }
+    .pg-day-block.coral, .pg-week-block.coral { border-left-color: var(--coral); }
+    .pg-day-block.teal, .pg-week-block.teal { border-left-color: var(--teal); }
+
+    .pg-block-header {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 8.5pt;
+      color: var(--navy);
+      margin-bottom: 0.02rem;
+      line-height: 1.1;
+    }
+
+    .pg-block-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .pg-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 3px;
+      font-size: 7.5pt;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 0;
+    }
+
+    .pg-bullet {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--coral);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .pg-bullet.teal { background: var(--teal); }
+
+    .pg-item-text em {
+      color: var(--teal-dark);
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    .pg-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 7.5pt;
+      color: var(--navy);
+      page-break-inside: avoid;
+    }
+    .pg-table th, .pg-table td {
+      padding: 1px 4px;
+      text-align: left;
+      border-bottom: 1px solid var(--gray-mid);
+      vertical-align: top;
+    }
+    .pg-table th {
+      background: var(--cream);
+      font-weight: 700;
+      font-size: 8pt;
+    }
+    .pg-table tr.even td { background: rgba(255, 248, 240, 0.6); }
+    .pg-table tr.odd td { background: var(--white); }
+    .pg-table .col-week {
+      width: 10%;
+      font-weight: 700;
+      color: var(--coral);
+      text-align: center;
+    }
+    .pg-table .col-activity { width: 65%; }
+    .pg-table .col-focus { width: 25%; }
+
+    .pg-closing {
+      background: var(--coral-light);
+      border: 1px solid var(--coral);
+      border-radius: 4px;
+      padding: 3px 8px;
+      text-align: center;
+      font-style: italic;
+      font-size: 8.5pt;
+      color: var(--navy);
+      line-height: 1.2;
+      page-break-inside: avoid;
+    }
+    .pg-closing p { margin: 0; }
+  </style>
+</head>
+<body class="page-back-matter">
+
+  <header class="front-matter-header">
+    <h1>Pacing Guides</h1>
+    <div class="accent-bar"></div>
+  </header>
+
+  <p class="pg-intro">Choose the schedule that fits your teaching or learning rhythm. These pacing plans expand on the 3 pacing options introduced in the How to Use page — pick the one that fits and adapt as needed.</p>
+
+  
+    <section class="pg-section coral">
+      <h2 class="pg-section-title">1-Week Intensive Plan</h2>
+      <div class="pg-section-accent-bar"></div>
+      <p class="pg-summary">For summer camps, spring break, or focused CS immersion. 2–3 activities per day for 5–7 days.</p>
+      <div class="pg-blocks-grid">
+      
+        <div class="pg-day-block coral">
+          <div class="pg-block-header">DAY 1 — Foundations of Algorithms</div>
+          <ul class="pg-block-list"><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 1: What is an Algorithm?</span></li><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 2: Sequencing Puzzle</span></li><li class="pg-item"><span class="pg-bullet teal"></span><span class="pg-item-text"><em>Discussion:</em> What's the difference between random steps and an algorithm?</span></li></ul>
+        </div>
+      
+        <div class="pg-day-block coral">
+          <div class="pg-block-header">DAY 2 — Loops</div>
+          <ul class="pg-block-list"><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 3: Spot the Loop</span></li><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 4: Write Your Own Loop</span></li><li class="pg-item"><span class="pg-bullet teal"></span><span class="pg-item-text"><em>Hands On:</em> Do the Loop Bonus outside (pattern hunt)</span></li></ul>
+        </div>
+      
+        <div class="pg-day-block coral">
+          <div class="pg-block-header">DAY 3 — Conditionals</div>
+          <ul class="pg-block-list"><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 5: Yes/No Conditionals</span></li><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 6: Nested Conditionals</span></li><li class="pg-item"><span class="pg-bullet teal"></span><span class="pg-item-text"><em>Discussion:</em> Draw a decision tree for your morning routine</span></li></ul>
+        </div>
+      
+        <div class="pg-day-block coral">
+          <div class="pg-block-header">DAY 4 — Debugging &amp; Sorting Part 1</div>
+          <ul class="pg-block-list"><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 7: Debug the Robot</span></li><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 8: Bubble Sort</span></li><li class="pg-item"><span class="pg-bullet teal"></span><span class="pg-item-text"><em>Hands On:</em> Do the &quot;Sort Real Things&quot; bonus with household objects</span></li></ul>
+        </div>
+      
+        <div class="pg-day-block coral">
+          <div class="pg-block-header">DAY 5 — Sorting Part 2 &amp; Patterns</div>
+          <ul class="pg-block-list"><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 9: Selection Sort</span></li><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 10: Pattern Recognition</span></li><li class="pg-item"><span class="pg-bullet teal"></span><span class="pg-item-text"><em>Reflection:</em> How is selection sort different from bubble sort?</span></li></ul>
+        </div>
+      
+        <div class="pg-day-block coral">
+          <div class="pg-block-header">DAY 6 — Integration</div>
+          <ul class="pg-block-list"><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 11: Treasure Hunt Grid</span></li><li class="pg-item"><span class="pg-bullet teal"></span><span class="pg-item-text"><em>Note:</em> Take a break — this one is meaty!</span></li></ul>
+        </div>
+      
+        <div class="pg-day-block coral">
+          <div class="pg-block-header">DAY 7 — Capstone</div>
+          <ul class="pg-block-list"><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 12: Design Your Own Algorithm</span></li><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Complete the Vocabulary Review, Mini-Quiz, and Reflection Page</span></li><li class="pg-item"><span class="pg-bullet teal"></span><span class="pg-item-text"><em>Celebration:</em> Celebration! Kids get to teach someone one concept</span></li></ul>
+        </div>
+      
+    </div>
+    </section>
+  
+    <section class="pg-section teal">
+      <h2 class="pg-section-title">4-Week Unit Plan</h2>
+      <div class="pg-section-accent-bar"></div>
+      <p class="pg-summary">For homeschool, after-school programs, or supplementary CS. 3 activities per week for 4 weeks.</p>
+      <div class="pg-blocks-grid">
+      
+        <div class="pg-week-block teal">
+          <div class="pg-block-header">WEEK 1 — Foundations of Algorithms</div>
+          <ul class="pg-block-list"><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 1: What is an Algorithm?</span></li><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 2: Sequencing Puzzle</span></li><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 3: Spot the Loop</span></li><li class="pg-item"><span class="pg-bullet teal"></span><span class="pg-item-text"><em>Reflection:</em> Weekly reflection: Where did you see loops today?</span></li></ul>
+        </div>
+      
+        <div class="pg-week-block teal">
+          <div class="pg-block-header">WEEK 2 — Loops &amp; Conditionals</div>
+          <ul class="pg-block-list"><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 4: Write Your Own Loop</span></li><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 5: Yes/No Conditionals</span></li><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 6: Nested Conditionals</span></li><li class="pg-item"><span class="pg-bullet teal"></span><span class="pg-item-text"><em>Discussion:</em> Design a decision tree for a weekly household task</span></li></ul>
+        </div>
+      
+        <div class="pg-week-block teal">
+          <div class="pg-block-header">WEEK 3 — Debugging &amp; Sorting</div>
+          <ul class="pg-block-list"><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 7: Debug the Robot</span></li><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 8: Bubble Sort</span></li><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 9: Selection Sort</span></li><li class="pg-item"><span class="pg-bullet teal"></span><span class="pg-item-text"><em>Hands On:</em> Do the &quot;Algorithm Race&quot; bonus with a family member</span></li></ul>
+        </div>
+      
+        <div class="pg-week-block teal">
+          <div class="pg-block-header">WEEK 4 — Integration &amp; Capstone</div>
+          <ul class="pg-block-list"><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 10: Pattern Recognition</span></li><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 11: Treasure Hunt Grid</span></li><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Activity 12: Design Your Own Algorithm</span></li><li class="pg-item activity"><span class="pg-bullet"></span><span class="pg-item-text">Complete Vocabulary Review, Mini-Quiz, and Reflection Page</span></li></ul>
+        </div>
+      
+    </div>
+    </section>
+  
+    <section class="pg-section yellow">
+      <h2 class="pg-section-title">12-Week Semester Plan</h2>
+      <div class="pg-section-accent-bar"></div>
+      <p class="pg-summary">For elementary CS class or gentle weekly rhythm. 1 activity per week for 12 weeks.</p>
+      <table class="pg-table yellow"><thead><tr><th>Week</th><th>Activity</th><th>Focus</th></tr></thead><tbody>
+      <tr class="even">
+        <td class="col-week">1</td>
+        <td class="col-activity">Activity 1 — What is an Algorithm?</td>
+        <td class="col-focus">Definitions</td>
+      </tr>
+    
+      <tr class="odd">
+        <td class="col-week">2</td>
+        <td class="col-activity">Activity 2 — Sequencing Puzzle</td>
+        <td class="col-focus">Order matters</td>
+      </tr>
+    
+      <tr class="even">
+        <td class="col-week">3</td>
+        <td class="col-activity">Activity 3 — Spot the Loop</td>
+        <td class="col-focus">Recognizing repetition</td>
+      </tr>
+    
+      <tr class="odd">
+        <td class="col-week">4</td>
+        <td class="col-activity">Activity 4 — Write Your Own Loop</td>
+        <td class="col-focus">Writing loops</td>
+      </tr>
+    
+      <tr class="even">
+        <td class="col-week">5</td>
+        <td class="col-activity">Activity 5 — Yes/No Conditionals</td>
+        <td class="col-focus">Decision-making</td>
+      </tr>
+    
+      <tr class="odd">
+        <td class="col-week">6</td>
+        <td class="col-activity">Activity 6 — Nested Conditionals</td>
+        <td class="col-focus">Decision trees</td>
+      </tr>
+    
+      <tr class="even">
+        <td class="col-week">7</td>
+        <td class="col-activity">Activity 7 — Debug the Robot</td>
+        <td class="col-focus">Finding bugs</td>
+      </tr>
+    
+      <tr class="odd">
+        <td class="col-week">8</td>
+        <td class="col-activity">Activity 8 — Bubble Sort</td>
+        <td class="col-focus">First named algorithm</td>
+      </tr>
+    
+      <tr class="even">
+        <td class="col-week">9</td>
+        <td class="col-activity">Activity 9 — Selection Sort</td>
+        <td class="col-focus">Comparing algorithms</td>
+      </tr>
+    
+      <tr class="odd">
+        <td class="col-week">10</td>
+        <td class="col-activity">Activity 10 — Pattern Recognition</td>
+        <td class="col-focus">Finding rules</td>
+      </tr>
+    
+      <tr class="even">
+        <td class="col-week">11</td>
+        <td class="col-activity">Activity 11 — Treasure Hunt Grid</td>
+        <td class="col-focus">Integration</td>
+      </tr>
+    
+      <tr class="odd">
+        <td class="col-week">12</td>
+        <td class="col-activity">Activity 12 — Design Your Own Algorithm</td>
+        <td class="col-focus">Synthesis</td>
+      </tr>
+    </tbody></table>
+    </section>
+  
+
+  <div class="pg-closing">
+    <p>Reminder: Every activity has both a Basic (ages 8-10) and Challenge (ages 10-12) version. Kids can revisit any activity in Challenge mode after completing Basic — that's the built-in extension.</p>
+  </div>
+
+</body>
+</html>

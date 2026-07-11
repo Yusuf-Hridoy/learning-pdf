@@ -74,8 +74,7 @@
         "content": {
           "greeting": "Dear Algorithm Thinker,",
           "body": "Thank you for taking this journey! When I designed this workbook, my hope was that you'd come away not just knowing what an algorithm is, but feeling like a person who THINKS with algorithms. If any part of this book made you say \"huh, cool!\" — that's the goal.\n\nNow go find more problems worth solving.",
-          "signoff": "— The Workbook Author",
-          "signoff_placeholder_note": "The signoff \"The Workbook Author\" is a placeholder — replace with actual name before final Gumroad launch."
+          "signoff": "— Yusuf Ahmed"
         }
       }
     },
@@ -153,8 +152,10 @@
         ]
       },
       "closing": {
-        "text": "Questions or feedback? We'd love to hear from you at [contact].",
-        "placeholder_note": "The [contact] placeholder must be replaced before Gumroad launch — options: Gumroad URL, email, or handle."
+        "text": "Questions or feedback? We'd love to hear from you at yusufahmed.sdet@gmail.com or on LinkedIn (linkedin.com/in/md-yusuf-ahmed).",
+        "email": "yusufahmed.sdet@gmail.com",
+        "linkedin_display": "linkedin.com/in/md-yusuf-ahmed",
+        "linkedin_url": "https://www.linkedin.com/in/md-yusuf-ahmed/"
       }
     }
   ]
